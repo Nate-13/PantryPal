@@ -1,4 +1,4 @@
-name: project-app-testing
+x`name: project-app-testing
 services:
   app-test:
     build: ./app

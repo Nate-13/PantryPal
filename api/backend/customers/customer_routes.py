@@ -20,7 +20,6 @@ customers = Blueprint('customers', __name__)
 # Get all customers from the system
 @customers.route('/customers', methods=['GET'])
 def get_customers():
-
     cursor = db.get_db().cursor()
     cursor.execute('''SELECT id, company, last_name,
                     first_name, job_title, business_phone FROM customers
