@@ -7,14 +7,10 @@ from modules.nav import SideBarLinks
 
 SideBarLinks()
 
-st.write("# Accessing a REST API from Within Streamlit")
-
-"""
-Simply retrieving data from a REST api running in a separate Docker Container.
-
-If the container isn't running, this will be very unhappy.  But the Streamlit app 
-should not totally die. 
-"""
+st.header("PantryPal")
+'''
+The ingredient-driven recipe platform.
+'''
 data = {} 
 try:
     response = requests.get('http://web-api:4000/recipes')
@@ -25,10 +21,27 @@ except Exception as e:
     st.exception(e)
     recipes = []
 
-st.title("📖 All Recipes")
-difficulty_filter = st.selectbox("Filter by difficulty", options=["All", "EASY", "MEDIUM", "HARD"])
+try:
+    ingredients_response = requests.get("http://web-api:4000/ingredients")
+    ingredients_response.raise_for_status()
+    all_ingredients = ingredients_response.json()  # Expecting a list of dicts with 'name'
+    ingredient_options = sorted(list(set(i['name'] for i in all_ingredients if 'name' in i)))
+except Exception as e:
+    st.warning("Could not fetch ingredients for filter.")
+    st.exception(e)
+    ingredient_options = []
 
-search = st.text_input("🔍 Search recipes by title, ingredients, or category")
+# UI with side-by-side layout
+col1, col2 = st.columns([2, 1])
+with col1:
+    selected_ingredients = st.multiselect("🧂 Filter by ingredients", options=ingredient_options)
+with col2:
+    difficulty_filter = st.selectbox("📊 Filter by difficulty", options=["All", "EASY", "MEDIUM", "HARD"])
+
+# Keyword search (still optional)
+search = st.text_input("🔍 Search recipes by title or category")
+
+
 # Apply filters
 filtered_recipes = []
 for r in recipes:
@@ -42,20 +55,31 @@ for r in recipes:
     except Exception as e:
         ingredients = []
 
-    ingredient_match = any(
-        search.lower() in str(ing.get('name', '')).lower()
-        for ing in ingredients
+    ingredient_names = [ing.get('name', '').lower() for ing in ingredients]
+
+    matches_selected_ingredients = all(
+        ing.lower() in ingredient_names for ing in selected_ingredients
+    ) if selected_ingredients else True
+
+    matches_difficulty = difficulty_filter == "All" or r["difficulty"] == difficulty_filter
+    matches_search = search.lower() in r['title'].lower() or any(
+        search.lower() in ing_name for ing_name in ingredient_names
     )
 
-    if (title_match or ingredient_match) and (
-        difficulty_filter == "All" or r["difficulty"] == difficulty_filter
-    ):
+    if matches_difficulty and matches_search and matches_selected_ingredients:
         r['ingredients'] = ingredients
         filtered_recipes.append(r)
 
 if not filtered_recipes:
-    st.info("No recipes found.")
+    st.info("No recipes found. Request a recipe challenge from culinary students or chefs below!")
+    with st.popover("✏️ Request a recipe challenge"):
+        st.multiselect("Select ingredients for your challenge...",default=selected_ingredients, options=ingredient_options)
+        st.text_area("Describe your recipe challenge here:")
+        st.button("Submit Challenge")
 else:
+    f'''
+    found {len(filtered_recipes)} recipes.
+    '''
     num_cols = 1
     for i in range(0, len(filtered_recipes), num_cols):
         cols = st.columns(num_cols)

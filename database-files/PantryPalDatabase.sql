@@ -332,7 +332,57 @@ INSERT INTO ingredients (ingredientId, name, cost) VALUES
 (113, 'Mango', 'MODERATE'),
 (114, 'Cocoa Powder', 'MODERATE'),
 (115, 'Slider Buns', 'CHEAP'),
-(116, 'Arborio Rice', 'MODERATE');
+(116, 'Arborio Rice', 'MODERATE'),
+(117, 'Sundried Tomatoes', 'MODERATE'),
+(118, 'Acorn Squash', 'MODERATE'),
+(119, 'Cranberries', 'MODERATE'),
+(120, 'Rice Noodles', 'CHEAP'),
+(121, 'Soba Noodles', 'MODERATE'),
+(122, 'Polenta', 'CHEAP'),
+(123, 'Ricotta', 'MODERATE'),
+(124, 'Lemongrass', 'MODERATE'),
+(125, 'Star Anise', 'EXPENSIVE'),
+(126, 'Cloves', 'MODERATE'),
+(127, 'Zaatar', 'MODERATE'),
+(128, 'Sumac', 'MODERATE'),
+(129, 'Edamame', 'MODERATE'),
+(130, 'Ginger', 'CHEAP'),
+(131, 'Watercress', 'EXPENSIVE'),
+(132, 'Microgreens', 'EXPENSIVE'),
+(133, 'Plantains', 'MODERATE'),
+(134, 'Beets', 'CHEAP'),
+(135, 'Ricotta Salata', 'EXPENSIVE'),
+(136, 'Shallots', 'MODERATE'),
+(137, 'Green Beans', 'CHEAP'),
+(138, 'Pear', 'MODERATE'),
+(139, 'Cantaloupe', 'MODERATE'),
+(140, 'Bulgur', 'CHEAP'),
+(141, 'Farro', 'MODERATE'),
+(142, 'Freekeh', 'MODERATE'),
+(143, 'Barley', 'CHEAP'),
+(144, 'Celeriac', 'MODERATE'),
+(145, 'Horseradish', 'MODERATE'),
+(146, 'Wasabi Paste', 'EXPENSIVE'),
+(147, 'Togarashi', 'EXPENSIVE'),
+(148, 'Smoked Paprika', 'MODERATE'),
+(149, 'Black Garlic', 'EXPENSIVE'),
+(150, 'Truffle Oil', 'EXPENSIVE'),
+(151, 'Pickled Jalapeños', 'CHEAP'),
+(152, 'Red Cabbage', 'CHEAP'),
+(153, 'Green Onion', 'CHEAP'),
+(154, 'Ghee', 'MODERATE'),
+(155, 'Buttermilk', 'MODERATE'),
+(156, 'Cream Cheese', 'MODERATE'),
+(157, 'Coconut Sugar', 'MODERATE'),
+(158, 'Date Syrup', 'EXPENSIVE'),
+(159, 'Agave Nectar', 'MODERATE'),
+(160, 'Sourdough Starter', 'CHEAP'),
+(161, 'Mango Chutney', 'MODERATE'),
+(162, 'Furikake', 'EXPENSIVE'),
+(163, 'Matcha Powder', 'EXPENSIVE'),
+(164, 'Caraway Seeds', 'MODERATE'),
+(165, 'Dijon Mustard', 'MODERATE'),
+(166, 'Pumpkin Puree', 'CHEAP');
 
 -- Recipes
 INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES
@@ -1060,3 +1110,847 @@ INSERT INTO categories (recipeId, categoryName) VALUES
 (38, 'COMFORT FOOD'),
 (39, 'BREAKFAST'),
 (40, 'ASIAN');
+
+# additional recipes
+-- Recipe: Grilled Peach Burrata Salad
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (12, 'Grilled Peach Burrata Salad', 'Juicy grilled peaches with burrata, arugula, and balsamic.', 15, 2, 'EASY', 410);
+INSERT INTO categories (recipeId, categoryName) VALUES (41, 'SALAD');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (41, 57, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (41, 132, 20.0, 'g');
+-- Recipe: Farro & Roasted Beet Bowl
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (23, 'Farro & Roasted Beet Bowl', 'Nutty farro with roasted beets, feta, and herbs.', 45, 3, 'EASY', 480);
+INSERT INTO categories (recipeId, categoryName) VALUES (42, 'BOWL');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (42, 141, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (42, 134, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (42, 112, 50.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (42, 57, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (42, 17, 1.0, 'tbsp');
+-- Recipe: Ricotta Lemon Toast
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (35, 'Ricotta Lemon Toast', 'Toast topped with whipped ricotta, lemon, and honey.', 10, 2, 'EASY', 360);
+INSERT INTO categories (recipeId, categoryName) VALUES (43, 'BREAKFAST');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (43, 123, 100.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (43, 73, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (43, 61, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (43, 69, 2.0, 'slices');
+-- Recipe: Thai Basil Tofu Stir-Fry
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (8, 'Thai Basil Tofu Stir-Fry', 'Stir-fried tofu with garlic, chilies, and Thai basil.', 25, 2, 'MEDIUM', 510);
+INSERT INTO categories (recipeId, categoryName) VALUES (44, 'ASIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (44, 38, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (44, 3, 3.0, 'cloves');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (44, 26, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (44, 16, 1.0, 'cup');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (44, 59, 2.0, 'tbsp');
+-- Recipe: Gochujang Glazed Eggplant
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (26, 'Gochujang Glazed Eggplant', 'Roasted eggplant halves glazed in spicy gochujang.', 30, 2, 'MEDIUM', 470);
+INSERT INTO categories (recipeId, categoryName) VALUES (45, 'VEGETARIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (45, 14, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (45, 96, 1.5, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (45, 108, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (45, 153, 2.0, 'stalks');
+-- Recipe: Creamy Polenta with Mushrooms
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (20, 'Creamy Polenta with Mushrooms', 'Soft polenta topped with garlic mushrooms and thyme.', 40, 2, 'MEDIUM', 500);
+INSERT INTO categories (recipeId, categoryName) VALUES (46, 'COMFORT FOOD');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (46, 122, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (46, 12, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (46, 3, 2.0, 'cloves');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (46, 47, 50.0, 'ml');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (46, 18, 1.0, 'tsp');
+-- Recipe: Buttermilk Pancakes with Blueberry Syrup
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (9, 'Buttermilk Pancakes with Blueberry Syrup', 'Fluffy pancakes served with warm blueberry syrup.', 30, 3, 'EASY', 450);
+INSERT INTO categories (recipeId, categoryName) VALUES (47, 'BREAKFAST');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (47, 155, 200.0, 'ml');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (47, 51, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (47, 77, 100.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (47, 62, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (47, 54, 1.0, 'tsp');
+-- Recipe: Harissa Roasted Cauliflower Tacos
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (25, 'Harissa Roasted Cauliflower Tacos', 'Spicy roasted cauliflower in soft tortillas with lime crema.', 35, 4, 'MEDIUM', 520);
+INSERT INTO categories (recipeId, categoryName) VALUES (48, 'TACOS');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (48, 9, 1.0, 'head');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (48, 98, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (48, 70, 4.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (48, 74, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (48, 48, 50.0, 'g');
+-- Recipe: Baked Plantain Chips with Guac
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (15, 'Baked Plantain Chips with Guac', 'Crispy baked plantains served with avocado dip.', 25, 2, 'EASY', 390);
+INSERT INTO categories (recipeId, categoryName) VALUES (49, 'SNACK');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (49, 133, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (49, 57, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (49, 76, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (49, 74, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (49, 53, 0.5, 'tsp');
+-- Recipe: Chickpea Shakshuka
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (13, 'Chickpea Shakshuka', 'Classic shakshuka with chickpeas for extra heartiness.', 30, 2, 'EASY', 460);
+INSERT INTO categories (recipeId, categoryName) VALUES (50, 'VEGETARIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (50, 1, 4.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (50, 2, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (50, 3, 2.0, 'cloves');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (50, 40, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (50, 37, 2.0, 'pcs');
+-- Recipe: Creamy Avocado Pasta
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (15, 'Creamy Avocado Pasta', 'Pasta tossed in a smooth avocado, garlic, and lemon sauce.', 20, 2, 'EASY', 490);
+INSERT INTO categories (recipeId, categoryName) VALUES (51, 'PASTA');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (51, 67, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (51, 76, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (51, 3, 2.0, 'cloves');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (51, 73, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (51, 57, 1.0, 'tbsp');
+-- Recipe: Za’atar Roasted Carrots with Yogurt
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (24, 'Za’atar Roasted Carrots with Yogurt', 'Sweet roasted carrots with herbed yogurt and za’atar.', 30, 2, 'EASY', 430);
+INSERT INTO categories (recipeId, categoryName) VALUES (52, 'VEGETARIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (52, 4, 4.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (52, 57, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (52, 48, 100.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (52, 127, 1.0, 'tsp');
+-- Recipe: Curried Pumpkin Lentil Soup
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (6, 'Curried Pumpkin Lentil Soup', 'Hearty soup with red lentils, pumpkin, and curry spices.', 40, 4, 'EASY', 440);
+INSERT INTO categories (recipeId, categoryName) VALUES (53, 'SOUP');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (53, 166, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (53, 39, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (53, 2, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (53, 3, 2.0, 'cloves');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (53, 23, 1.0, 'tsp');
+-- Recipe: Stuffed Bell Peppers with Farro
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (23, 'Stuffed Bell Peppers with Farro', 'Roasted bell peppers filled with seasoned farro and veggies.', 45, 3, 'MEDIUM', 530);
+INSERT INTO categories (recipeId, categoryName) VALUES (54, 'COMFORT FOOD');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (54, 5, 3.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (54, 141, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (54, 2, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (54, 6, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (54, 57, 1.0, 'tbsp');
+-- Recipe: Smoked Paprika Chicken Skewers
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (4, 'Smoked Paprika Chicken Skewers', 'Juicy grilled chicken with smoky paprika spice rub.', 30, 2, 'MEDIUM', 570);
+INSERT INTO categories (recipeId, categoryName) VALUES (55, 'GRILL');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (55, 31, 300.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (55, 148, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (55, 3, 2.0, 'cloves');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (55, 57, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (55, 73, 1.0, 'pc');
+-- Recipe: Sweet Potato & Black Bean Quesadillas
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (5, 'Sweet Potato & Black Bean Quesadillas', 'Crispy quesadillas filled with mashed sweet potatoes and beans.', 25, 2, 'EASY', 520);
+INSERT INTO categories (recipeId, categoryName) VALUES (56, 'MEXICAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (56, 13, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (56, 41, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (56, 44, 100.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (56, 70, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (56, 23, 1.0, 'tsp');
+-- Recipe: Butternut Squash & Sage Risotto
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (6, 'Butternut Squash & Sage Risotto', 'Creamy risotto with roasted squash and sage.', 45, 3, 'HARD', 580);
+INSERT INTO categories (recipeId, categoryName) VALUES (57, 'ITALIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (57, 116, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (57, 118, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (57, 2, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (57, 43, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (57, 18, 1.0, 'tsp');
+-- Recipe: Turkey & Cranberry Panini
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (5, 'Turkey & Cranberry Panini', 'Pressed sandwich with sliced turkey, cranberry, and cheddar.', 20, 2, 'EASY', 530);
+INSERT INTO categories (recipeId, categoryName) VALUES (58, 'SANDWICH');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (58, 119, 50.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (58, 44, 80.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (58, 69, 2.0, 'slices');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (58, 43, 1.0, 'tbsp');
+-- Recipe: Barley & Roasted Veggie Pilaf
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (23, 'Barley & Roasted Veggie Pilaf', 'Earthy barley pilaf with oven-roasted vegetables and herbs.', 40, 4, 'EASY', 470);
+INSERT INTO categories (recipeId, categoryName) VALUES (59, 'VEGETARIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (59, 143, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (59, 4, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (59, 6, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (59, 57, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (59, 21, 1.0, 'tsp');
+-- Recipe: Tuna & Cucumber Pita Bites
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (5, 'Tuna & Cucumber Pita Bites', 'Simple tuna salad stuffed into fresh cucumber slices and pita.', 10, 2, 'EASY', 320);
+INSERT INTO categories (recipeId, categoryName) VALUES (60, 'SNACK');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (60, 35, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (60, 111, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (60, 48, 50.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (60, 73, 1.0, 'pc');
+-- Recipe: Pear & Walnut Spinach Salad
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (23, 'Pear & Walnut Spinach Salad', 'Fresh salad with pear, toasted walnuts, and a maple vinaigrette.', 15, 2, 'EASY', 420);
+INSERT INTO categories (recipeId, categoryName) VALUES (61, 'SALAD');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (61, 7, 2.0, 'cups');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (61, 138, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (61, 85, 30.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (61, 57, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (61, 62, 1.0, 'tsp');
+-- Recipe: Creamy Coconut Chickpea Curry
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (25, 'Creamy Coconut Chickpea Curry', 'Rich coconut curry with chickpeas and warm Indian spices.', 30, 4, 'EASY', 510);
+INSERT INTO categories (recipeId, categoryName) VALUES (62, 'VEGAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (62, 49, 200.0, 'ml');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (62, 40, 300.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (62, 2, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (62, 22, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (62, 23, 1.0, 'tsp');
+-- Recipe: Roasted Red Pepper Hummus Wrap
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (3, 'Roasted Red Pepper Hummus Wrap', 'A quick veggie wrap with roasted pepper hummus and greens.', 15, 2, 'EASY', 440);
+INSERT INTO categories (recipeId, categoryName) VALUES (63, 'WRAP');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (63, 5, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (63, 40, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (63, 3, 1.0, 'clove');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (63, 95, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (63, 70, 2.0, 'pcs');
+-- Recipe: Truffle Mushroom Pasta
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (1, 'Truffle Mushroom Pasta', 'Creamy pasta with sautéed mushrooms and a hint of truffle.', 30, 2, 'MEDIUM', 620);
+INSERT INTO categories (recipeId, categoryName) VALUES (64, 'PASTA');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (64, 67, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (64, 12, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (64, 47, 100.0, 'ml');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (64, 150, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (64, 46, 30.0, 'g');
+-- Recipe: Coconut Mango Chia Pudding
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (9, 'Coconut Mango Chia Pudding', 'A chilled pudding with coconut milk, mango, and chia seeds.', 10, 2, 'EASY', 350);
+INSERT INTO categories (recipeId, categoryName) VALUES (65, 'DESSERT');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (65, 49, 150.0, 'ml');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (65, 113, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (65, 83, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (65, 62, 1.0, 'tbsp');
+-- Recipe: Dijon Mustard Roasted Chicken
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (4, 'Dijon Mustard Roasted Chicken', 'Baked chicken legs brushed with herbed Dijon mustard glaze.', 50, 3, 'MEDIUM', 560);
+INSERT INTO categories (recipeId, categoryName) VALUES (66, 'DINNER');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (66, 31, 400.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (66, 165, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (66, 19, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (66, 3, 2.0, 'cloves');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (66, 57, 1.0, 'tbsp');
+-- Recipe: Balsamic Glazed Brussels & Cranberries
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (19, 'Balsamic Glazed Brussels & Cranberries', 'Roasted Brussels sprouts with tangy cranberries and glaze.', 30, 2, 'EASY', 390);
+INSERT INTO categories (recipeId, categoryName) VALUES (67, 'SIDE');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (67, 119, 30.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (67, 57, 1.0, 'tbsp');
+-- Recipe: Cream Cheese Stuffed French Toast
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (9, 'Cream Cheese Stuffed French Toast', 'Thick-cut bread filled with cream cheese and berries.', 20, 2, 'EASY', 480);
+INSERT INTO categories (recipeId, categoryName) VALUES (68, 'BREAKFAST');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (68, 69, 4.0, 'slices');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (68, 156, 80.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (68, 37, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (68, 78, 50.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (68, 62, 1.0, 'tbsp');
+-- Recipe: Barley Risotto with Spinach & Lemon
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (23, 'Barley Risotto with Spinach & Lemon', 'Creamy barley risotto with bright lemon and greens.', 40, 3, 'MEDIUM', 510);
+INSERT INTO categories (recipeId, categoryName) VALUES (69, 'ITALIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (69, 143, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (69, 7, 1.0, 'cup');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (69, 73, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (69, 3, 2.0, 'cloves');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (69, 46, 30.0, 'g');
+-- Recipe: Ginger Soy Edamame Stir-Fry
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (29, 'Ginger Soy Edamame Stir-Fry', 'Quick veggie stir-fry with edamame and ginger-soy sauce.', 20, 2, 'EASY', 420);
+INSERT INTO categories (recipeId, categoryName) VALUES (70, 'ASIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (70, 129, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (70, 59, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (70, 130, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (70, 5, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (70, 108, 1.0, 'tbsp');
+-- Recipe: Mediterranean Stuffed Sweet Potatoes
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (23, 'Mediterranean Stuffed Sweet Potatoes', 'Baked sweet potatoes filled with chickpeas, tahini, and herbs.', 40, 2, 'EASY', 500);
+INSERT INTO categories (recipeId, categoryName) VALUES (71, 'MEDITERRANEAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (71, 13, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (71, 40, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (71, 95, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (71, 17, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (71, 73, 1.0, 'pc');
+-- Recipe: Japanese Tamago Sando
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (26, 'Japanese Tamago Sando', 'Creamy Japanese egg salad sandwich on fluffy bread.', 15, 2, 'EASY', 450);
+INSERT INTO categories (recipeId, categoryName) VALUES (72, 'SANDWICH');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (72, 37, 3.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (72, 88, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (72, 69, 2.0, 'slices');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (72, 165, 0.5, 'tsp');
+-- Recipe: Moroccan-Spiced Carrot Soup
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (27, 'Moroccan-Spiced Carrot Soup', 'Creamy soup with cumin, ginger, and a touch of harissa.', 35, 3, 'EASY', 430);
+INSERT INTO categories (recipeId, categoryName) VALUES (73, 'SOUP');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (73, 4, 4.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (73, 98, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (73, 23, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (73, 130, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (73, 49, 100.0, 'ml');
+-- Recipe: Vegan Pad Thai with Tofu
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (8, 'Vegan Pad Thai with Tofu', 'Rice noodles stir-fried with tofu, peanuts, and tangy sauce.', 30, 2, 'MEDIUM', 540);
+INSERT INTO categories (recipeId, categoryName) VALUES (74, 'ASIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (74, 120, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (74, 38, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (74, 81, 30.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (74, 59, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (74, 74, 1.0, 'pc');
+-- Recipe: Caramelized Banana Oatmeal
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (13, 'Caramelized Banana Oatmeal', 'Warm oats topped with caramelized bananas and cinnamon.', 15, 1, 'EASY', 400);
+INSERT INTO categories (recipeId, categoryName) VALUES (75, 'BREAKFAST');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (75, 68, 50.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (75, 72, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (75, 62, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (75, 27, 0.5, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (75, 42, 150.0, 'ml');
+-- Recipe: Togarashi Roasted Chickpeas
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (25, 'Togarashi Roasted Chickpeas', 'Crunchy roasted chickpeas seasoned with Japanese togarashi.', 30, 4, 'EASY', 320);
+INSERT INTO categories (recipeId, categoryName) VALUES (76, 'SNACK');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (76, 40, 300.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (76, 57, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (76, 147, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (76, 53, 0.5, 'tsp');
+-- Recipe: Grilled Pineapple Tofu Skewers
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (8, 'Grilled Pineapple Tofu Skewers', 'Sweet & savory tofu and pineapple grilled to perfection.', 25, 2, 'EASY', 480);
+INSERT INTO categories (recipeId, categoryName) VALUES (77, 'GRILL');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (77, 38, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (77, 80, 1.0, 'cup');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (77, 59, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (77, 108, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (77, 3, 2.0, 'cloves');
+-- Recipe: Matcha Coconut Energy Bites
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (9, 'Matcha Coconut Energy Bites', 'No-bake bites with oats, coconut, and matcha.', 10, 6, 'EASY', 180);
+INSERT INTO categories (recipeId, categoryName) VALUES (78, 'SNACK');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (78, 68, 100.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (78, 157, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (78, 163, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (78, 94, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (78, 83, 1.0, 'tbsp');
+-- Recipe: Freekeh & Roasted Veggie Bowl
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (23, 'Freekeh & Roasted Veggie Bowl', 'Nutty grain bowl with colorful vegetables and lemon tahini.', 35, 2, 'MEDIUM', 490);
+INSERT INTO categories (recipeId, categoryName) VALUES (79, 'GRAIN BOWL');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (79, 142, 100.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (79, 6, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (79, 152, 1.0, 'cup');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (79, 73, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (79, 95, 1.0, 'tbsp');
+-- Recipe: Spaghetti with Black Garlic & Olive Oil
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (1, 'Spaghetti with Black Garlic & Olive Oil', 'A simple yet flavorful pasta with black garlic and herbs.', 20, 2, 'EASY', 510);
+INSERT INTO categories (recipeId, categoryName) VALUES (80, 'PASTA');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (80, 67, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (80, 149, 2.0, 'cloves');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (80, 57, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (80, 17, 1.0, 'tbsp');
+-- Recipe: Butternut Squash Gnocchi
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (20, 'Butternut Squash Gnocchi', 'Soft handmade gnocchi from roasted squash and flour.', 60, 2, 'HARD', 620);
+INSERT INTO categories (recipeId, categoryName) VALUES (81, 'ITALIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (81, 118, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (81, 51, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (81, 46, 30.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (81, 43, 1.0, 'tbsp');
+-- Recipe: Rainbow Spring Rolls with Peanut Sauce
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (8, 'Rainbow Spring Rolls with Peanut Sauce', 'Fresh veggie rolls with a sweet and salty dipping sauce.', 35, 2, 'MEDIUM', 470);
+INSERT INTO categories (recipeId, categoryName) VALUES (82, 'ASIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (82, 120, 100.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (82, 110, 1.0, 'cup');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (82, 4, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (82, 94, 2.0, 'tbsp');
+-- Recipe: Date & Almond Breakfast Bars
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (16, 'Date & Almond Breakfast Bars', 'Chewy bars with dates, oats, and toasted almonds.', 30, 6, 'EASY', 330);
+INSERT INTO categories (recipeId, categoryName) VALUES (83, 'BREAKFAST');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (83, 68, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (83, 82, 50.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (83, 158, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (83, 27, 0.5, 'tsp');
+-- Recipe: Vegan Jackfruit Tacos
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (15, 'Vegan Jackfruit Tacos', 'Pulled jackfruit with smoky spices in soft tortillas.', 30, 3, 'EASY', 500);
+INSERT INTO categories (recipeId, categoryName) VALUES (84, 'MEXICAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (84, 103, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (84, 25, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (84, 23, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (84, 70, 3.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (84, 74, 1.0, 'pc');
+-- Recipe: Roasted Celeriac Mash
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (7, 'Roasted Celeriac Mash', 'A root veggie alternative to mashed potatoes.', 35, 2, 'EASY', 390);
+INSERT INTO categories (recipeId, categoryName) VALUES (85, 'SIDE');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (85, 144, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (85, 43, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (85, 47, 50.0, 'ml');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (85, 53, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (85, 28, 0.25, 'tsp');
+-- Recipe: Cold Soba Noodle Salad
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (29, 'Cold Soba Noodle Salad', 'Chilled buckwheat noodles with cucumber and sesame.', 20, 2, 'EASY', 440);
+INSERT INTO categories (recipeId, categoryName) VALUES (86, 'ASIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (86, 121, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (86, 111, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (86, 59, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (86, 87, 1.0, 'tbsp');
+-- Recipe: Sourdough French Toast
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (9, 'Sourdough French Toast', 'Rich, golden toast using tangy sourdough starter.', 15, 2, 'EASY', 460);
+INSERT INTO categories (recipeId, categoryName) VALUES (87, 'BREAKFAST');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (87, 160, 100.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (87, 37, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (87, 42, 100.0, 'ml');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (87, 27, 0.5, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (87, 62, 1.0, 'tbsp');
+-- Recipe: Horseradish & Beet Slaw
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (30, 'Horseradish & Beet Slaw', 'Bold slaw with shredded beets and a horseradish kick.', 15, 3, 'EASY', 280);
+INSERT INTO categories (recipeId, categoryName) VALUES (88, 'SALAD');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (88, 134, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (88, 145, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (88, 60, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (88, 57, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (88, 53, 0.5, 'tsp');
+-- Recipe: Mango Chutney Glazed Meatballs
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (4, 'Mango Chutney Glazed Meatballs', 'Sweet and spicy meatballs with Indian-style chutney glaze.', 40, 3, 'MEDIUM', 580);
+INSERT INTO categories (recipeId, categoryName) VALUES (89, 'DINNER');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (89, 32, 300.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (89, 161, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (89, 3, 2.0, 'cloves');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (89, 130, 1.0, 'tbsp');
+-- Recipe: Caraway Roasted Carrots
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (11, 'Caraway Roasted Carrots', 'Oven-roasted carrots with aromatic caraway seeds.', 30, 2, 'EASY', 360);
+INSERT INTO categories (recipeId, categoryName) VALUES (90, 'SIDE');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (90, 4, 3.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (90, 164, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (90, 57, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (90, 53, 0.5, 'tsp');
+-- Recipe: Italian White Bean & Kale Stew
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (6, 'Italian White Bean & Kale Stew', 'A rustic Tuscan-style stew with kale, white beans, and herbs.', 40, 4, 'EASY', 460);
+INSERT INTO categories (recipeId, categoryName) VALUES (91, 'SOUP');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (91, 10, 2.0, 'cups');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (91, 2, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (91, 3, 2.0, 'cloves');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (91, 106, 500.0, 'ml');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (91, 57, 1.0, 'tbsp');
+-- Recipe: Korean Bibimbap with Gochujang Sauce
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (26, 'Korean Bibimbap with Gochujang Sauce', 'Rice bowl topped with sautéed vegetables, egg, and spicy sauce.', 40, 2, 'MEDIUM', 550);
+INSERT INTO categories (recipeId, categoryName) VALUES (92, 'KOREAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (92, 63, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (92, 7, 1.0, 'cup');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (92, 4, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (92, 96, 1.5, 'tbsp');
+-- Recipe: Coconut Lime Chicken Skewers
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (4, 'Coconut Lime Chicken Skewers', 'Grilled chicken marinated in coconut milk, lime, and garlic.', 30, 3, 'MEDIUM', 520);
+INSERT INTO categories (recipeId, categoryName) VALUES (93, 'GRILL');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (93, 31, 300.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (93, 49, 100.0, 'ml');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (93, 74, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (93, 3, 2.0, 'cloves');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (93, 57, 1.0, 'tbsp');
+-- Recipe: Spiced Lentil Fritters
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (6, 'Spiced Lentil Fritters', 'Crispy lentil patties seasoned with turmeric and cumin.', 25, 4, 'EASY', 480);
+INSERT INTO categories (recipeId, categoryName) VALUES (94, 'SNACK');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (94, 39, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (94, 22, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (94, 23, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (94, 2, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (94, 58, 1.0, 'tbsp');
+-- Recipe: Mango Avocado Salsa
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (15, 'Mango Avocado Salsa', 'Bright, tropical salsa with sweet mango and creamy avocado.', 10, 2, 'EASY', 250);
+INSERT INTO categories (recipeId, categoryName) VALUES (95, 'SIDE');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (95, 113, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (95, 76, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (95, 74, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (95, 152, 0.5, 'cup');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (95, 20, 1.0, 'tbsp');
+-- Recipe: Creamy Sun-Dried Tomato Penne
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (1, 'Creamy Sun-Dried Tomato Penne', 'A rich pasta dish with sun-dried tomatoes and a creamy sauce.', 30, 3, 'MEDIUM', 610);
+INSERT INTO categories (recipeId, categoryName) VALUES (96, 'PASTA');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (96, 67, 250.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (96, 117, 50.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (96, 47, 100.0, 'ml');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (96, 46, 40.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (96, 3, 2.0, 'cloves');
+-- Recipe: Breakfast Grain Bowl with Pear & Almonds
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (16, 'Breakfast Grain Bowl with Pear & Almonds', 'Warm bowl of cooked grains topped with pear and toasted almonds.', 20, 2, 'EASY', 430);
+INSERT INTO categories (recipeId, categoryName) VALUES (97, 'BREAKFAST');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (97, 140, 100.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (97, 138, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (97, 82, 20.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (97, 62, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (97, 27, 0.5, 'tsp');
+-- Recipe: Baked Falafel Balls with Lemon Tahini Sauce
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (3, 'Baked Falafel Balls with Lemon Tahini Sauce', 'Herb-packed falafel served with a creamy lemon tahini drizzle.', 35, 3, 'MEDIUM', 490);
+INSERT INTO categories (recipeId, categoryName) VALUES (98, 'MIDDLE EASTERN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (98, 40, 250.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (98, 17, 1.0, 'cup');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (98, 23, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (98, 73, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (98, 95, 2.0, 'tbsp');
+-- Recipe: Pineapple Teriyaki Tofu Bowl
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (8, 'Pineapple Teriyaki Tofu Bowl', 'Sweet and savory tofu bowl with pineapple and rice.', 30, 2, 'EASY', 500);
+INSERT INTO categories (recipeId, categoryName) VALUES (99, 'ASIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (99, 38, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (99, 80, 1.0, 'cup');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (99, 107, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (99, 63, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (99, 153, 1.0, 'stalk');
+-- Recipe: Cauliflower Shawarma Wrap
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (25, 'Cauliflower Shawarma Wrap', 'Roasted cauliflower with spices wrapped in pita with sauce.', 35, 2, 'MEDIUM', 520);
+INSERT INTO categories (recipeId, categoryName) VALUES (100, 'VEGAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (100, 9, 1.0, 'head');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (100, 25, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (100, 70, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (100, 95, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (100, 73, 1.0, 'pc');
+-- Recipe: Spicy Peanut Sweet Potato Noodles
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (15, 'Spicy Peanut Sweet Potato Noodles', 'Spiralized sweet potatoes tossed in a spicy peanut sauce.', 30, 2, 'MEDIUM', 540);
+INSERT INTO categories (recipeId, categoryName) VALUES (101, 'NOODLES');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (101, 13, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (101, 94, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (101, 59, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (101, 74, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (101, 3, 2.0, 'cloves');
+-- Recipe: Warm Couscous Salad with Roasted Veggies
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (23, 'Warm Couscous Salad with Roasted Veggies', 'A light, satisfying salad of couscous and oven-roasted veg.', 35, 3, 'EASY', 470);
+INSERT INTO categories (recipeId, categoryName) VALUES (102, 'SALAD');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (102, 66, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (102, 5, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (102, 6, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (102, 57, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (102, 21, 1.0, 'tsp');
+-- Recipe: Spaghetti Squash Primavera
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (18, 'Spaghetti Squash Primavera', 'Light spaghetti squash noodles with colorful sautéed vegetables.', 45, 2, 'MEDIUM', 460);
+INSERT INTO categories (recipeId, categoryName) VALUES (103, 'VEGETARIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (103, 4, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (103, 8, 1.0, 'cup');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (103, 57, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (103, 46, 30.0, 'g');
+-- Recipe: Creamy Dijon Potato Salad
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (4, 'Creamy Dijon Potato Salad', 'Classic potato salad with a Dijon mustard twist.', 25, 4, 'EASY', 520);
+INSERT INTO categories (recipeId, categoryName) VALUES (104, 'SIDE');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (104, 165, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (104, 88, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (104, 153, 1.0, 'stalk');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (104, 60, 1.0, 'tbsp');
+-- Recipe: Tempeh Bacon Avocado Sandwich
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (15, 'Tempeh Bacon Avocado Sandwich', 'Smoky tempeh “bacon” layered with avocado on toasted bread.', 20, 2, 'EASY', 520);
+INSERT INTO categories (recipeId, categoryName) VALUES (105, 'SANDWICH');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (105, 102, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (105, 76, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (105, 69, 2.0, 'slices');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (105, 57, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (105, 25, 1.0, 'tsp');
+-- Recipe: Red Lentil & Carrot Curry
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (6, 'Red Lentil & Carrot Curry', 'Creamy curry made with red lentils, carrots, and spices.', 35, 3, 'EASY', 510);
+INSERT INTO categories (recipeId, categoryName) VALUES (106, 'CURRY');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (106, 39, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (106, 4, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (106, 2, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (106, 49, 150.0, 'ml');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (106, 22, 1.0, 'tsp');
+-- Recipe: Roasted Eggplant & Feta Flatbread
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (24, 'Roasted Eggplant & Feta Flatbread', 'Crispy flatbread topped with eggplant, feta, and herbs.', 30, 2, 'MEDIUM', 530);
+INSERT INTO categories (recipeId, categoryName) VALUES (107, 'MEDITERRANEAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (107, 14, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (107, 112, 50.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (107, 57, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (107, 16, 1.0, 'tbsp');
+-- Recipe: Matcha White Chocolate Cookies
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (9, 'Matcha White Chocolate Cookies', 'Chewy cookies with grassy matcha and sweet white chocolate.', 25, 6, 'EASY', 390);
+INSERT INTO categories (recipeId, categoryName) VALUES (108, 'DESSERT');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (108, 51, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (108, 163, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (108, 52, 100.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (108, 43, 80.0, 'g');
+-- Recipe: Black Bean & Quinoa Burgers
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (6, 'Black Bean & Quinoa Burgers', 'Protein-packed vegetarian burgers with smoky flavor.', 40, 4, 'MEDIUM', 520);
+INSERT INTO categories (recipeId, categoryName) VALUES (109, 'BURGER');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (109, 41, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (109, 65, 100.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (109, 2, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (109, 25, 1.0, 'tsp');
+-- Recipe: Cold Cucumber Yogurt Soup
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (11, 'Cold Cucumber Yogurt Soup', 'Refreshing chilled soup with cucumber, mint, and yogurt.', 15, 2, 'EASY', 350);
+INSERT INTO categories (recipeId, categoryName) VALUES (110, 'SOUP');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (110, 111, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (110, 48, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (110, 3, 1.0, 'clove');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (110, 73, 1.0, 'pc');
+-- Recipe: Creamy Polenta with Roasted Shallots
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (20, 'Creamy Polenta with Roasted Shallots', 'Buttery polenta topped with caramelized shallots and herbs.', 35, 2, 'MEDIUM', 490);
+INSERT INTO categories (recipeId, categoryName) VALUES (111, 'COMFORT FOOD');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (111, 122, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (111, 136, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (111, 43, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (111, 18, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (111, 57, 1.0, 'tbsp');
+-- Recipe: Togarashi Edamame Snack Bowl
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (29, 'Togarashi Edamame Snack Bowl', 'Spicy Japanese-style roasted edamame with sesame and togarashi.', 15, 2, 'EASY', 340);
+INSERT INTO categories (recipeId, categoryName) VALUES (112, 'SNACK');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (112, 129, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (112, 108, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (112, 147, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (112, 53, 0.5, 'tsp');
+-- Recipe: Date Syrup Tahini Bites
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (9, 'Date Syrup Tahini Bites', 'No-bake bites with tahini, oats, and sweet date syrup.', 10, 6, 'EASY', 220);
+INSERT INTO categories (recipeId, categoryName) VALUES (113, 'SNACK');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (113, 95, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (113, 158, 1.5, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (113, 68, 100.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (113, 27, 0.5, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (113, 83, 1.0, 'tbsp');
+-- Recipe: Pickled Jalapeño Grilled Cheese
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (5, 'Pickled Jalapeño Grilled Cheese', 'A spicy twist on grilled cheese with pickled jalapeños.', 15, 2, 'EASY', 540);
+INSERT INTO categories (recipeId, categoryName) VALUES (114, 'SANDWICH');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (114, 69, 2.0, 'slices');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (114, 44, 100.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (114, 151, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (114, 43, 1.0, 'tbsp');
+-- Recipe: Caraway Roasted Red Cabbage Steaks
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (11, 'Caraway Roasted Red Cabbage Steaks', 'Roasted cabbage wedges with caraway seed and olive oil.', 30, 2, 'EASY', 400);
+INSERT INTO categories (recipeId, categoryName) VALUES (115, 'SIDE');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (115, 152, 1.0, 'head');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (115, 164, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (115, 57, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (115, 53, 1.0, 'tsp');
+-- Recipe: Coconut Cream Fruit Parfait
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (9, 'Coconut Cream Fruit Parfait', 'Layers of coconut cream, fresh fruit, and maple syrup.', 10, 2, 'EASY', 360);
+INSERT INTO categories (recipeId, categoryName) VALUES (116, 'DESSERT');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (116, 100, 150.0, 'ml');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (116, 77, 50.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (116, 78, 50.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (116, 62, 1.0, 'tbsp');
+-- Recipe: Pumpkin Spiced Breakfast Muffins
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (16, 'Pumpkin Spiced Breakfast Muffins', 'Moist muffins made with pumpkin puree and warm spices.', 35, 6, 'EASY', 410);
+INSERT INTO categories (recipeId, categoryName) VALUES (117, 'BREAKFAST');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (117, 166, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (117, 51, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (117, 27, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (117, 28, 0.25, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (117, 54, 1.0, 'tsp');
+-- Recipe: Black Garlic Udon Noodles
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (8, 'Black Garlic Udon Noodles', 'Umami-rich noodles tossed with black garlic and soy glaze.', 20, 2, 'MEDIUM', 540);
+INSERT INTO categories (recipeId, categoryName) VALUES (118, 'ASIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (118, 67, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (118, 149, 3.0, 'cloves');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (118, 59, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (118, 153, 2.0, 'stalks');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (118, 108, 1.0, 'tbsp');
+-- Recipe: Roasted Beets with Ricotta Salata
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (24, 'Roasted Beets with Ricotta Salata', 'Sweet roasted beets paired with salty ricotta salata.', 35, 2, 'EASY', 430);
+INSERT INTO categories (recipeId, categoryName) VALUES (119, 'SALAD');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (119, 134, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (119, 135, 50.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (119, 57, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (119, 73, 1.0, 'pc');
+-- Recipe: Miso Butter Green Beans
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (7, 'Miso Butter Green Beans', 'Crisp-tender green beans tossed in savory miso butter.', 15, 2, 'EASY', 380);
+INSERT INTO categories (recipeId, categoryName) VALUES (120, 'SIDE');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (120, 137, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (120, 97, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (120, 43, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (120, 3, 1.0, 'clove');
+-- Recipe: Acorn Squash & Farro Salad
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (23, 'Acorn Squash & Farro Salad', 'Hearty salad with roasted squash, farro, and herbs.', 40, 3, 'MEDIUM', 490);
+INSERT INTO categories (recipeId, categoryName) VALUES (121, 'GRAIN BOWL');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (121, 118, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (121, 141, 100.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (121, 17, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (121, 57, 1.0, 'tbsp');
+-- Recipe: Soba Noodle Stir Fry with Lemongrass
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (29, 'Soba Noodle Stir Fry with Lemongrass', 'Stir-fried soba noodles with fresh lemongrass and veggies.', 25, 2, 'MEDIUM', 460);
+INSERT INTO categories (recipeId, categoryName) VALUES (122, 'ASIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (122, 121, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (122, 5, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (122, 124, 1.0, 'stalk');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (122, 59, 2.0, 'tbsp');
+-- Recipe: Buttermilk Cardamom Pancakes
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (9, 'Buttermilk Cardamom Pancakes', 'Fluffy pancakes with floral cardamom and tangy buttermilk.', 25, 3, 'EASY', 440);
+INSERT INTO categories (recipeId, categoryName) VALUES (123, 'BREAKFAST');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (123, 155, 200.0, 'ml');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (123, 51, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (123, 29, 0.5, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (123, 37, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (123, 62, 2.0, 'tbsp');
+-- Recipe: Spicy Ghee Popcorn
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (15, 'Spicy Ghee Popcorn', 'Popcorn tossed with ghee, chili flakes, and cumin.', 10, 2, 'EASY', 320);
+INSERT INTO categories (recipeId, categoryName) VALUES (124, 'SNACK');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (124, 154, 1.5, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (124, 26, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (124, 23, 0.5, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (124, 53, 0.5, 'tsp');
+-- Recipe: Wasabi Tuna Rice Balls
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (26, 'Wasabi Tuna Rice Balls', 'Onigiri-style rice balls with spicy wasabi tuna filling.', 30, 3, 'MEDIUM', 500);
+INSERT INTO categories (recipeId, categoryName) VALUES (125, 'ASIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (125, 63, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (125, 35, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (125, 146, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (125, 99, 3.0, 'pcs');
+-- Recipe: Smoked Paprika Roasted Chickpeas
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (6, 'Smoked Paprika Roasted Chickpeas', 'Crispy, smoky chickpeas perfect for snacking.', 25, 4, 'EASY', 390);
+INSERT INTO categories (recipeId, categoryName) VALUES (126, 'SNACK');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (126, 40, 300.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (126, 57, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (126, 148, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (126, 53, 1.0, 'tsp');
+-- Recipe: Saffron & Almond Milk Rice Pudding
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (13, 'Saffron & Almond Milk Rice Pudding', 'Fragrant rice pudding with saffron and almond milk.', 45, 4, 'MEDIUM', 470);
+INSERT INTO categories (recipeId, categoryName) VALUES (127, 'DESSERT');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (127, 63, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (127, 50, 300.0, 'ml');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (127, 52, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (127, 30, 1.0, 'pinch');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (127, 82, 20.0, 'g');
+-- Recipe: Spiced Celeriac & Apple Soup
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (11, 'Spiced Celeriac & Apple Soup', 'Smooth root veggie soup with sweet apple and nutmeg.', 35, 3, 'EASY', 420);
+INSERT INTO categories (recipeId, categoryName) VALUES (128, 'SOUP');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (128, 144, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (128, 71, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (128, 28, 0.25, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (128, 106, 400.0, 'ml');
+-- Recipe: Clove & Cinnamon Poached Pears
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (9, 'Clove & Cinnamon Poached Pears', 'Delicately spiced pears simmered in syrup.', 40, 2, 'EASY', 300);
+INSERT INTO categories (recipeId, categoryName) VALUES (129, 'DESSERT');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (129, 138, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (129, 126, 3.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (129, 27, 1.0, 'stick');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (129, 52, 2.0, 'tbsp');
+-- Recipe: Creamy Barley Risotto with Leek
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (7, 'Creamy Barley Risotto with Leek', 'Comforting risotto made with barley and sautéed leek.', 45, 3, 'MEDIUM', 530);
+INSERT INTO categories (recipeId, categoryName) VALUES (130, 'ITALIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (130, 143, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (130, 15, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (130, 46, 30.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (130, 47, 50.0, 'ml');
+-- Recipe: Ginger Lemongrass Chicken Soup
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (4, 'Ginger Lemongrass Chicken Soup', 'Light, aromatic soup with chicken, lemongrass, and ginger.', 40, 3, 'MEDIUM', 450);
+INSERT INTO categories (recipeId, categoryName) VALUES (131, 'SOUP');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (131, 31, 300.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (131, 124, 1.0, 'stalk');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (131, 130, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (131, 106, 500.0, 'ml');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (131, 153, 1.0, 'stalk');
+-- Recipe: Paneer Tikka Wraps
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (25, 'Paneer Tikka Wraps', 'Grilled spiced paneer in warm tortillas with yogurt sauce.', 30, 2, 'MEDIUM', 540);
+INSERT INTO categories (recipeId, categoryName) VALUES (132, 'INDIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (132, 101, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (132, 25, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (132, 48, 50.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (132, 70, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (132, 73, 1.0, 'pc');
+-- Recipe: Couscous with Raisins & Almonds
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (23, 'Couscous with Raisins & Almonds', 'A North African-style side with sweet and nutty flavor.', 20, 2, 'EASY', 470);
+INSERT INTO categories (recipeId, categoryName) VALUES (133, 'SIDE');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (133, 66, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (133, 79, 30.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (133, 82, 20.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (133, 57, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (133, 27, 0.5, 'tsp');
+-- Recipe: Polenta Cakes with Sumac Yogurt
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (24, 'Polenta Cakes with Sumac Yogurt', 'Crispy fried polenta with tangy yogurt and sumac drizzle.', 35, 2, 'MEDIUM', 500);
+INSERT INTO categories (recipeId, categoryName) VALUES (134, 'VEGETARIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (134, 122, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (134, 57, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (134, 48, 100.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (134, 128, 1.0, 'tsp');
+-- Recipe: Tofu & Plantain Curry
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (15, 'Tofu & Plantain Curry', 'A Caribbean-inspired curry with sweet plantains and tofu.', 35, 3, 'MEDIUM', 530);
+INSERT INTO categories (recipeId, categoryName) VALUES (135, 'CURRY');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (135, 38, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (135, 133, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (135, 49, 150.0, 'ml');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (135, 2, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (135, 23, 1.0, 'tsp');
+-- Recipe: Gochujang Tempeh Tacos
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (8, 'Gochujang Tempeh Tacos', 'Spicy Korean fusion tacos with gochujang-marinated tempeh.', 30, 3, 'MEDIUM', 520);
+INSERT INTO categories (recipeId, categoryName) VALUES (136, 'FUSION');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (136, 102, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (136, 96, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (136, 110, 1.0, 'cup');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (136, 70, 3.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (136, 87, 1.0, 'tsp');
+-- Recipe: Carrot & Star Anise Soup
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (6, 'Carrot & Star Anise Soup', 'A sweet-spiced carrot soup infused with star anise.', 35, 3, 'MEDIUM', 430);
+INSERT INTO categories (recipeId, categoryName) VALUES (137, 'SOUP');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (137, 4, 4.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (137, 125, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (137, 2, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (137, 106, 500.0, 'ml');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (137, 57, 1.0, 'tbsp');
+-- Recipe: Orange Glazed Salmon with Farro
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (4, 'Orange Glazed Salmon with Farro', 'Seared salmon with a citrus glaze served over nutty farro.', 30, 2, 'MEDIUM', 580);
+INSERT INTO categories (recipeId, categoryName) VALUES (138, 'DINNER');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (138, 34, 250.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (138, 75, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (138, 141, 100.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (138, 57, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (138, 18, 1.0, 'tsp');
+-- Recipe: Matcha Ricotta Pancakes
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (9, 'Matcha Ricotta Pancakes', 'Fluffy pancakes with ricotta and vibrant matcha flavor.', 25, 3, 'EASY', 440);
+INSERT INTO categories (recipeId, categoryName) VALUES (139, 'BREAKFAST');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (139, 123, 100.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (139, 163, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (139, 51, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (139, 37, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (139, 62, 2.0, 'tbsp');
+-- Recipe: Zucchini Boats with Quinoa & Cranberries
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (23, 'Zucchini Boats with Quinoa & Cranberries', 'Roasted zucchini stuffed with spiced quinoa and cranberries.', 40, 2, 'MEDIUM', 510);
+INSERT INTO categories (recipeId, categoryName) VALUES (140, 'VEGETARIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (140, 6, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (140, 65, 100.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (140, 119, 30.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (140, 82, 20.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (140, 57, 1.0, 'tbsp');
+-- Recipe: Thai Peanut Tempeh Bowl
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (8, 'Thai Peanut Tempeh Bowl', 'Tempeh and veggies tossed in a rich peanut sauce over rice.', 30, 2, 'MEDIUM', 520);
+INSERT INTO categories (recipeId, categoryName) VALUES (141, 'ASIAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (141, 102, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (141, 94, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (141, 59, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (141, 63, 150.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (141, 5, 1.0, 'pc');
+-- Recipe: Grilled Eggplant with Sumac Yogurt
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (20, 'Grilled Eggplant with Sumac Yogurt', 'Charred eggplant rounds served over creamy sumac yogurt.', 30, 2, 'MEDIUM', 490);
+INSERT INTO categories (recipeId, categoryName) VALUES (142, 'MEDITERRANEAN');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (142, 14, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (142, 48, 100.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (142, 128, 1.0, 'tsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (142, 57, 1.0, 'tbsp');
+-- Recipe: Mango Chutney Chickpea Salad
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (25, 'Mango Chutney Chickpea Salad', 'Sweet, spicy, and tangy chickpea salad with chutney dressing.', 15, 2, 'EASY', 460);
+INSERT INTO categories (recipeId, categoryName) VALUES (143, 'SALAD');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (143, 40, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (143, 161, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (143, 111, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (143, 20, 1.0, 'tbsp');
+-- Recipe: Sourdough Garlic Flatbread
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (1, 'Sourdough Garlic Flatbread', 'Crispy flatbread with garlic, herbs, and sourdough tang.', 90, 4, 'HARD', 450);
+INSERT INTO categories (recipeId, categoryName) VALUES (144, 'BREAD');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (144, 160, 100.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (144, 51, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (144, 3, 2.0, 'cloves');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (144, 57, 1.0, 'tbsp');
+-- Recipe: Cantaloupe Mint Smoothie
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (13, 'Cantaloupe Mint Smoothie', 'Light and refreshing fruit smoothie with a hint of mint.', 10, 2, 'EASY', 300);
+INSERT INTO categories (recipeId, categoryName) VALUES (145, 'SMOOTHIE');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (145, 139, 1.0, 'cup');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (145, 50, 200.0, 'ml');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (145, 61, 1.0, 'tbsp');
+-- Recipe: Barley & Watercress Salad with Citrus Vinaigrette
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (23, 'Barley & Watercress Salad with Citrus Vinaigrette', 'Peppery watercress with barley and citrus dressing.', 25, 2, 'EASY', 420);
+INSERT INTO categories (recipeId, categoryName) VALUES (146, 'SALAD');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (146, 143, 100.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (146, 131, 1.0, 'cup');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (146, 75, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (146, 57, 1.0, 'tbsp');
+-- Recipe: Ricotta Salata & Beet Crostini
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (24, 'Ricotta Salata & Beet Crostini', 'Earthy beets and salty ricotta salata on toasted bread.', 20, 2, 'EASY', 390);
+INSERT INTO categories (recipeId, categoryName) VALUES (147, 'APPETIZER');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (147, 134, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (147, 135, 50.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (147, 69, 2.0, 'slices');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (147, 57, 1.0, 'tbsp');
+-- Recipe: Acorn Squash Soup with Clove Cream
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (6, 'Acorn Squash Soup with Clove Cream', 'Roasted squash soup with warm clove-spiced cream topping.', 45, 4, 'MEDIUM', 480);
+INSERT INTO categories (recipeId, categoryName) VALUES (148, 'SOUP');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (148, 118, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (148, 126, 2.0, 'pcs');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (148, 47, 50.0, 'ml');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (148, 2, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (148, 57, 1.0, 'tbsp');
+-- Recipe: Horseradish Mashed Potatoes
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (7, 'Horseradish Mashed Potatoes', 'Creamy mashed potatoes with a bold horseradish finish.', 30, 3, 'EASY', 460);
+INSERT INTO categories (recipeId, categoryName) VALUES (149, 'SIDE');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (149, 145, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (149, 43, 1.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (149, 42, 50.0, 'ml');
+-- Recipe: Agave Lime Glazed Shrimp
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (4, 'Agave Lime Glazed Shrimp', 'Sweet and tangy shrimp sautéed in agave and lime.', 20, 2, 'MEDIUM', 510);
+INSERT INTO categories (recipeId, categoryName) VALUES (150, 'SEAFOOD');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (150, 36, 250.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (150, 159, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (150, 74, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (150, 3, 2.0, 'cloves');
+-- Recipe: Tempeh Bahn Mi Sandwich
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (8, 'Tempeh Bahn Mi Sandwich', 'Vietnamese-inspired sandwich with pickled veg and crispy tempeh.', 30, 2, 'MEDIUM', 560);
+INSERT INTO categories (recipeId, categoryName) VALUES (151, 'FUSION');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (151, 102, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (151, 111, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (151, 4, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (151, 60, 2.0, 'tbsp');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (151, 69, 2.0, 'slices');
+-- Recipe: Green Bean Almondine
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (7, 'Green Bean Almondine', 'Tender green beans with toasted almonds and lemon.', 20, 2, 'EASY', 410);
+INSERT INTO categories (recipeId, categoryName) VALUES (152, 'SIDE');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (152, 137, 200.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (152, 82, 30.0, 'g');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (152, 73, 1.0, 'pc');
+INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (152, 57, 1.0, 'tbsp');
