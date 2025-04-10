@@ -1,82 +1,219 @@
-########################################################
-# Sample customers blueprint of endpoints
-# Remove this file if you are not using it in your project
-########################################################
+from flask import  request
 from flask import Blueprint
-from flask import request
 from flask import jsonify
 from flask import make_response
 from flask import current_app
 from backend.db_connection import db
-from backend.ml_models.model01 import predict
-
-#------------------------------------------------------------
-# Create a new Blueprint object, which is a collection of 
-# routes.
-customers = Blueprint('customers', __name__)
 
 
-#------------------------------------------------------------
-# Get all customers from the system
-@customers.route('/customers', methods=['GET'])
-def get_customers():
+
+challenges_bp = Blueprint('challenges', __name__)
+
+# ----- Challenge Requests -----
+@challenges_bp.route('/requests/not-reviewed', methods=['GET'])
+def not_reviewed():
+    sql = ("SELECT * "
+           "FROM challengeRequest "
+           "WHERE status = 'NOT REVIEWED';")
     cursor = db.get_db().cursor()
-    cursor.execute('''SELECT id, company, last_name,
-                    first_name, job_title, business_phone FROM customers
-    ''')
-    
+    cursor.execute(sql)
     theData = cursor.fetchall()
-    
-    the_response = make_response(jsonify(theData))
-    the_response.status_code = 200
-    return the_response
 
-#------------------------------------------------------------
-# Update customer info for customer with particular userID
-#   Notice the manner of constructing the query.
-@customers.route('/customers', methods=['PUT'])
-def update_customer():
-    current_app.logger.info('PUT /customers route')
-    cust_info = request.json
-    cust_id = cust_info['id']
-    first = cust_info['first_name']
-    last = cust_info['last_name']
-    company = cust_info['company']
 
-    query = 'UPDATE customers SET first_name = %s, last_name = %s, company = %s where id = %s'
-    data = (first, last, company, cust_id)
+
+    response = make_response(jsonify(theData))
+    response.status_code = 200
+    return response
+
+@challenges_bp.route('/requests/denied', methods=['GET'])
+def denied_requests():
+    sql = """
+        SELECT u.username, cr.requestID, cr.dateSubmitted
+        FROM challengeRequest cr
+        JOIN users u ON cr.requestedById = u.userId
+        WHERE cr.status = 'denied';
+    """
     cursor = db.get_db().cursor()
-    r = cursor.execute(query, data)
+    cursor.execute(sql)
+    theData = cursor.fetchall()
+
+
+
+    response = make_response(jsonify(theData))
+    response.status_code = 200
+    return response
+@challenges_bp.route('/requests/<int:request_id>/approve', methods=['PUT'])
+def approve_request(request_id):
+    sql = f"""
+        UPDATE challengeRequest
+        SET status = 'approved', reviewedBy = 1
+        WHERE requestID = {request_id};
+    """
+    cursor = db.get_db().cursor()
+    cursor.execute(sql)
     db.get_db().commit()
-    return 'customer updated!'
 
-#------------------------------------------------------------
-# Get customer detail for customer with particular userID
-#   Notice the manner of constructing the query. 
-@customers.route('/customers/<userID>', methods=['GET'])
-def get_customer(userID):
-    current_app.logger.info('GET /customers/<userID> route')
+    response = make_response({'message': f'Request {request_id} approved'})
+    response.status_code = 200
+    return response
+
+
+@challenges_bp.route('/requests/user/<int:user_id>', methods=['GET'])
+def user_requests(user_id):
+    sql = (f"SELECT * "
+           f"FROM challengeRequest "
+           f"WHERE requestedById = {user_id};")
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT id, first_name, last_name FROM customers WHERE id = {0}'.format(userID))
-    
+    cursor.execute(sql)
     theData = cursor.fetchall()
-    
-    the_response = make_response(jsonify(theData))
-    the_response.status_code = 200
-    return the_response
 
-#------------------------------------------------------------
-# Makes use of the very simple ML model in to predict a value
-# and returns it to the user
-@customers.route('/prediction/<var01>/<var02>', methods=['GET'])
-def predict_value(var01, var02):
-    current_app.logger.info(f'var01 = {var01}')
-    current_app.logger.info(f'var02 = {var02}')
+    response = make_response(jsonify(theData))
+    response.status_code = 200
+    return response
 
-    returnVal = predict(var01, var02)
-    return_dict = {'result': returnVal}
+@challenges_bp.route('/requests/active', methods=['GET'])
+def active_requests():
+    sql = ("SELECT * "
+           "FROM challengeRequest "
+           "WHERE status = 'approved';")
+    cursor = db.get_db().cursor()
+    cursor.execute(sql)
+    theData = cursor.fetchall()
 
-    the_response = make_response(jsonify(return_dict))
-    the_response.status_code = 200
-    the_response.mimetype = 'application/json'
-    return the_response
+    response = make_response(jsonify(theData))
+    response.status_code = 200
+    return response
+
+# ----- Challenges Management -----
+@challenges_bp.route('/available', methods=['GET'])
+def available_challenges():
+    sql = ("SELECT * "
+           "FROM challenges "
+           "WHERE status IS NULL;")
+    cursor = db.get_db().cursor()
+    cursor.execute(sql)
+    theData = cursor.fetchall()
+
+    response = make_response(jsonify(theData))
+    response.status_code = 200
+    return response
+
+@challenges_bp.route('/claim/<int:challenge_id>', methods=['PUT'])
+def claim_challenge(challenge_id):
+    user_id = request.json.get('user_id')
+    sql = (f"UPDATE challenges "
+           f"SET claimedBy = {user_id} "
+           f"WHERE challengeId = {challenge_id};")
+    cursor = db.get_db().cursor()
+    cursor.execute(sql)
+    db.get_db().commit()
+
+    response = make_response({'message': f'Challenge {challenge_id} claimed by user {user_id}'})
+    response.status_code = 200
+    return response
+
+@challenges_bp.route('/status/<int:challenge_id>', methods=['PUT'])
+def update_challenge_status(challenge_id):
+    status = request.json.get('status')
+    sql = (f"UPDATE challenges "
+           f"SET status = '{status}' "
+           f"WHERE challengeId = {challenge_id};")
+    cursor = db.get_db().cursor()
+    cursor.execute(sql)
+    db.get_db().commit()
+
+    response = make_response({'message': f'Challenge {challenge_id} updated to {status}'})
+    response.status_code = 200
+    return response
+
+
+@challenges_bp.route('/post', methods=['POST'])
+def post_challenge():
+    data = request.json
+    description = data.get('description')
+    difficulty = data.get('difficulty')
+    approved_by = data.get('approvedById')
+    sql = f"""
+        INSERT INTO challenges (description, difficulty,approvedById)
+        VALUES ('{description}', '{difficulty}', '{approved_by}');
+    """
+    current_app.logger.info(sql)
+
+    # executing and committing the insert statement
+    cursor = db.get_db().cursor()
+    cursor.execute(sql)
+    db.get_db().commit()
+
+    response = make_response({'message': 'Challenge created'})
+    response.status_code = 200
+    return response
+
+@challenges_bp.route('/<int:challenge_id>', methods=['GET'])
+def get_challenge(challenge_id):
+    sql = f"SELECT * FROM challenges WHERE challengeId = {challenge_id};"
+    cursor = db.get_db().cursor()
+    cursor.execute(sql)
+    theData = cursor.fetchall()
+
+    response = make_response(jsonify(theData))
+    response.status_code = 200
+    return response
+
+@challenges_bp.route('/<int:challenge_id>', methods=['DELETE'])
+def delete_challenge(challenge_id):
+    sql = (f"DELETE FROM challenges "
+           f"WHERE challengeId = {challenge_id};")
+    cursor = db.get_db().cursor()
+    cursor.execute(sql)
+    db.get_db().commit()
+
+    response = make_response({'message': f'Challenge {challenge_id} deleted'})
+    response.status_code = 200
+    return response
+
+@challenges_bp.route('/difficulty/<string:level>', methods=['GET'])
+def challenges_by_difficulty(level):
+    sql = (f"SELECT * "
+           f"FROM challenges "
+           f"WHERE difficulty = '{level}';")
+    cursor = db.get_db().cursor()
+    cursor.execute(sql)
+    theData = cursor.fetchall()
+
+    response = make_response(jsonify(theData))
+    response.status_code = 200
+    return response
+
+
+
+
+@challenges_bp.route('/challenge/request', methods=['POST'])
+def submit_challenge_request():
+    # In a POST request, there is a
+    # collecting data from the request object
+    the_data = request.json
+    current_app.logger.info(the_data)
+
+    # extracting the variable
+    description = the_data['description']
+    name = the_data['requestedById']
+
+
+    query = f'''
+            INSERT INTO products (
+                                  description,
+                                
+                                  )
+            VALUES ( '{description}')
+        '''
+
+    current_app.logger.info(query)
+
+    # executing and committing the insert statement
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    db.get_db().commit()
+
+    response = make_response({'message': 'Challenge request submitted'})
+    response.status_code = 200
+    return response
