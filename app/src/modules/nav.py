@@ -11,13 +11,30 @@ def HomeNav():
 
 
 def AboutPageNav():
-    st.sidebar.page_link("pages/30_About.py", label="About", icon="🧠")
+    st.sidebar.page_link("pages/30_About.py", label="About", icon="📑")
 
+def pantry_pal_home_nav():
+    st.sidebar.page_link(
+        "pages/pantrypal_home.py", label="PantryPal Home", icon="🍳"
+    )
+
+#### ------------------------ HomeCook ------------------------
+def user_profile_nav():
+    st.sidebar.page_link(
+        "pages/pantrypal_home.py", label="My Profile", icon="👤" # change to user profile page when made
+    )
+
+#### ------------------------ Chef ------------------------
+
+def new_recipe_nav():
+    st.sidebar.page_link(
+        "pages/pantrypal_home.py", label="New Recipe", icon="🍽️" # change to new recipe page when made
+    )
 
 #### ------------------------ Examples for Role of pol_strat_advisor ------------------------
 def PolStratAdvHomeNav():
     st.sidebar.page_link(
-        "pages/00_Pol_Strat_Home.py", label="Political Strategist Home", icon="👤"
+        "pages/TODO.py", label="Political Strategist Home", icon="👤"
     )
 
 
@@ -78,16 +95,17 @@ def SideBarLinks(show_home=False):
     if st.session_state["authenticated"]:
 
         # Show World Bank Link and Map Demo Link if the user is a political strategy advisor role.
-        if st.session_state["role"] == "pol_strat_advisor":
-            PolStratAdvHomeNav()
-            WorldBankVizNav()
-            MapDemoNav()
+        if st.session_state["role"] == "homecook":
+            HomeNav()
+            pantry_pal_home_nav()
+            user_profile_nav()
 
         # If the user role is usaid worker, show the Api Testing page
-        if st.session_state["role"] == "usaid_worker":
-            PredictionNav()
-            ApiTestNav()
-            ClassificationNav()
+        if st.session_state["role"] == "chef":
+            HomeNav()
+            pantry_pal_home_nav()
+            user_profile_nav()
+            new_recipe_nav()
 
         # If the user is an administrator, give them access to the administrator pages
         if st.session_state["role"] == "administrator":
