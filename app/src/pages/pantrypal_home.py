@@ -4,6 +4,7 @@ import streamlit as st
 import requests
 from streamlit_extras.app_logo import add_logo
 from modules.nav import SideBarLinks
+import time
 
 SideBarLinks()
 
@@ -11,6 +12,9 @@ st.header("PantryPal")
 '''
 The ingredient-driven recipe platform.
 '''
+if st.session_state.get('role') == 'student':
+    st.button("Recipe Challenges 🏆", type='primary', use_container_width=True)
+
 data = {} 
 try:
     response = requests.get('http://web-api:4000/recipes')
@@ -32,17 +36,15 @@ except Exception as e:
     ingredient_options = []
 
 # UI with side-by-side layout
-col1, col2 = st.columns([2, 1])
+col1, col2, col3 = st.columns([3,2, 1])
 with col1:
-    selected_ingredients = st.multiselect("🧂 Filter by ingredients", options=ingredient_options)
+    selected_ingredients = st.multiselect("Search by ingredients", options=ingredient_options)
 with col2:
-    difficulty_filter = st.selectbox("📊 Filter by difficulty", options=["All", "EASY", "MEDIUM", "HARD"])
+    search = st.text_input("Search recipes by title or category")
+with col3:
+    difficulty_filter = st.selectbox("Filter by difficulty", options=["All", "EASY", "MEDIUM", "HARD"])
 
-# Keyword search (still optional)
-search = st.text_input("🔍 Search recipes by title or category")
-
-
-# Apply filters
+# apply search filters
 filtered_recipes = []
 for r in recipes:
     title_match = search.lower() in r['title'].lower()
@@ -72,36 +74,43 @@ for r in recipes:
 
 if not filtered_recipes:
     st.info("No recipes found. Request a recipe challenge from culinary students or chefs below!")
-    with st.popover("✏️ Request a recipe challenge"):
-        st.multiselect("Select ingredients for your challenge...",default=selected_ingredients, options=ingredient_options)
-        st.text_area("Describe your recipe challenge here:")
-        st.button("Submit Challenge")
+    with st.expander("✏️ Request a recipe challenge"):  # Use expander for a wider section
+        st.multiselect("Select ingredients for your challenge:", default=selected_ingredients, options=ingredient_options)
+        st.text_area("Write a brief description:")
+        if st.button("Submit Challenge"):
+            with st.spinner("Submitting your challenge..."):
+                time.sleep(1.5)
+                # API call to submit the challenge HERE
+                st.success("Challenge submitted!")
 else:
     f'''
-    found {len(filtered_recipes)} recipes.
+    found {len(filtered_recipes)} recipes!
     '''
-    num_cols = 1
+    num_cols = 2
     for i in range(0, len(filtered_recipes), num_cols):
         cols = st.columns(num_cols)
         for col, recipe in zip(cols, filtered_recipes[i:i + num_cols]):
             with col:
                 st.markdown("----")
-                st.subheader(f"🍽️ {recipe['title']}")
-                st.markdown(f"**🧑‍🍳 Chef ID:** {recipe['chefId']}")
-                st.markdown(f"**📝 Description:** {recipe['description']}")
-                st.markdown(f"**📅 Posted on:** {recipe['datePosted']}")
-                st.markdown(f"**🕒 Prep Time:** {recipe['prepTime']} minutes")
-                st.markdown(f"**🍽️ Servings:** {recipe['servings']}")
-                st.markdown(f"**🔥 Calories:** {recipe['calories']}")
-                
-                difficulty = recipe.get("difficulty", "UNKNOWN")
-                if difficulty == "EASY":
-                    st.success("Difficulty: EASY")
-                elif difficulty == "MEDIUM":
-                    st.warning("Difficulty: MEDIUM")
-                elif difficulty == "HARD":
-                    st.error("Difficulty: HARD")
-                else:
-                    st.info(f"Difficulty: {difficulty}")
-
-
+                with st.container():
+                    left_col, right_col = st.columns([1, 2])
+                    with left_col:
+                        # Placeholder for recipe image
+                        st.image(f"https://picsum.photos/id/159/300/400/?blur=10", use_container_width=True)
+                    with right_col:
+                        st.markdown(f"### {recipe['title']}")
+                        st.markdown(recipe['description'])
+                        st.markdown(f"**Created by:** {recipe['chefName']}")
+                        st.markdown(f"**🕒 Prep Time:** {recipe['prepTime']} minutes | **🍽️ Servings:** {recipe['servings']}")
+                        
+                        difficulty = recipe.get("difficulty", "UNKNOWN")
+                        if difficulty == "EASY":
+                            st.badge("EASY", color="green")
+                        elif difficulty == "MEDIUM":
+                            st.badge("MEDIUM", color="orange")
+                        elif difficulty == "HARD":
+                            st.badge("HARD", color="red")
+                        else:
+                            st.info(f"Difficulty: {difficulty}")
+                        
+                        st.markdown(f"**🔥 Calories:** {recipe['calories']}")

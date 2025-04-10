@@ -17,8 +17,9 @@ recipes = Blueprint('recipes', __name__)
 @recipes.route('/recipes', methods=['GET'])
 def get_recipes():
     query = '''
-        SELECT  *
-        FROM recipes;
+        SELECT r.recipeId, r.title, r.description, r.difficulty, r.calories, r.chefId, r.datePosted, r.prepTime, r.servings, u.username as chefName
+        FROM recipes r JOIN users u ON r.chefId = u.userId
+        ORDER BY RAND()
     '''
     
     # get a cursor object from the database
@@ -197,3 +198,20 @@ def delete_recipe(id):
     cursor.execute(query)
     db.get_db().commit()
     return "Recipe Deleted!"
+
+# ------------------------------------------------------------
+# Gets all recipes from a user by user_id
+@recipes.route('/user/<user_id>/recipes', methods=['GET'])
+def get_recipes_by_user(user_id):
+    query = f'''
+            SELECT *
+            FROM recipes
+            WHERE chefId = {str(user_id)};
+            '''
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    theData = cursor.fetchall()
+
+    response = make_response(jsonify(theData))
+    response.status_code = 200
+    return response

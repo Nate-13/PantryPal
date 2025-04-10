@@ -34,7 +34,7 @@ SideBarLinks(show_home=True)
 
 # set the title of the page and provide a simple prompt. 
 logger.info("Loading the Home page of the PantryPal")
-st.title('PantryPal')
+st.title('PantryPal') 
 st.write('\n\n')
 st.write('### Hi! As which user would you like to log in?')
 
@@ -71,7 +71,7 @@ if st.button('Act as Robert, a culinary student.',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'student'
     st.session_state['first_name'] = 'Robert'
-    st.switch_page('pages/20_Admin_Home.py') # make robert landing page or same homepage
+    st.switch_page('pages/pantrypal_home.py') # make robert landing page or same homepage
 
 if st.button('Act as Elna, a system administrator.', 
             type = 'primary', 
