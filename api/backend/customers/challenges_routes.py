@@ -13,7 +13,7 @@ challenges_bp = Blueprint('challenges', __name__)
 @challenges_bp.route('/requests/not-reviewed', methods=['GET'])
 def not_reviewed():
     sql = ("SELECT * "
-           "FROM challengeRequest "
+           "FROM challengeRequests "
            "WHERE status = 'NOT REVIEWED';")
     cursor = db.get_db().cursor()
     cursor.execute(sql)
@@ -29,7 +29,7 @@ def not_reviewed():
 def denied_requests():
     sql = """
         SELECT u.username, cr.requestID, cr.dateSubmitted
-        FROM challengeRequest cr
+        FROM challengeRequests cr
         JOIN users u ON cr.requestedById = u.userId
         WHERE cr.status = 'denied';
     """
@@ -45,7 +45,7 @@ def denied_requests():
 @challenges_bp.route('/requests/<int:request_id>/approve', methods=['PUT'])
 def approve_request(request_id):
     sql = f"""
-        UPDATE challengeRequest
+        UPDATE challengeRequests
         SET status = 'approved', reviewedBy = 1
         WHERE requestID = {request_id};
     """
@@ -61,7 +61,7 @@ def approve_request(request_id):
 @challenges_bp.route('/requests/user/<int:user_id>', methods=['GET'])
 def user_requests(user_id):
     sql = (f"SELECT * "
-           f"FROM challengeRequest "
+           f"FROM challengeRequests "
            f"WHERE requestedById = {user_id};")
     cursor = db.get_db().cursor()
     cursor.execute(sql)
@@ -74,7 +74,7 @@ def user_requests(user_id):
 @challenges_bp.route('/requests/active', methods=['GET'])
 def active_requests():
     sql = ("SELECT * "
-           "FROM challengeRequest "
+           "FROM challengeRequests "
            "WHERE status = 'approved';")
     cursor = db.get_db().cursor()
     cursor.execute(sql)
@@ -89,7 +89,7 @@ def active_requests():
 def available_challenges():
     sql = ("SELECT * "
            "FROM challenges "
-           "WHERE status IS NULL;")
+           "WHERE status IS NULL;") # never null...
     cursor = db.get_db().cursor()
     cursor.execute(sql)
     theData = cursor.fetchall()

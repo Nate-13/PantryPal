@@ -40,7 +40,7 @@ col1, col2, col3 = st.columns([3,2, 1])
 with col1:
     selected_ingredients = st.multiselect("Search by ingredients", options=ingredient_options)
 with col2:
-    search = st.text_input("Search recipes by title or category")
+    search = st.text_input("Search by title or category")
 with col3:
     difficulty_filter = st.selectbox("Filter by difficulty", options=["All", "EASY", "MEDIUM", "HARD"])
 
@@ -102,7 +102,7 @@ else:
                         st.markdown(recipe['description'])
                         st.markdown(f"**Created by:** {recipe['chefName']}")
                         st.markdown(f"**🕒 Prep Time:** {recipe['prepTime']} minutes | **🍽️ Servings:** {recipe['servings']}")
-                        
+                        st.markdown(f"**Calories:** {recipe['calories']}")
                         difficulty = recipe.get("difficulty", "UNKNOWN")
                         if difficulty == "EASY":
                             st.badge("EASY", color="green")
@@ -113,4 +113,4 @@ else:
                         else:
                             st.info(f"Difficulty: {difficulty}")
                         
-                        st.markdown(f"**🔥 Calories:** {recipe['calories']}")
+                        

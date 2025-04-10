@@ -6,6 +6,22 @@ from backend.db_connection import db
 ingredients = Blueprint('ingredients', __name__)
 
 # ------------------------------------------------------------
+# Gets all ingredients from the database
+@ingredients.route('/ingredients', methods=['GET'])
+def get_all_ingredients():
+    query = '''
+            SELECT *
+            FROM ingredients;
+            '''
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    theData = cursor.fetchall()
+
+    response = make_response(jsonify(theData))
+    response.status_code = 200
+    return response
+
+# ------------------------------------------------------------
 # POST /ingredients
 # This endpoint inserts a new ingredient into the database.
 @ingredients.route('/ingredients', methods=['POST'])
