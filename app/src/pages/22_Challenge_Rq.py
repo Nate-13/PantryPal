@@ -30,16 +30,14 @@ if response.status_code == 200:
             with col1:
                 if st.button("Approve", key=f"approve_{req['requestID']}"):
                     approve = requests.put(
-                        f"{API_BASE}/requests/{req['requestID']}/approve",
-                        json={"ID": admin_id}
+                        f"{API_BASE}/requests/{req['requestID']}/approve"
                     )
                     if approve.status_code == 200:
                         st.success(f"Request {req['requestID']} approved!")
             with col2:
                 if st.button("Deny", key=f"deny_{req['requestID']}"):
                     deny = requests.put(
-                        f"{API_BASE}/requests/{req['requestID']}/decline",
-                        json={"ID": admin_id}
+                        f"{API_BASE}/requests/{req['requestID']}/decline"
                     )
                     if deny.status_code == 200:
                         st.error(f"Request {req['requestID']} denied!")

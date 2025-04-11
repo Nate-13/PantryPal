@@ -215,3 +215,21 @@ def get_recipes_by_user(user_id):
     response = make_response(jsonify(theData))
     response.status_code = 200
     return response
+
+# ------------------------------------------------------------
+# Gets the user of the provided recipe id
+@recipes.route('/recipe/<id>/user', methods=['GET'])
+def get_user_by_recipe(id):
+    query = f'''
+            SELECT u.*
+            FROM recipes r
+            JOIN users u ON r.chefId = u.userId
+            WHERE r.recipeId = {str(id)};
+            '''
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    theData = cursor.fetchall()
+
+    response = make_response(jsonify(theData))
+    response.status_code = 200
+    return response

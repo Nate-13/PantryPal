@@ -71,7 +71,7 @@ if st.button('Act as Robert, a culinary student.',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'student'
     st.session_state['first_name'] = 'Robert'
-    st.switch_page('pages/pantrypal_home.py') # make robert landing page or same homepage
+    st.switch_page('pages/22_Challenge_Rq.py') # make robert landing page or same homepage
 
 if st.button('Act as Elna, a system administrator.', 
             type = 'primary', 

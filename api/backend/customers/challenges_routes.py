@@ -60,10 +60,9 @@ def denied_requests():
     return response
 @challenges_bp.route('/requests/<int:request_id>/approve', methods=['PUT'])
 def approve_request(request_id):
-    ID = request.json.get('ID')
     sql = f"""
         UPDATE challengeRequest
-        SET status = 'approved', reviewedBy = {ID}
+        SET status = 'approved', reviewedBy = {request_id}
         WHERE requestID = {request_id};
     """
     cursor = db.get_db().cursor()
@@ -75,10 +74,9 @@ def approve_request(request_id):
     return response
 @challenges_bp.route('/requests/<int:request_id>/decline', methods=['PUT'])
 def decline_request(request_id):
-    ID = request.json.get('ID')
     sql = f"""
         UPDATE challengeRequest
-        SET status = 'approved', reviewedBy = 1
+        SET status = 'DENIED', reviewedBy = 1
         WHERE requestID = {request_id};
     """
     cursor = db.get_db().cursor()
@@ -187,55 +185,6 @@ def get_challenge(challenge_id):
     theData = cursor.fetchall()
 
     response = make_response(jsonify(theData))
-    response.status_code = 200
-    return response
-
-@challenges_bp.route('/requests/<int:request_id>/decline', methods=['PUT'])
-def decline_request(request_id):
-    ID = request.json.get('ID')
-    cursor = db.get_db().cursor()
-
-    get_desc_sql = """
-        SELECT description FROM challengeRequest
-        WHERE requestID = %s;
-    """
-    cursor.execute(get_desc_sql, (request_id,))
-    result = cursor.fetchone()
-
-    if result:
-        description = result[0]
-        get_challenges_sql = """
-            SELECT challengeId FROM challenges
-            WHERE description = %s;
-        """
-        cursor.execute(get_challenges_sql, (description,))
-        challenge_ids = cursor.fetchall()
-        
-        for row in challenge_ids:
-            challenge_id = row[0]
-
-            delete_ingredients_sql = """
-                DELETE FROM challengeIngredients
-                WHERE challengeId = %s;
-            """
-            cursor.execute(delete_ingredients_sql, (challenge_id,))
-
-            delete_challenge_sql = """
-                DELETE FROM challenges
-                WHERE challengeId = %s;
-            """
-            cursor.execute(delete_challenge_sql, (challenge_id,))
-    
-    update_request_sql = """
-        UPDATE challengeRequest
-        SET status = 'denied', reviewedBy = %s
-        WHERE requestID = %s;
-    """
-    cursor.execute(update_request_sql, (ID, request_id))
-
-    db.get_db().commit()
-
-    response = make_response({'message': f'Request {request_id} denied and associated challenges (if any) deleted'})
     response.status_code = 200
     return response
 
