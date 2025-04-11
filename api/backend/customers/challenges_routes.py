@@ -74,7 +74,7 @@ def approve_request(request_id):
     response.status_code = 200
     return response
 @challenges_bp.route('/requests/<int:request_id>/decline', methods=['PUT'])
-def approve_request(request_id):
+def decline_request(request_id):
     ID = request.json.get('ID')
     sql = f"""
         UPDATE challengeRequest

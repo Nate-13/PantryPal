@@ -44,6 +44,8 @@ def create_app():
     app.register_blueprint(simple_routes)
     app.register_blueprint(challenges_bp, url_prefix='/c')
     app.register_blueprint(products,    url_prefix='/p')
+    app.register_blueprint(recipes)
+    app.register_blueprint(ingredients)
 
     # Don't forget to return the app object
     return app
