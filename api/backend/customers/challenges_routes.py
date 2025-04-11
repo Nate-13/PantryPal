@@ -9,6 +9,22 @@ from backend.db_connection import db
 
 challenges_bp = Blueprint('challenges', __name__)
 
+#-----------------------------------------------
+# gets all challenge requests from the database
+# and returns them to the client
+@challenges_bp.route('/all-requests', methods=['GET'])
+def get_all_requests():
+    sql = ("SELECT * "
+           "FROM challengeRequests;")
+    cursor = db.get_db().cursor()
+    cursor.execute(sql)
+    theData = cursor.fetchall()
+
+    response = make_response(jsonify(theData))
+    response.status_code = 200
+    return response
+#-----------------------------------------------
+
 # ----- Challenge Requests -----
 @challenges_bp.route('/requests/not-reviewed', methods=['GET'])
 def not_reviewed():
@@ -89,7 +105,7 @@ def active_requests():
 def available_challenges():
     sql = ("SELECT * "
            "FROM challenges "
-           "WHERE status IS NULL;") # never null...
+           "WHERE status = 'UNCLAIMED';") # never null...
     cursor = db.get_db().cursor()
     cursor.execute(sql)
     theData = cursor.fetchall()
@@ -159,7 +175,7 @@ def get_challenge(challenge_id):
     response.status_code = 200
     return response
 
-@challenges_bp.route('/<int:challenge_id>', methods=['DELETE'])
+@challenges_bp.route('delete-challenge/<int:challenge_id>', methods=['DELETE'])
 def delete_challenge(challenge_id):
     sql = (f"DELETE FROM challenges "
            f"WHERE challengeId = {challenge_id};")
@@ -187,33 +203,54 @@ def challenges_by_difficulty(level):
 
 
 
-@challenges_bp.route('/challenge/request', methods=['POST'])
+@challenges_bp.route('/new-challenge-request', methods=['POST'])
 def submit_challenge_request():
-    # In a POST request, there is a
-    # collecting data from the request object
     the_data = request.json
     current_app.logger.info(the_data)
 
-    # extracting the variable
+    # Extracting variables
     description = the_data['description']
-    name = the_data['requestedById']
+    ingredients = the_data['ingredients']
+    requestedById = the_data['requestedById']
 
-
-    query = f'''
-            INSERT INTO products (
-                                  description,
-                                
-                                  )
-            VALUES ( '{description}')
+    try:
+        
+        query = '''
+            INSERT INTO challengeRequests (requestedById, description)
+            VALUES (%s, %s);
         '''
+        cursor = db.get_db().cursor()
+        cursor.execute(query, (requestedById, description))
+        req_id = cursor.lastrowid  
 
-    current_app.logger.info(query)
+        for ing in ingredients:
+            req_ing_query = '''
+                INSERT INTO requestIngredients (requestId, ingredientId)
+                VALUES (%s, %s);
+            '''
+            cursor.execute(req_ing_query, (req_id, ing))
 
-    # executing and committing the insert statement
+        db.get_db().commit()
+
+        response = make_response({'message': 'Challenge request submitted'})
+        response.status_code = 200
+    except Exception as e:
+        current_app.logger.error(f"Error submitting challenge request: {e}")
+        db.get_db().rollback()
+        response = make_response({'message': 'Failed to submit challenge request'}, 500)
+
+    return response
+
+# gets all ingredients for a challenge request
+@challenges_bp.route('/<int:request_id>/ingredients', methods=['GET'])
+def get_request_ingredients(request_id):
+    sql = (f"SELECT i.name "
+           f"FROM requestIngredients ri JOIN ingredients i ON ri.ingredientId = i.ingredientId "
+           f"WHERE requestId = {request_id};")
     cursor = db.get_db().cursor()
-    cursor.execute(query)
-    db.get_db().commit()
+    cursor.execute(sql)
+    theData = cursor.fetchall()
 
-    response = make_response({'message': 'Challenge request submitted'})
+    response = make_response(jsonify(theData))
     response.status_code = 200
     return response

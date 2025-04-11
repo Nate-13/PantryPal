@@ -60,3 +60,20 @@ def update_ingredient(id):
     db.get_db().commit()
 
     return make_response(jsonify({'message': 'Ingredient updated successfully'}), 200)
+
+# ------------------------------------------------------------
+# gets an ingredient id by name
+@ingredients.route('/ingredients/<name>', methods=['GET'])
+def get_ingredient_by_name(name):
+    query = '''
+            SELECT *
+            FROM ingredients
+            WHERE name = %s;
+            '''
+    cursor = db.get_db().cursor()
+    cursor.execute(query, (name,))
+    theData = cursor.fetchall()
+
+    response = make_response(jsonify(theData))
+    response.status_code = 200
+    return response
