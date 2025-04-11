@@ -57,7 +57,7 @@ if st.button("Act as Milo, a home-cook.",
     logger.info("Logging in as home-cook Persona")
     st.switch_page('pages/00_Pol_Strat_Home.py') # change to homecook main page
 
-if st.button('Act as Isabel, an chef and blogger', 
+if st.button('Act as Isabel, a chef and blogger', 
             type = 'primary', 
             use_container_width=True):
     st.session_state['authenticated'] = True

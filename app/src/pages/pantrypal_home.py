@@ -40,7 +40,7 @@ col1, col2, col3 = st.columns([3,2, 1])
 with col1:
     selected_ingredients = st.multiselect("Search by ingredients", options=ingredient_options)
 with col2:
-    search = st.text_input("Search recipes by title or category")
+    search = st.text_input("Search by title or category")
 with col3:
     difficulty_filter = st.selectbox("Filter by difficulty", options=["All", "EASY", "MEDIUM", "HARD"])
 
@@ -76,12 +76,34 @@ if not filtered_recipes:
     st.info("No recipes found. Request a recipe challenge from culinary students or chefs below!")
     with st.expander("✏️ Request a recipe challenge"):  # Use expander for a wider section
         st.multiselect("Select ingredients for your challenge:", default=selected_ingredients, options=ingredient_options)
-        st.text_area("Write a brief description:")
+        ch_desc = st.text_area("Write a brief description:")
         if st.button("Submit Challenge"):
             with st.spinner("Submitting your challenge..."):
                 time.sleep(1.5)
                 # API call to submit the challenge HERE
-                st.success("Challenge submitted!")
+                ing_ids = []
+                for ing in selected_ingredients:
+                    try:
+                        response = requests.get(f"http://web-api:4000/ingredients/{ing}")
+                        response.raise_for_status()
+                        ing_ids.append(response.json()[0]['ingredientId'])
+                    except Exception as e:
+                        st.error(f"Could not fetch ingredient ID for {ing}.")
+                        st.exception(e)
+                
+                challenge_data = {
+                    "ingredients": ing_ids,
+                    "description": ch_desc,
+                    "requestedById": 1
+                }
+
+                try:
+                    challenge_response = requests.post("http://web-api:4000/c/new-challenge-request", json=challenge_data)
+                    challenge_response.raise_for_status()
+                    st.success("Your challenge has been successfully submitted!")
+                except requests.exceptions.RequestException as e:
+                    st.error("Failed to submit the challenge. Please try again later.")
+                    st.exception(e)
 else:
     f'''
     found {len(filtered_recipes)} recipes!
@@ -102,7 +124,7 @@ else:
                         st.markdown(recipe['description'])
                         st.markdown(f"**Created by:** {recipe['chefName']}")
                         st.markdown(f"**🕒 Prep Time:** {recipe['prepTime']} minutes | **🍽️ Servings:** {recipe['servings']}")
-                        
+                        st.markdown(f"**Calories:** {recipe['calories']}")
                         difficulty = recipe.get("difficulty", "UNKNOWN")
                         if difficulty == "EASY":
                             st.badge("EASY", color="green")
@@ -112,5 +134,3 @@ else:
                             st.badge("HARD", color="red")
                         else:
                             st.info(f"Difficulty: {difficulty}")
-                        
-                        st.markdown(f"**🔥 Calories:** {recipe['calories']}")
