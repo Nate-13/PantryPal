@@ -60,8 +60,24 @@ def denied_requests():
     return response
 @challenges_bp.route('/requests/<int:request_id>/approve', methods=['PUT'])
 def approve_request(request_id):
+    ID = request.json.get('ID')
     sql = f"""
-        UPDATE challengeRequests
+        UPDATE challengeRequest
+        SET status = 'approved', reviewedBy = {ID}
+        WHERE requestID = {request_id};
+    """
+    cursor = db.get_db().cursor()
+    cursor.execute(sql)
+    db.get_db().commit()
+
+    response = make_response({'message': f'Request {request_id} approved'})
+    response.status_code = 200
+    return response
+@challenges_bp.route('/requests/<int:request_id>/decline', methods=['PUT'])
+def approve_request(request_id):
+    ID = request.json.get('ID')
+    sql = f"""
+        UPDATE challengeRequest
         SET status = 'approved', reviewedBy = 1
         WHERE requestID = {request_id};
     """
@@ -72,7 +88,6 @@ def approve_request(request_id):
     response = make_response({'message': f'Request {request_id} approved'})
     response.status_code = 200
     return response
-
 
 @challenges_bp.route('/requests/user/<int:user_id>', methods=['GET'])
 def user_requests(user_id):
@@ -191,7 +206,7 @@ def delete_challenge(challenge_id):
 def challenges_by_difficulty(level):
     sql = (f"SELECT * "
            f"FROM challenges "
-           f"WHERE difficulty = '{level}';")
+           f"WHERE difficulty = '{level}' AND status is NULL;")
     cursor = db.get_db().cursor()
     cursor.execute(sql)
     theData = cursor.fetchall()
