@@ -120,7 +120,7 @@ def active_requests():
 def available_challenges():
     sql = ("SELECT * "
            "FROM challenges "
-           "WHERE status = 'UNCLAIMED';")
+           "WHERE status = 'UNCLAIMED';") # never null...
     cursor = db.get_db().cursor()
     cursor.execute(sql)
     theData = cursor.fetchall()
@@ -190,55 +190,17 @@ def get_challenge(challenge_id):
     response.status_code = 200
     return response
 
-@challenges_bp.route('/requests/<int:request_id>/decline', methods=['PUT'])
-def decline_request(request_id):
-    ID = request.json.get('ID')
+@challenges_bp.route('delete-challenge/<int:challenge_id>', methods=['DELETE'])
+def delete_challenge(challenge_id):
+    sql = (f"DELETE FROM challenges "
+           f"WHERE challengeId = {challenge_id};")
     cursor = db.get_db().cursor()
-
-    get_desc_sql = """
-        SELECT description FROM challengeRequest
-        WHERE requestID = %s;
-    """
-    cursor.execute(get_desc_sql, (request_id,))
-    result = cursor.fetchone()
-
-    if result:
-        description = result[0]
-        get_challenges_sql = """
-            SELECT challengeId FROM challenges
-            WHERE description = %s;
-        """
-        cursor.execute(get_challenges_sql, (description,))
-        challenge_ids = cursor.fetchall()
-        
-        for row in challenge_ids:
-            challenge_id = row[0]
-
-            delete_ingredients_sql = """
-                DELETE FROM challengeIngredients
-                WHERE challengeId = %s;
-            """
-            cursor.execute(delete_ingredients_sql, (challenge_id,))
-
-            delete_challenge_sql = """
-                DELETE FROM challenges
-                WHERE challengeId = %s;
-            """
-            cursor.execute(delete_challenge_sql, (challenge_id,))
-    
-    update_request_sql = """
-        UPDATE challengeRequest
-        SET status = 'denied', reviewedBy = %s
-        WHERE requestID = %s;
-    """
-    cursor.execute(update_request_sql, (ID, request_id))
-
+    cursor.execute(sql)
     db.get_db().commit()
 
-    response = make_response({'message': f'Request {request_id} denied and associated challenges (if any) deleted'})
+    response = make_response({'message': f'Challenge {challenge_id} deleted'})
     response.status_code = 200
     return response
-
 
 @challenges_bp.route('/difficulty/<string:level>', methods=['GET'])
 def challenges_by_difficulty(level):
