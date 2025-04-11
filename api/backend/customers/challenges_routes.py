@@ -120,7 +120,7 @@ def active_requests():
 def available_challenges():
     sql = ("SELECT * "
            "FROM challenges "
-           "WHERE status = 'UNCLAIMED';") # never null...
+           "WHERE status = 'UNCLAIMED';")
     cursor = db.get_db().cursor()
     cursor.execute(sql)
     theData = cursor.fetchall()

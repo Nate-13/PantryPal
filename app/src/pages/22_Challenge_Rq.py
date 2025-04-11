@@ -13,7 +13,7 @@ st.title('Challenge Requests Page')
 API_BASE = "http://web-api:4000"
 
 st.header("Pending Challenge Requests")
-response = requests.get(f"{API_BASE}/requests/not-reviewed")
+response = requests.get(f"{API_BASE}/c/requests/not-reviewed")
 
 if response.status_code == 200:
     requests_data = response.json()

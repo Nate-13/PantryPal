@@ -57,7 +57,7 @@ CREATE TABLE challenges(
     challengeId INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     studentId INT,
     description text NOT NULL,
-    status ENUM('IN PROGRESS', 'COMPLETED'),
+    status ENUM('UNCLAIMED', 'IN PROGRESS', 'COMPLETED') default 'UNCLAIMED',
     approvedById INT NOT NULL,
     createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     difficulty ENUM('EASY', 'MEDIUM', 'HARD') DEFAULT NULL,
@@ -827,10 +827,10 @@ INSERT INTO challenges (studentId, description, status, approvedById) VALUES
 (15, 'Gluten-free breakfast challenge', 'IN PROGRESS', 3),
 (9, 'Bake with: cocoa powder, almond flour, and maple syrup', 'COMPLETED', 4),
 (2, 'Spice Bomb: Incorporate turmeric, cumin, chili flakes, and coriander', 'IN PROGRESS', 7),
-(5, 'Challenge: Make a dish with tuna, chickpeas, and lemon', 'IN PROGRESS', 2),
-(4, 'Create BBQ sliders with ingredients you already have at home', 'COMPLETED', 1),
-(22, 'Southern Soul Challenge: Use black beans, cabbage, and hot sauce', 'COMPLETED', 6),
-(11, 'Use: Eggs, spinach, and cheddar cheese in a single dish', 'IN PROGRESS', 3);
+(5, 'Challenge: Make a dish with tuna, chickpeas, and lemon', 'UNCLAIMED', 2),
+(4, 'Create BBQ sliders with ingredients you already have at home', 'UNCLAIMED', 1),
+(22, 'Southern Soul Challenge: Use black beans, cabbage, and hot sauce', 'UNCLAIMED', 6),
+(11, 'Use: Eggs, spinach, and cheddar cheese in a single dish', 'UNCLAIMED', 3);
 
 
 INSERT INTO challengeIngredients (challengeId, ingredientId) VALUES

@@ -1,21 +1,22 @@
 import streamlit as st
 import requests
 
-API_BASE_URL = "'http://web-api:4000/c"  # Change if needed
+API_BASE_URL = "http://web-api:4000/c"  # Change if needed
 
 st.title("🧠 Available Challenges")
 st.markdown("Browse, filter, claim, or update the status of challenges.")
 
-difficulty_filter = st.selectbox(
-    "Filter by difficulty", ["All", "Easy", "Medium", "Hard"], index=0
-)
+# difficulty_filter = st.selectbox(
+#     "Filter by difficulty", ["All", "Easy", "Medium", "Hard"], index=0
+# )
 
 search_query = st.text_input("Search by keyword in description")
 
 
 def fetch_challenges(difficulty=None):
     try:
-        url = f"{API_BASE_URL}/difficulty/{difficulty.lower()}" if difficulty and difficulty != "All" else f"{API_BASE_URL}/available"
+        # url = f"{API_BASE_URL}/difficulty/{difficulty.lower()}" if difficulty and difficulty != "All" else f"{API_BASE_URL}/available"
+        url = f"{API_BASE_URL}/available"
         response = requests.get(url)
         return response.json() if response.status_code == 200 else []
     except Exception as e:
@@ -51,7 +52,7 @@ def update_status(challenge_id, new_status):
         st.error(f"Error updating status: {e}")
 
 
-challenges = fetch_challenges(difficulty_filter)
+challenges = fetch_challenges()
 
 if search_query:
     challenges = [c for c in challenges if search_query.lower() in c.get('description', '').lower()]
