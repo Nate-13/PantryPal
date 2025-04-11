@@ -131,7 +131,7 @@ def available_challenges():
 def claim_challenge(challenge_id):
     user_id = request.json.get('user_id')
     sql = (f"UPDATE challenges "
-           f"SET claimedBy = {user_id} "
+           f"SET studentId = {user_id} "
            f"WHERE challengeId = {challenge_id};")
     cursor = db.get_db().cursor()
     cursor.execute(sql)
