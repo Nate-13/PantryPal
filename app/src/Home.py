@@ -79,7 +79,7 @@ if st.button('Act as Elna, a system administrator.',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'administrator'
     st.session_state['first_name'] = 'Elna'
-    st.switch_page('pages/20_Admin_Home.py') # change to elna home page
+    st.switch_page('pages/challengespage.py') # change to elna home page
 
 
 
