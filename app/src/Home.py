@@ -55,7 +55,7 @@ if st.button("Act as Milo, a home-cook.",
     # finally, we ask streamlit to switch to another page, in this case, the 
     # landing page for this particular user type
     logger.info("Logging in as home-cook Persona")
-    st.switch_page('pages/22_Challenge_Rq.py') # change to homecook main page
+    st.switch_page('pages/homecook_home.py') # change to homecook main page
 
 if st.button('Act as Isabel, a chef and blogger', 
             type = 'primary', 

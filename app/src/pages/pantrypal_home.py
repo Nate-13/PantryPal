@@ -120,7 +120,10 @@ else:
                         # Placeholder for recipe image
                         st.image(f"https://picsum.photos/id/159/300/400/?blur=10", use_container_width=True)
                     with right_col:
-                        st.markdown(f"### {recipe['title']}")
+                        if st.button(f"**{recipe['title']}**"):
+                            st.session_state['recipeId'] = recipe['recipeId']
+                            st.switch_page('pages/recipePage.py')
+
                         st.markdown(recipe['description'])
                         st.markdown(f"**Created by:** {recipe['chefName']}")
                         st.markdown(f"**🕒 Prep Time:** {recipe['prepTime']} minutes | **🍽️ Servings:** {recipe['servings']}")
