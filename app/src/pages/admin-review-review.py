@@ -40,9 +40,9 @@ else:
         with st.container(border=True):
             st.markdown(f"### ⭐️ {row['rating']} - {row['username']} on _{row['recipeTitle']}_")
             st.write(row['description'])
-            st.caption(f"Posted on {row['datePosted']} — 👍 {row['upVotes']} | 👎 {row['downVotes']}")
+            st.caption(f"Posted on {row['datePosted']} — By {row['userId']} — 👍 {row['upVotes']} | 👎 {row['downVotes']}")
 
-            if st.button("🗑 Delete", key=f"del_{row['reviewId']}"):
+            if st.button("🗑 Delete", key=f"del_{row['reviewId']}" ):
                 res = requests.delete(f"{API_BASE}/reviews/{row['reviewId']}/delete")
 
                 if res.status_code == 200:

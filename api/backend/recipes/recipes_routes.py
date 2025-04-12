@@ -398,11 +398,11 @@ def get_all_reviews():
     response.status_code = 200
     return response
 
-@recipes.route('/reviews/<int:review_id>/delete', methods=['DELETE'])
-def delete_review(id):
+@recipes.route('/reviews/<reviewId>/delete', methods=['DELETE'])
+def delete_review(reviewId):
     query = f'''
-            DELETE FROM recipes
-            WHERE reviewId = {str(id)};
+            DELETE FROM reviews
+            WHERE reviewId = {str(reviewId)};
             '''
     cursor = db.get_db().cursor()
     cursor.execute(query)
