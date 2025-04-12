@@ -71,7 +71,7 @@ if st.button('Act as Robert, a culinary student.',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'student'
     st.session_state['first_name'] = 'Robert'
-    st.switch_page('pages/22_Challenge_Rq.py') # make robert landing page or same homepage
+    st.switch_page('pages/challengespage.py') # make robert landing page or same homepage
 
 if st.button('Act as Elna, a system administrator.', 
             type = 'primary', 
@@ -79,8 +79,7 @@ if st.button('Act as Elna, a system administrator.',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'administrator'
     st.session_state['first_name'] = 'Elna'
-    st.switch_page('pages/challengespage.py') # change to elna home page
-
+    st.switch_page('pages/22_Challenge_Rq.py') # change to elna home page
 
 
 
