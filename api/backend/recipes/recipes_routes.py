@@ -19,6 +19,7 @@ def get_recipes():
     query = '''
         SELECT r.recipeId, r.title, r.description, r.difficulty, r.calories, r.chefId, r.datePosted, r.prepTime, r.servings, u.username as chefName
         FROM recipes r JOIN users u ON r.chefId = u.userId
+        ORDER BY r.datePosted DESC;
     '''
     
     # get a cursor object from the database

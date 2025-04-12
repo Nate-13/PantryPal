@@ -13,6 +13,19 @@ recipe_name = st.text_input("Recipe Name", placeholder="Enter recipe name")
 recipe_description = st.text_area("Description", placeholder="Enter recipe description")
 recipe_instructions = st.text_area("Instructions", placeholder="Enter recipe instructions")
 
+col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
+with col1:
+    difficulty = st.selectbox("Difficulty", ["EASY", "MEDIUM", "HARD"])
+with col2:
+    prep_time = st.text_input("Prep Time (minutes)", placeholder="Enter prep time")
+with col3:
+    calories = st.text_input("Calories", placeholder="Enter calories")
+with col4:
+    servings = st.text_input("Servings", placeholder="Enter number of servings")
+st.write("")
+st.write("----")
+st.write("### Ingredients")
+
 ingredients = []
 
 ingredient_options = []
@@ -48,8 +61,8 @@ for i, ingredient in enumerate(st.session_state.ingredients):
 
 
 st.write("")  # Add some spacing
-if st.button("Submit Recipe"):
-    if not recipe_name or not recipe_description:
+if st.button("Submit Recipe", type='primary', use_container_width=True):
+    if not recipe_name or not recipe_description or not calories or not servings or not prep_time:
         st.warning("Please fill in all fields.")
     elif not any(ingredient["name"] for ingredient in st.session_state.ingredients):
         st.warning("Please add at least one ingredient.")
@@ -80,10 +93,10 @@ if st.button("Submit Recipe"):
             "title": recipe_name,
             "description": recipe_description,
             "instructions": recipe_instructions,
-            "difficulty": 'EASY',  # Placeholder for difficulty
-            "prepTime": '30',  # Placeholder for prep time
-            "calories": '200',  # Placeholder for calories
-            "servings": 2,  # Placeholder for servings
+            "difficulty": difficulty,  # Placeholder for difficulty
+            "prepTime": prep_time,  # Placeholder for prep time
+            "calories": calories,  # Placeholder for calories
+            "servings": servings,  # Placeholder for servings
             "ingredients": compiled_ingredients
         }
         try:
