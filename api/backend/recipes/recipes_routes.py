@@ -397,7 +397,7 @@ def get_all_reviews():
     response.status_code = 200
     return response
 
-@recipes.route('/reviews/<id>/delete', methods=['DELETE'])
+@recipes.route('/reviews/<int:review_id>/delete', methods=['DELETE'])
 def delete_review(id):
     query = f'''
             DELETE FROM recipes
