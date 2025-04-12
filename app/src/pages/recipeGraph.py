@@ -50,13 +50,13 @@ df = fetch_num_recipes_by_CAT()
 if not df.empty:
     st.subheader("Number of Recipes by Category")
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(45, 30))
     ax.bar(df['categoryName'], df['count'])
     ax.set_xlabel("Category")
     ax.set_ylabel("Number of Recipes")
     ax.set_title("Recipes per category")
     plt.xticks(fontsize=7)
-    plt.xticks(rotation=45,ha='right')
+    plt.xticks(rotation=45)
     st.pyplot(fig)
 else:
     st.info("No data to show.")
