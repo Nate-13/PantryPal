@@ -7,14 +7,14 @@ API_BASE = "http://web-api:4000/recipes"
 st.set_page_config(page_title="Review Browser", layout="wide")
 st.title("📝 Recipe Review Browser")
 
-@st.cache_data
 def fetch_reviews():
-    res = requests.get(f"{API_BASE}/reviews")
-    if res.status_code == 200:
-        return pd.DataFrame(res.json())
-    else:
+    try:
+        res = requests.get(f"{API_BASE}/reviews")
+        return res.json() if res.status_code == 200 else []
+    except Exception as e:
         st.error("❌ Failed to load reviews.")
         return pd.DataFrame()
+    
 
 reviews_df = fetch_reviews()
 
