@@ -70,6 +70,12 @@ def ClassificationNav():
 def AdminPageNav():
     st.sidebar.page_link("pages/20_Admin_Home.py", label="System Admin", icon="🖥️")
 
+def recipereviews():
+    st.sidebar.page_link("pages/admin-review-review.py", label="recipe reviews", icon="🖥️")
+
+def recipereport():
+    st.sidebar.page_link("pages/recipeGraph.py", label="View Recipe Report", icon="📈")
+
 
 
 # --------------------------------Links Function -----------------------------------------------
@@ -109,6 +115,8 @@ def SideBarLinks(show_home=False):
         # If the user is an administrator, give them access to the administrator pages
         if st.session_state["role"] == "administrator":
             AdminPageNav()
+            recipereviews()
+            recipereport()
 
     # Always show the About page at the bottom of the list of links
     AboutPageNav()
