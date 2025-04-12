@@ -11,10 +11,10 @@ import matplotlib.pyplot as plt
 
 st.title("📅 Recipes Posted Over Time")
 
-API_URL = "http://web-api:4000/c"  
+API_URL = "http://web-api:4000/recipes"  # Adjust as needed
 
 def fetch_recipes_by_date():
-    res = requests.get(API_URL)
+    res = requests.get(f"{API_URL}/recipes/posted-over-time")
     if res.status_code == 200:
         return pd.DataFrame(res.json())
     else:
