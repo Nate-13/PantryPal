@@ -86,8 +86,8 @@ if st.button('view report.',
             use_container_width=True):
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'administrator'
-    st.session_state['first_name'] = 'Elna'
-    st.switch_page('recipiesgraph.py') # change to elna home page
+    st.session_state['first_name'] = 'rob'
+    st.switch_page('pages/recipiesgraph.py') # change to elna home page
 
 
 
