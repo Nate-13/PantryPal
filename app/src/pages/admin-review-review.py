@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import pandas as pd
 
-API_BASE = "http://localhost:5000/recipes"
+API_BASE = "http://web-api:4000/recipes"
 
 st.set_page_config(page_title="Review Browser", layout="wide")
 st.title("📝 Recipe Review Browser")
