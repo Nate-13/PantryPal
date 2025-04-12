@@ -396,3 +396,14 @@ def get_all_reviews():
     response = make_response(jsonify(theData))
     response.status_code = 200
     return response
+
+@recipes.route('/reviews/<id>/delete', methods=['DELETE'])
+def delete_review(id):
+    query = f'''
+            DELETE FROM recipes
+            WHERE reviewId = {str(id)};
+            '''
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    db.get_db().commit()
+    return "Recipe Deleted!"

@@ -39,7 +39,7 @@ else:
             st.caption(f"Posted on {row['datePosted']} — 👍 {row['upVotes']} | 👎 {row['downVotes']}")
 
             if st.button("🗑 Delete", key=f"del_{row['reviewId']}"):
-                res = requests.delete(f"{API_BASE}/reviews/{row['reviewId']}")
+                res = requests.delete(f"{API_BASE}/reviews/<id>/delete", params={"id": row['reviewId']})
                 if res.status_code == 200:
                     st.success(f"Review {row['reviewId']} deleted. Please refresh to update.")
                 else:
