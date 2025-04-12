@@ -9,15 +9,7 @@ st.set_page_config(layout = 'wide')
 SideBarLinks()
 
 st.title('Challenge Requests Page')
-if st.button("recipe reviews"):
 
-    st.switch_page("pages/admin-review-review.py")
-    st.session_state["reviews_button"] = True
-
-if st.button("📈 View Recipe Report"):
-
-    st.switch_page("pages/recipeGraph.py")
-    st.session_state["report_button"] = True
 
 API_BASE = "http://web-api:4000"
 
