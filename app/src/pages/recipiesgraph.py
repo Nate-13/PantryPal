@@ -8,7 +8,6 @@ import streamlit as st
 import requests
 import pandas as pd
 import matplotlib.pyplot as plt
-st.set_page_config(page_title="Recipe Report")
 
 st.title("📅 Recipes Posted Over Time")
 
