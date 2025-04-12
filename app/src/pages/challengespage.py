@@ -1,19 +1,22 @@
 import streamlit as st
 import requests
+from modules.nav import SideBarLinks
 
 API_BASE_URL = "http://web-api:4000/c"  # Change if needed
 
-st.title("🧠 Available Challenges")
-st.markdown("Browse, filter, claim, or update the status of challenges.")
+SideBarLinks()
 
+st.title("💡 Challenges")
+st.markdown("Browse and claim recipe challenges.")
+st.write("----")
  
 
 # difficulty_filter = st.selectbox(
 #     "Filter by difficulty", ["All", "Easy", "Medium", "Hard"], index=0
 # )
 
-search_query = st.text_input("Search by keyword in description")
-
+search_query = st.text_input("Search by keywords")
+st.write("----")
 
 def fetch_challenges(difficulty=None):
     try:
@@ -33,7 +36,7 @@ def claim_challenge(challenge_id, user_id):
             json={"user_id": user_id}
         )
         if response.status_code == 200:
-            st.success(f"Challenge {challenge_id} successfully claimed!")
+            st.success(f"Challenge successfully claimed!")
         else:
             st.error(f"Failed to claim challenge: {response.text}")
     except Exception as e:
@@ -47,12 +50,23 @@ def update_status(challenge_id, new_status):
             json={"status": new_status}
         )
         if response.status_code == 200:
-            st.success(f"Challenge {challenge_id} updated to '{new_status}'!")
+            st.success(f"Challenge updated to '{new_status}'!")
         else:
             st.error(f"Status update failed: {response.text}")
     except Exception as e:
         st.error(f"Error updating status: {e}")
 
+def get_challenge_ingredients(challenge_id):
+    try:
+        response = requests.get(f"{API_BASE_URL}/{challenge_id}/ingredients")
+        if response.status_code == 200:
+            return response.json()
+        else:
+            st.error(f"Failed to fetch ingredients for challenge {challenge_id}: {response.text}")
+            return []
+    except Exception as e:
+        st.error(f"Error fetching ingredients: {e}")
+        return []
 
 challenges = fetch_challenges()
 
@@ -61,26 +75,27 @@ if search_query:
 
 if challenges:
     for ch in challenges:
-        with st.container():
-            st.subheader(f"Challenge ID: {ch.get('challengeId')}")
-            st.write(f"**Description:** {ch.get('description')}")
-            st.write(f"**Difficulty:** {ch.get('difficulty')}")
+        st.write(f":blue-badge[{ingredient.get('name')}] " for ingredient in get_challenge_ingredients(ch.get('challengeId')))
+        st.write(f"*{ch.get('description')}*")
+        st.write(f"**Difficulty:** {ch.get('difficulty')}")
+        
+        # Claim section
+        user_id = st.session_state.get('userId', None)
+        if not user_id:
+            st.warning("You need to log in to claim a challenge.")
+        elif st.button(f"Claim Challenge", key=f"claim_{ch.get('challengeId')}"):
+            if user_id:
+                claim_challenge(ch.get('challengeId'), int(user_id))
+            else:
+                st.warning("You need to log in to claim a challenge.")
 
-            # Claim section
-            user_id = st.text_input(f"Enter your User ID to claim challenge {ch.get('challengeId')}:", key=f"user_{ch.get('challengeId')}")
-            if st.button(f"Claim Challenge {ch.get('challengeId')}", key=f"claim_{ch.get('challengeId')}"):
-                if user_id:
-                    claim_challenge(ch.get('challengeId'), int(user_id))
-                else:
-                    st.warning("Please enter your user ID.")
+        # Status update section
+        status_options = ["in progress", "completed"]
+        new_status = st.selectbox(f"Update status for challenge {ch.get('challengeId')}:", status_options, key=f"status_{ch.get('challengeId')}")
+        if st.button(f"Update Status", key=f"update_{ch.get('challengeId')}"):
+            update_status(ch.get('challengeId'), new_status)
 
-            # Status update section
-            status_options = ["in progress", "completed"]
-            new_status = st.selectbox(f"Update status for challenge {ch.get('challengeId')}:", status_options, key=f"status_{ch.get('challengeId')}")
-            if st.button(f"Update Status", key=f"update_{ch.get('challengeId')}"):
-                update_status(ch.get('challengeId'), new_status)
-
-            st.markdown("---")
+        st.markdown("---")
 else:
     st.info("No challenges found with the current filters.")
 

@@ -6,14 +6,15 @@ from streamlit_extras.app_logo import add_logo
 from modules.nav import SideBarLinks
 import time
 
+st.set_page_config(page_title="PantryPal", layout="wide", page_icon="🥕")
+
 SideBarLinks()
 
 st.header("PantryPal")
 '''
 The ingredient-driven recipe platform.
 '''
-if st.session_state.get('role') == 'student':
-    st.button("Recipe Challenges 🏆", type='primary', use_container_width=True)
+
 
 data = {} 
 try:

@@ -1,11 +1,15 @@
 import streamlit as st
 import requests
 import pandas as pd
+from modules.nav import SideBarLinks
+
 
 API_BASE = "http://web-api:4000/"
 
 st.set_page_config(page_title="Review Browser", layout="wide")
 st.title("📝 Recipe Review Browser")
+
+SideBarLinks()
 
 def fetch_reviews():
     try:

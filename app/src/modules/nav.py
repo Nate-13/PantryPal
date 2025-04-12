@@ -31,39 +31,12 @@ def new_recipe_nav():
         "pages/newRecipe.py", label="New Recipe", icon="🍽️" # change to new recipe page when made
     )
 
-
-#### ------------------------ Examples for Role of pol_strat_advisor ------------------------
-def PolStratAdvHomeNav():
+#### ------------------------ Student ------------------------
+def recipe_challenges():
     st.sidebar.page_link(
-        "pages/TODO.py", label="Political Strategist Home", icon="👤"
+        "pages/challengespage.py", label="Challenges", icon="💡"
     )
 
-
-def WorldBankVizNav():
-    st.sidebar.page_link(
-        "pages/01_World_Bank_Viz.py", label="World Bank Visualization", icon="🏦"
-    )
-
-
-def MapDemoNav():
-    st.sidebar.page_link("pages/02_Map_Demo.py", label="Map Demonstration", icon="🗺️")
-
-
-## ------------------------ Examples for Role of usaid_worker ------------------------
-def ApiTestNav():
-    st.sidebar.page_link("pages/12_API_Test.py", label="Test the API", icon="🛜")
-
-
-def PredictionNav():
-    st.sidebar.page_link(
-        "pages/11_Prediction_worker.py", label="Regression Prediction", icon="📈"
-    )
-
-
-def ClassificationNav():
-    st.sidebar.page_link(
-        "pages/13_Classification.py", label="Classification Demo", icon="🌺"
-    )
 
 
 #### ------------------------ System Admin Role ------------------------
@@ -111,10 +84,15 @@ def SideBarLinks(show_home=False):
             pantry_pal_home_nav()
             user_profile_nav()
             new_recipe_nav()
+        if st.session_state["role"] == "student":
+            HomeNav()
+            pantry_pal_home_nav()
+            recipe_challenges()
+            user_profile_nav()
 
         # If the user is an administrator, give them access to the administrator pages
         if st.session_state["role"] == "administrator":
-            
+            HomeNav()
             recipereviews()
             recipereport()
 

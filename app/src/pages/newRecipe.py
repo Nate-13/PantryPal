@@ -39,9 +39,9 @@ if st.button("Add Another Ingredient"):
 # Render the ingredients list
 for i, ingredient in enumerate(st.session_state.ingredients):
     cols = st.columns([3, 1, 1, 0.5])
-    ingredient["name"] = cols[0].selectbox(f"Ingredient {i+1}", options=ingredient_options, key=f"name_{i}")
-    ingredient["quantity"] = cols[1].text_input(f"Quantity {i+1}", value=ingredient["quantity"], placeholder="Enter quantity", key=f"quantity_{i}")
-    ingredient["unit"] = cols[2].text_input(f"Unit {i+1}", value=ingredient["unit"], placeholder="Enter unit", key=f"unit_{i}")
+    ingredient["name"] = cols[0].selectbox(f"Ingredient", options=ingredient_options, key=f"name_{i}")
+    ingredient["quantity"] = cols[1].text_input(f"Quantity", value=ingredient["quantity"], placeholder="Enter quantity", key=f"quantity_{i}")
+    ingredient["unit"] = cols[2].text_input(f"Unit", value=ingredient["unit"], placeholder="Enter unit", key=f"unit_{i}")
     with cols[3]:
         if st.button("❌", key=f"delete_{i}"):  # Add a delete button
             st.session_state.ingredients.pop(i)
@@ -57,7 +57,6 @@ if st.button("Submit Recipe"):
         st.warning("Please fill in all ingredient fields.")
     else:
         for ingredient in st.session_state.ingredients:
-            st.json(ingredient)
             compiled_ingredients = []
         for ingredient in st.session_state.ingredients:
             try:

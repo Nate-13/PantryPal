@@ -45,15 +45,10 @@ st.write('### Hi! As which user would you like to log in?')
 if st.button("Act as Milo, a home-cook.", 
             type = 'primary', 
             use_container_width=True):
-    # when user clicks the button, they are now considered authenticated
     st.session_state['authenticated'] = True
-    # we set the role of the current user
     st.session_state['role'] = 'homecook'
-    # we add the first name of the user (so it can be displayed on 
-    # subsequent pages). 
     st.session_state['first_name'] = 'Milo'
-    # finally, we ask streamlit to switch to another page, in this case, the 
-    # landing page for this particular user type
+    st.session_state['userId'] = 3
     logger.info("Logging in as home-cook Persona")
     st.switch_page('pages/homecook_home.py') # change to homecook main page
 
@@ -63,6 +58,7 @@ if st.button('Act as Isabel, a chef and blogger',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'chef'
     st.session_state['first_name'] = 'Isabel'
+    st.session_state['userId'] = 1
     st.switch_page('pages/pantrypal_home.py') # change to chef home page
 
 if st.button('Act as Robert, a culinary student.', 
@@ -71,6 +67,7 @@ if st.button('Act as Robert, a culinary student.',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'student'
     st.session_state['first_name'] = 'Robert'
+    st.session_state['userId'] = 2
     st.switch_page('pages/challengespage.py') # make robert landing page or same homepage
 
 if st.button('Act as Elna, a system administrator.', 

@@ -188,6 +188,18 @@ def get_challenge(challenge_id):
     response.status_code = 200
     return response
 
+@challenges_bp.route('/<int:challenge_id>/ingredients', methods=['GET'])
+def get_challenge_ingredients(challenge_id):
+    sql = (f"SELECT i.name "
+           f"FROM challengeIngredients ci JOIN ingredients i ON ci.ingredientId = i.ingredientId "
+           f"WHERE challengeId = {challenge_id};")
+    cursor = db.get_db().cursor()
+    cursor.execute(sql)
+    theData = cursor.fetchall()
+
+    response = make_response(jsonify(theData))
+    response.status_code = 200
+    return response
 
 @challenges_bp.route('/difficulty/<string:level>', methods=['GET'])
 def challenges_by_difficulty(level):
