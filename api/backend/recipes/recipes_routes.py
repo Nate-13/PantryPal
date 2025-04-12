@@ -364,3 +364,4 @@ def get_num_recipes_by_category():
     response = make_response(jsonify(theData))
     response.status_code = 200
     return response
+

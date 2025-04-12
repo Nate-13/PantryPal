@@ -36,3 +36,26 @@ if not df.empty:
     st.pyplot(fig)
 else:
     st.info("No data to show.")
+
+def fetch_num_recipes_by_CAT():
+    res = requests.get(f"{API_URL}/recipebycategory")
+    if res.status_code == 200:
+        return pd.DataFrame(res.json())
+    else:
+        st.error("Failed to fetch recipe data.")
+        return pd.DataFrame()
+
+df = fetch_num_recipes_by_CAT()
+
+if not df.empty:
+    st.subheader("Number of Recipes by Category")
+
+    fig, ax = plt.subplots()
+    ax.plot(df['categoryName'], df['count'], marker='o')
+    ax.set_xlabel("Date")
+    ax.set_ylabel("Number of Recipes")
+    ax.set_title("Recipes per category")
+    plt.xticks(rotation=45)
+    st.pyplot(fig)
+else:
+    st.info("No data to show.")
