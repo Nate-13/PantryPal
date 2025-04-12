@@ -81,3 +81,10 @@ if challenges:
             st.markdown("---")
 else:
     st.info("No challenges found with the current filters.")
+if st.button('view report.', 
+            type = 'primary', 
+            use_container_width=True):
+    st.session_state['authenticated'] = True
+    st.session_state['role'] = 'administrator'
+    st.session_state['first_name'] = 'Elna'
+    st.switch_page('recipiesgraph.py') # change to elna home page
