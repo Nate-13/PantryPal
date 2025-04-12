@@ -18,7 +18,7 @@ if not recipe_id:
 
 left, right = st.columns(2)
 with left:
-    st.image("https://picsum.photos/id/159/700/600/?blur=10")
+    st.image("https://picsum.photos/id/159/700/700/?blur=10")
 with right:
     recipe_req = requests.get(f"http://web-api:4000/recipe/{recipe_id}")
 
@@ -35,8 +35,13 @@ with right:
     else:
         user_data = user_req.json()[0]
         st.write(f"### 👩‍🍳 {user_data['username']}")
+        # with st.button(f"### 👩‍🍳 {user_data['username']}"):
+        #     # go to user page
+        #     st.session_state['userId'] = user_data['userId']
 
-    col1, col2, col3, col4, col5 = st.columns(5)
+    st.write("----")
+
+    col1, col2, col3, col4 = st.columns(4)
     with col1:
         st.write(f"⏱️ {recipe_data['prepTime']} minutes")
     with col2:
@@ -44,9 +49,8 @@ with right:
     with col3:
         st.write(f"🔥 {recipe_data['calories']} calories")
     with col4:
-        st.badge(recipe_data['difficulty'], color="grey")
-    with col5:
         st.write(f"📅 {format_date(recipe_data['datePosted'])}")
+    st.write("----")
 
     ingredients_req = requests.get(f"http://web-api:4000/recipe/{recipe_id}/ingredients")
     if ingredients_req.status_code != 200:
@@ -63,16 +67,28 @@ st.write("### Instructions")
 st.write(instructions)
 st.write("----")
 st.write("### Reviews")
+
+avg_rating = requests.get(f"http://web-api:4000/recipe/{recipe_id}/avg-rating")
+if avg_rating.status_code != 200:
+    st.error("Could not fetch average rating.")
+else:
+    avg_rating_data = avg_rating.json()[0]
+    if avg_rating_data and avg_rating_data['avg_rating'] is not None:
+        avg_rating_rounded = round(float(avg_rating_data['avg_rating']), 1)
+        avg_rating_display = int(avg_rating_rounded) if avg_rating_rounded.is_integer() else avg_rating_rounded
+        st.write(f"### **Average Rating:** {avg_rating_display}/5 ⭐")
+
 with st.expander("📝 Write a review"):
     review = st.text_area("Write your review here:")
     rating = st.slider("Rate this recipe", 1, 5)
     if st.button("Submit"):
         review_data = {
+            "userId": st.session_state.get('userID', 1),
             "recipeId": recipe_id,
             "description": review,
             "rating": rating
         }
-        response = requests.post("http://web-api:4000/review", json=review_data)
+        response = requests.post(f"http://web-api:4000/recipe/{recipe_id}/review", json=review_data)
         if response.status_code == 200:
             st.success("Review submitted successfully!")
         else:
@@ -87,7 +103,6 @@ else:
         st.write("No reviews yet!")
     else:
         for review in reviews_data:
-            
             with st.container():
                 st.write("----")
                 st.write(f"**👤 {review['username']}**  " + f"{'⭐' * int(review['rating'])}" + f"  *Posted on {format_date(review['datePosted'])}*")

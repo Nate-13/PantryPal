@@ -251,3 +251,48 @@ def get_reviews_by_recipe(id):
     response = make_response(jsonify(theData))
     response.status_code = 200
     return response
+
+# ------------------------------------------------------------
+# Adds a review to the recipe with the provided id
+@recipes.route('/recipe/<id>/review', methods=['POST'])
+def add_review(id):
+    try:
+        review_info = request.json
+        userId = review_info['userId']
+        recipeId = id
+        rating = review_info['rating']
+        description = review_info['description']
+
+        query = '''
+            INSERT INTO reviews (userId, recipeId, rating, description)
+            VALUES (%s, %s, %s, %s);
+        '''
+        cursor = db.get_db().cursor()
+        cursor.execute(query, (userId, recipeId, rating, description))
+        db.get_db().commit()
+
+        response = make_response("Successfully added review")
+        response.status_code = 200
+        return response
+    except Exception as e:
+        current_app.logger.error(f"Error adding review: {e}")
+        response = make_response("Failed to add review")
+        response.status_code = 500
+        return response
+    
+# ------------------------------------------------------------
+# Gets the average rating for the recipe with the provided id
+@recipes.route('/recipe/<id>/avg-rating', methods=['GET'])
+def get_average_rating(id):
+    query = f'''
+            SELECT AVG(rating) as avg_rating
+            FROM reviews
+            WHERE recipeId = {str(id)};
+            '''
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    theData = cursor.fetchall()
+
+    response = make_response(jsonify(theData))
+    response.status_code = 200
+    return response
