@@ -51,8 +51,8 @@ if not df.empty:
     st.subheader("Number of Recipes by Category")
 
     fig, ax = plt.subplots()
-    ax.plot(df['categoryName'], df['count'], marker='o')
-    ax.set_xlabel("Date")
+    ax.bar(df['categoryName'], df['count'])
+    ax.set_xlabel("Category")
     ax.set_ylabel("Number of Recipes")
     ax.set_title("Recipes per category")
     plt.xticks(rotation=45)
