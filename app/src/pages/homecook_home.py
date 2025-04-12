@@ -21,7 +21,7 @@ if submitted and ingredients_input:
     with st.spinner("Searching for recipes..."):
         try:
             response = requests.post(
-                "http://web-api:4000/recipes",
+                "http://web-api:4000//recipes",
                 json={"ingredients": ingredients_input}
             )
             response.raise_for_status()
