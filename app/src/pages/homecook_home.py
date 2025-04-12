@@ -20,7 +20,7 @@ with st.form(key='ingredient_form'):
 if submitted and ingredients_input:
     with st.spinner("Searching for recipes..."):
         try:
-            response = requests.post(
+            response = requests.get(
                 "http://web-api:4000/recipes",
                 json={"ingredients": ingredients_input}
             )
