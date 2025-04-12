@@ -24,7 +24,7 @@ with st.expander("🔍 Filter reviews"):
 
 # Apply filters
 if not reviews_df.empty:
-    reviews_df = reviews_df[reviews_df["rating"] >= selected_rating]
+    reviews_df = reviews_df[reviews_df["rating"] <= selected_rating]
     if keyword:
         reviews_df = reviews_df[reviews_df["description"].str.contains(keyword, case=False, na=False) |
                                 reviews_df["recipeTitle"].str.contains(keyword, case=False, na=False)]
