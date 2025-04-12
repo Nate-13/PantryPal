@@ -56,7 +56,7 @@ if not df.empty:
     ax.set_ylabel("Number of Recipes")
     ax.set_title("Recipes per category")
     plt.xticks(fontsize=7)
-    plt.xticks(rotation=45)
+    plt.xticks(rotation=45,ha='right')
     st.pyplot(fig)
 else:
     st.info("No data to show.")
