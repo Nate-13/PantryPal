@@ -296,3 +296,23 @@ def get_average_rating(id):
     response = make_response(jsonify(theData))
     response.status_code = 200
     return response
+
+@recipes.route('/reviews', methods=['GET'])
+def get_all_reviews():
+    sql = """
+        SELECT r.reviewId, r.userId, u.username, r.recipeId, rc.title AS recipeTitle,
+               r.rating, r.description, r.datePosted, r.upVotes, r.downVotes
+        FROM reviews r
+        JOIN users u ON r.userId = u.userId
+        JOIN recipes rc ON r.recipeId = rc.recipeId
+        ORDER BY r.datePosted DESC;
+    """
+    
+    cursor = db.get_db().cursor()
+    cursor.execute(sql)
+    theData = cursor.fetchall()
+
+    response = make_response(jsonify(theData))
+    response.status_code = 200
+    return response
+
