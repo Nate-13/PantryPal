@@ -30,7 +30,7 @@ if submitted and ingredients_input:
             if recipes:
                 st.success(f"Found {len(recipes)} recipes!")
                 for recipe in recipes:
-                    st.markdown(f"**{recipe['name']}**")
+                    st.markdown(f"**{recipe['title']}**")
                     st.write(f"Ingredients: {', '.join(recipe['ingredients'])}")
                     st.write(f"Instructions: {recipe['instructions']}")
                     st.markdown("---")
