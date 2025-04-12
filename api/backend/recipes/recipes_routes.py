@@ -19,7 +19,6 @@ def get_recipes():
     query = '''
         SELECT r.recipeId, r.title, r.description, r.difficulty, r.calories, r.chefId, r.datePosted, r.prepTime, r.servings, u.username as chefName
         FROM recipes r JOIN users u ON r.chefId = u.userId
-        ORDER BY RAND()
     '''
     
     # get a cursor object from the database
@@ -225,6 +224,25 @@ def get_user_by_recipe(id):
             FROM recipes r
             JOIN users u ON r.chefId = u.userId
             WHERE r.recipeId = {str(id)};
+            '''
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    theData = cursor.fetchall()
+
+    response = make_response(jsonify(theData))
+    response.status_code = 200
+    return response
+
+# ------------------------------------------------------------
+# Gets all reviews for the recipe with the provided id
+@recipes.route('/recipe/<id>/reviews', methods=['GET'])
+def get_reviews_by_recipe(id):
+    query = f'''
+            SELECT u.username, r.*
+            FROM reviews r
+            JOIN users u ON r.userId = u.userId
+            JOIN recipes rec ON r.recipeId = rec.recipeId
+            WHERE rec.recipeId = {str(id)};
             '''
     cursor = db.get_db().cursor()
     cursor.execute(query)
