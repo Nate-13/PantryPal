@@ -105,6 +105,7 @@ if not filtered_recipes:
                     st.error("Failed to submit the challenge. Please try again later.")
                     st.exception(e)
 else:
+    # Display all found recipes
     f'''
     found {len(filtered_recipes)} recipes!
     '''
@@ -120,7 +121,7 @@ else:
                         # Placeholder for recipe image
                         st.image(f"https://picsum.photos/id/159/300/400/?blur=10", use_container_width=True)
                     with right_col:
-                        if st.button(f"**{recipe['title']}**"):
+                        if st.button(f"**{recipe['title']}**", key=f"recipe_{recipe['recipeId']}"):
                             st.session_state['recipeId'] = recipe['recipeId']
                             st.switch_page('pages/recipePage.py')
 

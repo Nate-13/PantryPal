@@ -296,3 +296,56 @@ def get_average_rating(id):
     response = make_response(jsonify(theData))
     response.status_code = 200
     return response
+
+# ------------------------------------------------------------
+# Submits a new recipe and all of its recipeIngredients
+@recipes.route('/recipe/add', methods=['POST'])
+def submit_recipe():
+    the_data = request.json
+    current_app.logger.info(the_data)
+
+    # Extracting variables
+    title = the_data['title']
+    description = the_data['description']
+    instructions = the_data['instructions']
+    prepTime = the_data['prepTime']
+    servings = the_data['servings']
+    difficulty = the_data['difficulty']
+    calories = the_data['calories']
+    ingredients = the_data['ingredients']
+    chefId = 1 
+    try:
+        query = '''
+            INSERT INTO recipes (chefId, title, description, instructions, prepTime, servings, difficulty, calories)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s);
+        '''
+        cursor = db.get_db().cursor()
+        cursor.execute(query, (chefId, title, description, instructions, prepTime, servings, difficulty, calories))
+        recipe_id = cursor.lastrowid  # Get the last inserted recipeId
+        db.get_db().commit()
+    except Exception as e:
+        current_app.logger.error(f"Error inserting recipe: {e}")
+        db.get_db().rollback()
+        response = make_response({'message': 'Failed to insert recipe'}, 500)
+        return response  
+     
+    try:
+        # Remove duplicate ingredients from the list
+        unique_ingredients = {f"{ing['ingredientId']}-{ing['quantity']}-{ing['unit']}": ing for ing in ingredients}.values()
+
+        for ingredient in unique_ingredients:
+            query = '''
+                INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit)
+                VALUES (%s, %s, %s, %s);
+            '''
+            cursor.execute(query, (recipe_id, ingredient['ingredientId'], ingredient['quantity'], ingredient['unit']))
+        db.get_db().commit()
+        response = make_response({'message': 'Recipe submitted successfully'})
+        response.status_code = 200
+    except Exception as e:
+        current_app.logger.error(f"Error inserting recipe ingredients: {e}")
+        db.get_db().rollback()
+        response = make_response({'message': 'Failed to insert recipe ingredients'}, 500)
+        return response
+    return response
+# ------------------------------------------------------------

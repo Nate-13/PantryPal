@@ -28,8 +28,9 @@ def user_profile_nav():
 
 def new_recipe_nav():
     st.sidebar.page_link(
-        "pages/pantrypal_home.py", label="New Recipe", icon="🍽️" # change to new recipe page when made
+        "pages/newRecipe.py", label="New Recipe", icon="🍽️" # change to new recipe page when made
     )
+
 
 #### ------------------------ Examples for Role of pol_strat_advisor ------------------------
 def PolStratAdvHomeNav():
@@ -68,9 +69,7 @@ def ClassificationNav():
 #### ------------------------ System Admin Role ------------------------
 def AdminPageNav():
     st.sidebar.page_link("pages/20_Admin_Home.py", label="System Admin", icon="🖥️")
-    st.sidebar.page_link(
-        "pages/21_ML_Model_Mgmt.py", label="ML Model Management", icon="🏢"
-    )
+
 
 
 # --------------------------------Links Function -----------------------------------------------

@@ -20,6 +20,7 @@ CREATE TABLE recipes(
     chefId int NOT NULL,
     title varchar(50) NOT NULL,
     description text NOT NULL,
+    instructions text DEFAULT NULL,
     datePosted DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     prepTime int NOT NULL,
     servings double NOT NULL,
@@ -132,7 +133,7 @@ CREATE TABLE categories
 # ADDING DATA
 -- Users
 INSERT INTO users (username, firstName, lastName, email, bio) VALUES
-('chefjulia', 'Julia', 'Martinez', 'julia.martinez@example.com', 'Pastry chef with a sweet tooth and a love for French desserts.'),
+('KaleYeah', 'Isabel', 'Nicholson', 'isabel.nicholson@example.com', 'Passionate about plant-based cooking and driven by a mission to create good-tasting food using locally sourced and environmentally friendly ingredients'),
 ('spiceking', 'Derek', 'Ramsey', 'derek.ramsey@example.com', 'Obsessed with global spices and fusion cooking.'),
 ('plantplate', 'Amara', 'Singh', 'amara.singh@example.com', 'Vegan enthusiast creating colorful plant-based dishes.'),
 ('grillguru', 'Tom', 'Hawkins', 'tom.hawkins@example.com', 'Backyard BBQ master. Brisket is life.'),
