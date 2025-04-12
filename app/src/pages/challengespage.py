@@ -6,10 +6,7 @@ API_BASE_URL = "http://web-api:4000/c"  # Change if needed
 st.title("🧠 Available Challenges")
 st.markdown("Browse, filter, claim, or update the status of challenges.")
 
-if st.button("📈 View Recipe Report"):
-
-    st.switch_page("pages/recipeGraph.py")
-    st.session_state["report_button"] = True 
+ 
 
 # difficulty_filter = st.selectbox(
 #     "Filter by difficulty", ["All", "Easy", "Medium", "Hard"], index=0
