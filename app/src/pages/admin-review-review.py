@@ -10,7 +10,7 @@ st.title("📝 Recipe Review Browser")
 def fetch_reviews():
     try:
         res = requests.get(f"{API_BASE}/reviews")
-        return res.json() if res.status_code == 200 else []
+        return pd.DataFrame(res.json()) if res.status_code == 200 else pd.DataFrame()
     except Exception as e:
         st.error("❌ Failed to load reviews.")
         return pd.DataFrame()
