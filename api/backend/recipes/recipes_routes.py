@@ -352,7 +352,7 @@ def submit_recipe():
 @recipes.route('/recipebycategory', methods=['GET']) 
 def get_num_recipes_by_category():
     query = f'''
-            SELECT COUNT(*), c.categoryName
+            SELECT COUNT(*) AS count, c.categoryName
             FROM  recipes r
             JOIN categories c ON r.recipeId = c.recipeId
             GROUP BY c.categoryName
