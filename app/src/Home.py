@@ -81,7 +81,13 @@ if st.button('Act as Elna, a system administrator.',
     st.session_state['first_name'] = 'Elna'
     st.switch_page('pages/challengespage.py') # change to elna home page
 
-
+if st.button('view report.', 
+            type = 'primary', 
+            use_container_width=True):
+    st.session_state['authenticated'] = True
+    st.session_state['role'] = 'administrator'
+    st.session_state['first_name'] = 'Elna'
+    st.switch_page('recipiesgraph.py') # change to elna home page
 
 
 
