@@ -400,7 +400,7 @@ def get_all_reviews():
 @recipes.route('/reviews/<int:review_id>/delete', methods=['DELETE'])
 def delete_review(id):
     query = f'''
-            DELETE FROM recipes
+            DELETE FROM reviews
             WHERE reviewId = {str(id)};
             '''
     cursor = db.get_db().cursor()
