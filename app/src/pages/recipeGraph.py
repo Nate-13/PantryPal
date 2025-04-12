@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 
 st.title("📅 Recipes Posted Over Time")
 
-API_URL = "http://web-api:4000/recipes"  # Adjust as needed
+API_URL = "http://web-api:4000/"  # Adjust as needed
 
 def fetch_recipes_by_date():
     res = requests.get(f"{API_URL}/recipes/posted-over-time")
