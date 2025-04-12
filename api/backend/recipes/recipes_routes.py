@@ -349,3 +349,18 @@ def submit_recipe():
         return response
     return response
 # ------------------------------------------------------------
+@recipes.route('/recipebycategory', methods=['GET']) 
+def get_num_recipes_by_category():
+    query = f'''
+            SELECT COUNT(*), c.categoryName
+            FROM  recipes r
+            JOIN categories c ON r.recipeId = c.recipeId
+            GROUP BY c.categoryName
+            '''
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    theData = cursor.fetchall()
+
+    response = make_response(jsonify(theData))
+    response.status_code = 200
+    return response
