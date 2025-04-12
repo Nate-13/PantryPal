@@ -365,3 +365,15 @@ def get_num_recipes_by_category():
     response.status_code = 200
     return response
 
+@recipes.route('/recipes/posted-over-time', methods=['GET'])
+def recipes_over_time():
+    sql = """
+        SELECT DATE(datePosted) AS date, COUNT(*) AS count
+        FROM recipes
+        GROUP BY DATE(datePosted)
+        ORDER BY date ASC;
+    """
+    cursor = db.get_db().cursor()
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    return jsonify(results)
