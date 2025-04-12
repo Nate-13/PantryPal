@@ -6,6 +6,9 @@ API_BASE_URL = "http://web-api:4000/c"  # Change if needed
 st.title("🧠 Available Challenges")
 st.markdown("Browse, filter, claim, or update the status of challenges.")
 
+if st.button('view report.'):
+    st.switch_page('pages/recipiesgraph.py') 
+
 # difficulty_filter = st.selectbox(
 #     "Filter by difficulty", ["All", "Easy", "Medium", "Hard"], index=0
 # )
