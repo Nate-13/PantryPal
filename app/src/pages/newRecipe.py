@@ -97,7 +97,8 @@ if st.button("Submit Recipe", type='primary', use_container_width=True):
             "prepTime": prep_time,  # Placeholder for prep time
             "calories": calories,  # Placeholder for calories
             "servings": servings,  # Placeholder for servings
-            "ingredients": compiled_ingredients
+            "ingredients": compiled_ingredients,
+            "chefId": st.session_state['userId']  # Assuming the userId is the chefId
         }
         try:
             response = requests.post("http://web-api:4000/recipe/add", json=recipe_data)

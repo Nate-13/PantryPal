@@ -90,6 +90,7 @@ def SideBarLinks(show_home=False):
             HomeNav()
             pantry_pal_home_nav()
             recipe_challenges()
+            new_recipe_nav()
             user_profile_nav()
             print("User is a student")
 

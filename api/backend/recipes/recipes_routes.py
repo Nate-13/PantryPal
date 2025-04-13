@@ -314,7 +314,7 @@ def submit_recipe():
     difficulty = the_data['difficulty']
     calories = the_data['calories']
     ingredients = the_data['ingredients']
-    chefId = 1 
+    chefId = the_data['chefId']
     try:
         query = '''
             INSERT INTO recipes (chefId, title, description, instructions, prepTime, servings, difficulty, calories)
