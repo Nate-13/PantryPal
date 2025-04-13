@@ -1,40 +1,53 @@
-import logging
-logger = logging.getLogger(__name__)
-
 import streamlit as st
 import requests
-from modules.nav import SideBarLinks
 
-st.set_page_config(layout='wide')
+API_BASE_USER = "http://web-api:4000/u/users"
+API_BASE_RECIPES = "http://web-api:4000/user"
 
-SideBarLinks()
+st.title("User Information")
 
-st.title(f"Welcome, {st.session_state['first_name']}.")
-st.write('')
-st.write('### What would you like to do today?')
+user_id = st.text_input("Enter User ID:")
 
-with st.form(key='ingredient_form'):
-    ingredients_input = st.text_input('Enter ingredient(s) (comma-separated):', '')
-    submitted = st.form_submit_button('Search Recipes')
-
-if submitted and ingredients_input:
-    with st.spinner("Searching for recipes..."):
+if user_id.strip():
+    with st.spinner("Fetching data..."):
         try:
-            response = requests.get(
-                "http://web-api:4000/recipes",
-                json={"ingredients": ingredients_input}
-            )
-            response.raise_for_status()
-            recipes = response.json()
+            user_resp = requests.get(f"{API_BASE_USER}/{user_id}")
+            user_data = user_resp.json()
 
-            if recipes:
-                st.success(f"Found {len(recipes)} recipes!")
-                for recipe in recipes:
-                    st.markdown(f"**{recipe['title']}**")
-                    st.write(f"Ingredients: {', '.join(recipe['ingredients'])}")
-                    st.write(f"Instructions: {recipe['instructions']}")
-                    st.markdown("---")
+            if user_resp.status_code == 200 and user_data:
+                if isinstance(user_data, list):
+                    user = user_data[0]
+                else:
+                    user = user_data
+
+                st.subheader(f"Profile: {user.get('username', 'N/A')}")
+                st.markdown(f"""
+                    - First Name: {user.get('firstName', 'N/A')}
+                    - Last Name: {user.get('lastName', 'N/A')}
+                    - Email: {user.get('email', 'N/A')}
+                    - User ID: {user.get('userId', 'N/A')}
+                """)
             else:
-                st.warning("No recipes found for those ingredients.")
+                st.info("User not found.")
+
+            recipe_resp = requests.get(f"{API_BASE_RECIPES}/{user_id}/recipes")
+            recipes = recipe_resp.json()
+
+            if recipe_resp.status_code == 200 and recipes:
+                st.subheader("User's Recipes")
+                for recipe in recipes:
+                    st.markdown(f"""
+                        ### {recipe.get('title', 'Untitled')}
+                        - Description: {recipe.get('description', 'N/A')}
+                        - Difficulty: {recipe.get('difficulty', 'N/A')}
+                        - Calories: {recipe.get('calories', 'N/A')}
+                        - Prep Time: {recipe.get('prepTime', 'N/A')} mins
+                        - Servings: {recipe.get('servings', 'N/A')}
+                        - Date Posted: {recipe.get('datePosted', 'N/A')}
+                        - Created At: {recipe.get('createdAt', 'N/A')}
+                    """)
+            else:
+                st.info("User has no recipes.")
         except Exception as e:
-            st.error(f"Error fetching recipes: {e}")
+            st.error("Error connecting to the API")
+            st.text(str(e))
