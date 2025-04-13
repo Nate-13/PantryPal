@@ -10,6 +10,18 @@ from backend.db_connection import db
 challenges_bp = Blueprint('challenges', __name__)
 
 #-----------------------------------------------
+# gets all challenge from the database
+# and returns them to the client
+
+@challenges_bp.route('/all', methods=['GET'])
+def get_all_challenges():
+    sql = "SELECT * FROM challenges ORDER BY createdAt DESC;"
+    cursor = db.get_db().cursor()
+    cursor.execute(sql)
+    data = cursor.fetchall()
+    return make_response(jsonify(data), 200)
+
+#-----------------------------------------------
 # gets all challenge requests from the database
 # and returns them to the client
 @challenges_bp.route('/all-requests', methods=['GET'])
@@ -62,22 +74,64 @@ def denied_requests():
 @challenges_bp.route('/requests/<int:request_id>/approve', methods=['PUT'])
 def approve_request(request_id):
     try:
-        reviewer_id = 1 
-        sql = """
+        reviewer_id = 2
+        cursor = db.get_db().cursor()
+
+        # Step 1: Mark request as approved
+        cursor.execute("""
             UPDATE challengeRequests
             SET status = 'APPROVED', reviewedBy = %s
             WHERE requestID = %s;
-        """
-        cursor = db.get_db().cursor()
-        cursor.execute(sql, (reviewer_id, request_id))
-        db.get_db().commit()
+        """, (reviewer_id, request_id))
 
-        response = make_response({'message': f'Request {request_id} approved'})
-        response.status_code = 200
-        return response
+        # Step 2: Fetch request data
+        cursor.execute("""
+            SELECT description, requestedById
+            FROM challengeRequests
+            WHERE requestID = %s;
+        """, (request_id,))
+        req = cursor.fetchone()
+
+        if req is None:
+            db.get_db().rollback()
+            return make_response({'error': 'Request not found'}, 404)
+
+        description, requested_by_id = req
+        current_app.logger.info(f"Approving request {request_id} with description: {description}")
+
+        # Step 3: Insert challenge with difficulty NULL
+        cursor.execute("""
+            INSERT INTO challenges (description, approvedById, difficulty, status)
+            VALUES (%s, %s, %s, 'UNCLAIMED');
+        """, (description, reviewer_id, None))
+        challenge_id = cursor.lastrowid
+
+        # Step 4: Copy ingredients safely
+        cursor.execute("""
+            SELECT ingredientId
+            FROM requestIngredients
+            WHERE requestId = %s;
+        """, (request_id,))
+        ingredients = cursor.fetchall()
+
+        # This will work whether fetchall() returns tuples or dicts
+        for row in ingredients:
+            if isinstance(row, dict):
+                ingredient_id = row["ingredientId"]
+            else:
+                ingredient_id = row[0]
+
+            cursor.execute("""
+                INSERT INTO challengeIngredients (challengeId, ingredientId)
+                VALUES (%s, %s);
+            """, (challenge_id, ingredient_id))
+
+        db.get_db().commit()
+        return make_response({'message': f'Request {request_id} approved and challenge {challenge_id} created'}, 200)
 
     except Exception as e:
         db.get_db().rollback()
+        current_app.logger.error(f"Error during approval: {str(e)}")
         return make_response({'error': str(e)}, 500)
 
 
