@@ -35,7 +35,7 @@ SideBarLinks(show_home=True)
 
 # set the title of the page and provide a simple prompt. 
 logger.info("Loading the Home page of the PantryPal")
-st.title('PantryPal') 
+st.title('PantryPal Login') 
 st.write('\n\n')
 st.write('### Hi! As which user would you like to log in?')
 

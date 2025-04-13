@@ -23,7 +23,7 @@ def fetch_reviews():
 reviews_df = fetch_reviews()
 
 with st.expander("🔍 Filter reviews"):
-    selected_rating = st.slider("Minimum rating", 0, 5, 0)
+    selected_rating = st.slider("Maximum rating", 1, 5, 5)
     keyword = st.text_input("Search by keyword in review or recipe title")
 
 # Apply filters
@@ -38,7 +38,7 @@ if reviews_df.empty:
 else:
     for _, row in reviews_df.iterrows():
         with st.container(border=True):
-            st.markdown(f"### ⭐️ {row['rating']} - {row['username']} on _{row['recipeTitle']}_")
+            st.markdown(f"### {row['rating']} ⭐️ - {row['username']} on _{row['recipeTitle']}_")
             st.write(row['description'])
             st.caption(f"Posted on {row['datePosted']} — By {row['userId']} — 👍 {row['upVotes']} | 👎 {row['downVotes']}")
 

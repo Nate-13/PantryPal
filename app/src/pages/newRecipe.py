@@ -4,7 +4,7 @@ import streamlit as st
 import requests
 from streamlit_extras.app_logo import add_logo
 from modules.nav import SideBarLinks
-from datetime import datetime
+import time
 
 SideBarLinks()
 
@@ -103,6 +103,9 @@ if st.button("Submit Recipe", type='primary', use_container_width=True):
             response = requests.post("http://web-api:4000/recipe/add", json=recipe_data)
             response.raise_for_status()
             st.success("Recipe submitted successfully!")
+            with st.spinner("Redirecting..."):
+                time.sleep(1)
+                st.switch_page('pages/pantrypal_home.py')
         except Exception as e:
             st.error("Failed to submit recipe.")
             st.exception(e)
