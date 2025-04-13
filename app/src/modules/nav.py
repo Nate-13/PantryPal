@@ -66,28 +66,27 @@ def SideBarLinks(show_home=False):
     if "authenticated" not in st.session_state:
         st.session_state.authenticated = False
         st.switch_page("Home.py")
+        
 
 
     # Show the other page navigators depending on the users' role.
     if st.session_state["authenticated"]:
+        HomeNav()
         print("User is authenticated")
         # Show World Bank Link and Map Demo Link if the user is a political strategy advisor role.
         if st.session_state["role"] == "homecook":
-            HomeNav()
             pantry_pal_home_nav()
             user_profile_nav()
             print("User is a home cook")
 
         # If the user role is usaid worker, show the Api Testing page
         if st.session_state["role"] == "chef":
-            HomeNav()
             pantry_pal_home_nav()
             user_profile_nav()
             new_recipe_nav()
             print("User is a chef")
 
         if st.session_state["role"] == "student":
-            HomeNav()
             pantry_pal_home_nav()
             recipe_challenges()
             new_recipe_nav()
@@ -96,11 +95,12 @@ def SideBarLinks(show_home=False):
 
         # If the user is an administrator, give them access to the administrator pages
         if st.session_state["role"] == "administrator":
-            HomeNav()
             recipereviews()
             recipereport()
             challengeReview()
             print("User is an administrator")
+    else:
+        HomeNav()
 
     # Always show the About page at the bottom of the list of links
     AboutPageNav()
