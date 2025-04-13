@@ -9,12 +9,13 @@ from datetime import datetime
 def format_date(date_str):
     return datetime.strptime(date_str, "%a, %d %b %Y %H:%M:%S %Z").strftime("%B %d, %Y")
 
-SideBarLinks()
 
 recipe_id = st.session_state.get('recipeId', None)
 
 if not recipe_id:
     st.warning("No recipe ID provided.")
+
+SideBarLinks()
 
 left, right = st.columns(2)
 with left:
@@ -37,9 +38,6 @@ with right:
         if st.button(f"### 👩‍🍳 {user_data['username']}"):
             st.session_state['viewingId'] = user_data['userId']
             st.switch_page('pages/user_profile.py')
-        # with st.button(f"### 👩‍🍳 {user_data['username']}"):
-        #     # go to user page
-        #     st.session_state['userId'] = user_data['userId']
 
     st.write("----")
 

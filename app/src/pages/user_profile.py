@@ -1,9 +1,11 @@
 import streamlit as st
 import requests
+from modules.nav import SideBarLinks
 
 API_BASE_USER = "http://web-api:4000/users"
 API_BASE_RECIPES = "http://web-api:4000/user"
 
+SideBarLinks()
 
 userId = st.session_state.get("viewingId", None)
 if userId:

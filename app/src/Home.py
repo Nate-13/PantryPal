@@ -20,7 +20,8 @@ st.set_page_config(layout = 'wide')
 # If a user is at this page, we assume they are not 
 # authenticated.  So we change the 'authenticated' value
 # in the streamlit session_state to false. 
-st.session_state['authenticated'] = False
+if "authenticated" not in st.session_state:
+    st.session_state['authenticated'] = False
 
 # Use the SideBarLinks function from src/modules/nav.py to control
 # the links displayed on the left-side panel. 
@@ -51,6 +52,7 @@ if st.button("Act as Milo, a home-cook.",
     st.session_state['userId'] = 3
     logger.info("Logging in as home-cook Persona")
     st.switch_page('pages/pantrypal_home.py') # change to homecook main page
+        # st.session_state['viewingId'] = 3
 
 if st.button('Act as Isabel, a chef and blogger', 
             type = 'primary', 
@@ -60,6 +62,7 @@ if st.button('Act as Isabel, a chef and blogger',
     st.session_state['first_name'] = 'Isabel'
     st.session_state['userId'] = 1
     st.switch_page('pages/pantrypal_home.py') # change to chef home page
+    logger.info("Logging in as chef")
 
 if st.button('Act as Robert, a culinary student.', 
             type = 'primary', 
@@ -69,6 +72,7 @@ if st.button('Act as Robert, a culinary student.',
     st.session_state['first_name'] = 'Robert'
     st.session_state['userId'] = 2
     st.switch_page('pages/challengespage.py') # make robert landing page or same homepage
+    logger.info("Logging in as student")
 
 if st.button('Act as Elna, a system administrator.', 
             type = 'primary', 
@@ -77,6 +81,5 @@ if st.button('Act as Elna, a system administrator.',
     st.session_state['role'] = 'administrator'
     st.session_state['first_name'] = 'Elna'
     st.switch_page('pages/22_Challenge_Rq.py') # change to elna home page
-
-
+    logger.info("Logging in as administrator")
 
