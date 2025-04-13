@@ -58,34 +58,49 @@ def denied_requests():
     response = make_response(jsonify(theData))
     response.status_code = 200
     return response
+
 @challenges_bp.route('/requests/<int:request_id>/approve', methods=['PUT'])
 def approve_request(request_id):
-    sql = f"""
-        UPDATE challengeRequest
-        SET status = 'approved', reviewedBy = {request_id}
-        WHERE requestID = {request_id};
-    """
-    cursor = db.get_db().cursor()
-    cursor.execute(sql)
-    db.get_db().commit()
+    try:
+        reviewer_id = 1 
+        sql = """
+            UPDATE challengeRequests
+            SET status = 'APPROVED', reviewedBy = %s
+            WHERE requestID = %s;
+        """
+        cursor = db.get_db().cursor()
+        cursor.execute(sql, (reviewer_id, request_id))
+        db.get_db().commit()
 
-    response = make_response({'message': f'Request {request_id} approved'})
-    response.status_code = 200
-    return response
+        response = make_response({'message': f'Request {request_id} approved'})
+        response.status_code = 200
+        return response
+
+    except Exception as e:
+        db.get_db().rollback()
+        return make_response({'error': str(e)}, 500)
+
+
 @challenges_bp.route('/requests/<int:request_id>/decline', methods=['PUT'])
 def decline_request(request_id):
-    sql = f"""
-        UPDATE challengeRequest
-        SET status = 'DENIED', reviewedBy = 1
-        WHERE requestID = {request_id};
-    """
-    cursor = db.get_db().cursor()
-    cursor.execute(sql)
-    db.get_db().commit()
+    try:
+        reviewer_id = 1
+        sql = """
+            UPDATE challengeRequests
+            SET status = 'DENIED', reviewedBy = %s
+            WHERE requestID = %s;
+        """
+        cursor = db.get_db().cursor()
+        cursor.execute(sql, (reviewer_id, request_id))
+        db.get_db().commit()
 
-    response = make_response({'message': f'Request {request_id} approved'})
-    response.status_code = 200
-    return response
+        response = make_response({'message': f'Request {request_id} declined'})
+        response.status_code = 200
+        return response
+
+    except Exception as e:
+        db.get_db().rollback()
+        return make_response({'error': str(e)}, 500)
 
 @challenges_bp.route('/requests/user/<int:user_id>', methods=['GET'])
 def user_requests(user_id):
