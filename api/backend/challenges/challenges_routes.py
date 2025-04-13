@@ -226,20 +226,16 @@ def post_challenge():
     description = data.get('description')
     difficulty = data.get('difficulty')
     approved_by = data.get('approvedById')
-    sql = f"""
-        INSERT INTO challenges (description, difficulty,approvedById)
-        VALUES ('{description}', '{difficulty}', '{approved_by}');
-    """
-    current_app.logger.info(sql)
 
-    # executing and committing the insert statement
+    sql = """
+        INSERT INTO challenges (description, difficulty, approvedById)
+        VALUES (%s, %s, %s);
+    """
     cursor = db.get_db().cursor()
-    cursor.execute(sql)
+    cursor.execute(sql, (description, difficulty, approved_by))
     db.get_db().commit()
 
-    response = make_response({'message': 'Challenge created'})
-    response.status_code = 200
-    return response
+    return make_response({'message': 'Challenge created'}, 201)
 
 @challenges_bp.route('/<int:challenge_id>', methods=['GET'])
 def get_challenge(challenge_id):
