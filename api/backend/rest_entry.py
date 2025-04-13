@@ -1,7 +1,7 @@
 from flask import Flask
 
 from backend.db_connection import db
-from backend.customers.challenges_routes import challenges_bp
+from backend.challenges.challenges_routes import challenges_bp
 from backend.recipes.recipes_routes import recipes
 from backend.ingredients.ingredient_route import ingredients
 from backend.users.users_routes import users
