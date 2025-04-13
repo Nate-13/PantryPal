@@ -4,14 +4,13 @@ import requests
 API_BASE_USER = "http://web-api:4000/users"
 API_BASE_RECIPES = "http://web-api:4000/user"
 
+
+userId = st.session_state.get("viewingId", None)
 st.title("User Information")
-
-user_id = st.text_input("Enter User ID:")
-
-if user_id.strip():
+if userId:
     with st.spinner("Fetching data..."):
         try:
-            user_resp = requests.get(f"{API_BASE_USER}/{user_id}")
+            user_resp = requests.get(f"{API_BASE_USER}/{userId}")
             user_data = user_resp.json()
 
             if user_resp.status_code == 200 and user_data:
@@ -24,13 +23,11 @@ if user_id.strip():
                 st.markdown(f"""
                     - First Name: {user.get('firstName', 'N/A')}
                     - Last Name: {user.get('lastName', 'N/A')}
-                    - Email: {user.get('email', 'N/A')}
-                    - User ID: {user.get('userId', 'N/A')}
                 """)
             else:
                 st.info("User not found.")
 
-            recipe_resp = requests.get(f"{API_BASE_RECIPES}/{user_id}/recipes")
+            recipe_resp = requests.get(f"{API_BASE_RECIPES}/{userId}/recipes")
             recipes = recipe_resp.json()
 
             if recipe_resp.status_code == 200 and recipes:
@@ -51,3 +48,5 @@ if user_id.strip():
         except Exception as e:
             st.error("Error connecting to the API")
             st.text(str(e))
+else:
+    st.error("This user could not be found")

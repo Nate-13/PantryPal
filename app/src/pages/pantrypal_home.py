@@ -126,7 +126,10 @@ else:
                             st.switch_page('pages/recipePage.py')
 
                         st.markdown(recipe['description'])
-                        st.markdown(f"**Created by:** {recipe['chefName']}")
+                        chef_id = recipe['chefId']
+                        if st.button(recipe['chefName'], key=f"chef_{chef_id}_{recipe['recipeId']}"):
+                            st.session_state['viewingId'] = chef_id
+                            st.switch_page('pages/user_profile.py')
                         st.markdown(f"**🕒 Prep Time:** {recipe['prepTime']} minutes | **🍽️ Servings:** {recipe['servings']}")
                         st.markdown(f"**Calories:** {recipe['calories']}")
                         difficulty = recipe.get("difficulty", "UNKNOWN")

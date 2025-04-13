@@ -50,7 +50,7 @@ if st.button("Act as Milo, a home-cook.",
     st.session_state['first_name'] = 'Milo'
     st.session_state['userId'] = 3
     logger.info("Logging in as home-cook Persona")
-    st.switch_page('pages/homecook_home.py') # change to homecook main page
+    st.switch_page('pages/pantrypal_home.py') # change to homecook main page
 
 if st.button('Act as Isabel, a chef and blogger', 
             type = 'primary', 

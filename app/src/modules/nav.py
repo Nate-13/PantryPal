@@ -21,7 +21,7 @@ def pantry_pal_home_nav():
 #### ------------------------ HomeCook ------------------------
 def user_profile_nav():
     st.sidebar.page_link(
-        "pages/pantrypal_home.py", label="My Profile", icon="👤" # change to user profile page when made
+        "pages/user_profile.py", label="My Profile", icon="👤" # change to user profile page when made
     )
 
 #### ------------------------ Chef ------------------------
