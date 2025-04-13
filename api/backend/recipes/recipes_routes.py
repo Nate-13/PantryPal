@@ -17,7 +17,7 @@ recipes = Blueprint('recipes', __name__)
 @recipes.route('/recipes', methods=['GET'])
 def get_recipes():
     query = '''
-        SELECT r.recipeId, r.title, r.description, r.difficulty, r.calories, r.chefId, r.datePosted, r.prepTime, r.servings, u.username as chefName
+        SELECT r.recipeId, r.title, r.description, r.difficulty, r.calories, r.chefId, r.datePosted, r.prepTime, r.servings,r.instructions, u.username as chefName
         FROM recipes r JOIN users u ON r.chefId = u.userId
         ORDER BY r.datePosted DESC;
     '''
