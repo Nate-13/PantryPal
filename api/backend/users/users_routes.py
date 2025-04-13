@@ -41,13 +41,14 @@ def update_user():
     first = user_info['firstName']
     last = user_info['lastName']
     email = user_info['email']
+    bio = user_info['bio']
 
     query = '''
         UPDATE users 
-        SET username = %s, firstName = %s, lastName = %s, email = %s 
+        SET username = %s, firstName = %s, lastName = %s, email = %s, bio = %s
         WHERE userId = %s
     '''
-    data = (username, first, last, email, user_id)
+    data = (username, first, last, email, bio, user_id)
 
     cursor = db.get_db().cursor()
     cursor.execute(query, data)
