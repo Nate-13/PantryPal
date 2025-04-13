@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-API_BASE_USER = "http://web-api:4000/u/users"
+API_BASE_USER = "http://web-api:4000/users"
 API_BASE_RECIPES = "http://web-api:4000/user"
 
 st.title("User Information")
