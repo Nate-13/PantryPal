@@ -6,7 +6,6 @@ API_BASE_RECIPES = "http://web-api:4000/user"
 
 
 userId = st.session_state.get("viewingId", None)
-st.title("User Information")
 if userId:
     with st.spinner("Fetching data..."):
         try:
@@ -19,11 +18,14 @@ if userId:
                 else:
                     user = user_data
 
-                st.subheader(f"Profile: {user.get('username', 'N/A')}")
-                st.markdown(f"""
-                    - First Name: {user.get('firstName', 'N/A')}
-                    - Last Name: {user.get('lastName', 'N/A')}
-                """)
+                left, right = st.columns([1, 5])
+                with left:
+                    st.image(f"https://placehold.co/200x200", use_container_width=True)
+                with right:
+                    st.subheader(f"*{user.get('firstName', 'N/A')} {user.get('lastName', 'N/A')}*")
+                    st.title(user.get('username', 'N/A'))
+                    st.write(user.get('bio', 'N/A'))
+                st.write("----")
             else:
                 st.info("User not found.")
 
@@ -31,7 +33,7 @@ if userId:
             recipes = recipe_resp.json()
 
             if recipe_resp.status_code == 200 and recipes:
-                st.subheader("User's Recipes")
+                st.subheader("Recipes")
                 for recipe in recipes:
                     st.markdown(f"""
                         ### {recipe.get('title', 'Untitled')}

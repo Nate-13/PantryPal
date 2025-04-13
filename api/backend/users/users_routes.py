@@ -24,7 +24,7 @@ def get_all_users():
 def get_user(userId):
     current_app.logger.info('GET /users/<userId> route')
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT userId, username, firstName, lastName, email FROM users WHERE userId = %s', (userId,))
+    cursor.execute('SELECT * FROM users WHERE userId = %s', (userId))
     theData = cursor.fetchall()
     the_response = make_response(jsonify(theData))
     the_response.status_code = 200

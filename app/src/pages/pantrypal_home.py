@@ -119,7 +119,7 @@ else:
                     left_col, right_col = st.columns([1, 2])
                     with left_col:
                         # Placeholder for recipe image
-                        st.image(f"https://picsum.photos/id/159/300/400/?blur=10", use_container_width=True)
+                        st.image(f"https://placehold.co/300x400", use_container_width=True)
                     with right_col:
                         if st.button(f"**{recipe['title']}**", key=f"recipe_{recipe['recipeId']}"):
                             st.session_state['recipeId'] = recipe['recipeId']
@@ -127,7 +127,7 @@ else:
 
                         st.markdown(recipe['description'])
                         chef_id = recipe['chefId']
-                        if st.button(recipe['chefName'], key=f"chef_{chef_id}_{recipe['recipeId']}"):
+                        if st.button("🧑‍🍳 " + recipe['chefName'], key=f"chef_{chef_id}_{recipe['recipeId']}"):
                             st.session_state['viewingId'] = chef_id
                             st.switch_page('pages/user_profile.py')
                         st.markdown(f"**🕒 Prep Time:** {recipe['prepTime']} minutes | **🍽️ Servings:** {recipe['servings']}")
