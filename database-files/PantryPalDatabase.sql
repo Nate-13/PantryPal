@@ -127,7 +127,7 @@ CREATE TABLE categories
     categoryName varchar(50) NOT NULL,
     recipeId int NOT NULL,
     description text,
-    FOREIGN KEY (recipeId) REFERENCES recipes(recipeId)
+    FOREIGN KEY (recipeId) REFERENCES recipes(recipeId) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 # ADDING DATA

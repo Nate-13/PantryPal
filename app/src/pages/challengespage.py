@@ -76,6 +76,7 @@ if search_query:
 if challenges:
     for ch in challenges:
         st.write(f":blue-badge[{ingredient.get('name')}] " for ingredient in get_challenge_ingredients(ch.get('challengeId')))
+        st.write(ch)
         st.write(f"*{ch.get('description')}*")
         st.write(f"**Difficulty:** {ch.get('difficulty')}")
         
