@@ -11,7 +11,7 @@ st.set_page_config(page_title="PantryPal", layout="wide", page_icon="🥕")
 SideBarLinks()
 
 st.header("PantryPal")
-st.write("The ingredient-driven recipe platform.");
+st.write("The ingredient-driven recipe platform.")
 st.write("----")
 
 

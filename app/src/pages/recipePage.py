@@ -18,7 +18,7 @@ if not recipe_id:
 
 left, right = st.columns(2)
 with left:
-    st.image("https://picsum.photos/id/159/700/700/?blur=10")
+    st.image("https://placehold.co/700x800")
 with right:
     recipe_req = requests.get(f"http://web-api:4000/recipe/{recipe_id}")
 
@@ -34,7 +34,9 @@ with right:
         st.error("Could not fetch user details.")
     else:
         user_data = user_req.json()[0]
-        st.write(f"### 👩‍🍳 {user_data['username']}")
+        if st.button(f"### 👩‍🍳 {user_data['username']}"):
+            st.session_state['viewingId'] = user_data['userId']
+            st.switch_page('pages/user_profile.py')
         # with st.button(f"### 👩‍🍳 {user_data['username']}"):
         #     # go to user page
         #     st.session_state['userId'] = user_data['userId']
