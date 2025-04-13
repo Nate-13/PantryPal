@@ -10,7 +10,7 @@ st.markdown (
     """
     This is a demo app for PantryPal for the CS 3200 Course Project.  
 
-    We are building PantryPal, a data-driven recipe app that helps users discover and share new recipes based
+    PantryPal is a data-driven recipe app that helps users discover and share new recipes based
     on the ingredients they already have in their kitchens. Unlike traditional recipe websites, our platform
     encourages users to cook creatively and in a way that minimizes food waste by using leftover ingredients
     from their pantry. Our app also creates interactive recipe challenges that target culinary students
