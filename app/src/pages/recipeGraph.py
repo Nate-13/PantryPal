@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 # --- Page Configuration ---
 st.set_page_config(page_title="Recipe Insights", page_icon="📊", layout="wide")
-
+SideBarLinks()
 # --- Title & Intro ---
 st.title("📅 Recipe Posting Trends")
 st.markdown("Explore how recipes have been posted over time and the distribution across categories.")

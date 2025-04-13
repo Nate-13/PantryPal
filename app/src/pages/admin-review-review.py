@@ -46,7 +46,7 @@ else:
                 res = requests.delete(f"{API_BASE}/reviews/{row['reviewId']}/delete")
 
                 if res.status_code == 200:
-                    st.success(f"Review {row['reviewId']} deleted. Please refresh to update.")
+                    st.success(f"Review deleted.")
                 else:
                     st.error("Failed to delete review.")
 

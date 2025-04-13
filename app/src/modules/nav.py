@@ -49,6 +49,8 @@ def recipereviews():
 def recipereport():
     st.sidebar.page_link("pages/recipeGraph.py", label="View Recipe Report", icon="📈")
 
+def challengeReview():
+    st.sidebar.page_link("pages/22_Challenge_Rq.py", label="Challenge Review", icon="📝")
 
 
 # --------------------------------Links Function -----------------------------------------------
@@ -95,6 +97,7 @@ def SideBarLinks(show_home=False):
             HomeNav()
             recipereviews()
             recipereport()
+            challengeReview()
 
     # Always show the About page at the bottom of the list of links
     AboutPageNav()
