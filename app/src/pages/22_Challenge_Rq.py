@@ -61,7 +61,7 @@ if response.status_code == 200:
                     )
                     if approve.status_code == 200:
                         st.success(f"Request {req['requestID']} approved!")
-
+                        st.rerun()
             with col2:
                 if st.button("Deny", key=f"deny_{req['requestID']}"):
                     deny = requests.put(
@@ -69,7 +69,7 @@ if response.status_code == 200:
                     )
                     if deny.status_code == 200:
                         st.error(f"Request {req['requestID']} denied!")
-
+                        st.rerun()
 
             st.markdown("---")
 else:
