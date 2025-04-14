@@ -35,7 +35,7 @@ if response.status_code == 200:
     else:
         for req in requests_data:
             try:
-                ing_resp = requests.get(f"{API_BASE}/c/{req['requestID']}/ingredients")
+                ing_resp = requests.get(f"{API_BASE}/c/{req['requestID']}/req-ingredients")
                 ing_resp.raise_for_status()
                 ingredients = ing_resp.json()
 
