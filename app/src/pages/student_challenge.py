@@ -22,7 +22,6 @@ for c in challenges:
     with st.expander(f"{description} (Status: {status_value})"):
         st.write(f"Challenge ID: {challenge_id}")
         st.write(f"Difficulty: {difficulty}")
-        st.write(f"Description: {description}")
         st.write(f"Claimed on: {created_at}")
 
         status = st.selectbox(
