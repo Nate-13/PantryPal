@@ -20,6 +20,21 @@ for c in challenges:
     created_at = c.get("createdAt")
 
     with st.expander(f" **{description}** (Status: {status_value})"):
+
+        try:
+            ing_resp = requests.get(f"{API_BASE}/{c['challengeId']}/ingredients")
+            ing_resp.raise_for_status()
+            ingredients = ing_resp.json()
+
+            if ingredients:
+                badges = " ".join([f":blue-badge[{i['name']}]" for i in ingredients])
+                st.write(badges)
+            else:
+                st.info("No ingredients listed for this request.")
+        except Exception as e:
+            st.warning("Failed to fetch ingredients for this request.")
+            st.exception(e)
+
         st.write(f"Difficulty: {difficulty}")
         st.write(f"Claimed on: {created_at}")
 

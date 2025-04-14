@@ -49,10 +49,9 @@ def update_status(challenge_id, new_status):
             f"{API_BASE_URL}/status/{challenge_id}",
             json={"status": new_status}
         )
-        if response.status_code == 200:
-            st.success(f"Challenge updated to '{new_status}'!")
-        else:
+        if response.status_code != 200:
             st.error(f"Status update failed: {response.text}")
+            
     except Exception as e:
         st.error(f"Error updating status: {e}")
 

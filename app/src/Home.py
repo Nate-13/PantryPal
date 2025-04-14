@@ -52,7 +52,6 @@ if st.button("Act as Milo, a home-cook.",
     st.session_state['userId'] = 3
     logger.info("Logging in as home-cook Persona")
     st.switch_page('pages/pantrypal_home.py') # change to homecook main page
-        # st.session_state['viewingId'] = 3
 
 if st.button('Act as Isabel, a chef and blogger', 
             type = 'primary', 

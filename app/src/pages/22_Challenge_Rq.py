@@ -8,10 +8,11 @@ st.set_page_config(layout = 'wide')
 
 SideBarLinks()
 
-st.title('Challenge Requests Page')
+st.title('📝 Challenge Approval')
 API_BASE = "http://web-api:4000"
 
 st.header("Pending Challenge Requests")
+st.write("----")
 
 response = requests.get(f"{API_BASE}/c/requests/not-reviewed")
 
@@ -33,28 +34,30 @@ if response.status_code == 200:
         st.success("No pending challenge requests!")
     else:
         for req in requests_data:
-            st.subheader(f"Request ID: {req['requestID']}")
-            st.write(f"Requested By: {req['requestedById']}")
-            st.write(f"Submitted On: {req['dateSubmitted']}")
-            st.write(f"Description:\n\n{req['description']}")
             try:
                 ing_resp = requests.get(f"{API_BASE}/c/{req['requestID']}/ingredients")
                 ing_resp.raise_for_status()
                 ingredients = ing_resp.json()
 
                 if ingredients:
-                    for i in ingredients:
-                        st.write(f":blue-badge[{i['name']}]", unsafe_allow_html=True)
+                    badges = " ".join([f":blue-badge[{i['name']}]" for i in ingredients])
+                    st.write(badges)
                 else:
                     st.info("No ingredients listed for this request.")
             except Exception as e:
                 st.warning("Failed to fetch ingredients for this request.")
                 st.exception(e)
+            
+            st.write(f"Description: {req['description']}")
+            st.caption(f"Submitted On: {req['dateSubmitted']}")
+            st.caption(f"Request ID: {req['requestID']}")
+
+            
 
             # Action buttons
             col1, col2 = st.columns(2)
             with col1:
-                if st.button("Approve", key=f"approve_{req['requestID']}"):
+                if st.button("✅ Approve", key=f"approve_{req['requestID']}"):
                     approve = requests.put(
                         f"{API_BASE}/c/requests/{req['requestID']}/approve"
                     )
@@ -62,7 +65,7 @@ if response.status_code == 200:
                         st.success(f"Request {req['requestID']} approved!")
                         st.rerun()
             with col2:
-                if st.button("Deny", key=f"deny_{req['requestID']}"):
+                if st.button("❌ Deny", key=f"deny_{req['requestID']}"):
                     deny = requests.put(
                         f"{API_BASE}/c/requests/{req['requestID']}/decline"
                     )
