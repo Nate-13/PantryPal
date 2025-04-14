@@ -15,7 +15,7 @@ from modules.nav import SideBarLinks
 
 # streamlit supports reguarl and wide layout (how the controls
 # are organized/displayed on the screen).
-st.set_page_config(layout = 'wide')
+st.set_page_config(layout = 'wide', page_title="Home", page_icon="🏠")
 
 # If a user is at this page, we assume they are not 
 # authenticated.  So we change the 'authenticated' value

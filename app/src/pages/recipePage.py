@@ -67,7 +67,11 @@ with right:
         ingredients_data = ingredients_req.json()
         st.write("### Ingredients")
         for ingredient in ingredients_data:
-            st.write(f"- #### ```{ingredient['quantity']} {ingredient['unit']} {ingredient['name']}``` ") 
+            left, right = st.columns([0.03, 0.95])
+            with left:
+                st.checkbox("", key=f"ingredient_{ingredient['name']}")
+            with right:
+                st.write(f"  #### `{ingredient['quantity']} {ingredient['unit']} {ingredient['name']}` ")
 
 st.write("----")
 

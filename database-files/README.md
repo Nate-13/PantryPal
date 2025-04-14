@@ -1,7 +1,5 @@
 # `database-files` Folder
 
-TODO: Put some notes here about how this works. include how to re-bootstrap the db.
-
 This folder contains the SQL script for creating and populating the PantryPal database. It includes all necessary schema definitions, relationships, and default data to bootstrap the database.
 
 ## Files
