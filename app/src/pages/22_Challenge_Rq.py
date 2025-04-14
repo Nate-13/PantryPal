@@ -37,7 +37,19 @@ if response.status_code == 200:
             st.write(f"Requested By: {req['requestedById']}")
             st.write(f"Submitted On: {req['dateSubmitted']}")
             st.write(f"Description:\n\n{req['description']}")
+            try:
+                ing_resp = requests.get(f"{API_BASE}/c/{req['requestID']}/ingredients")
+                ing_resp.raise_for_status()
+                ingredients = ing_resp.json()
 
+                if ingredients:
+                    for i in ingredients:
+                        st.write(f":blue-badge[{i['name']}]", unsafe_allow_html=True)
+                else:
+                    st.info("No ingredients listed for this request.")
+            except Exception as e:
+                st.warning("Failed to fetch ingredients for this request.")
+                st.exception(e)
 
             # Action buttons
             col1, col2 = st.columns(2)
