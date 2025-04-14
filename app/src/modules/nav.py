@@ -39,7 +39,7 @@ def recipe_challenges():
 
 def student_challenges():
     st.sidebar.page_link(
-        "pages/student_challenge.py", label="Student's Challenges", icon="✅"
+        "pages/student_challenge.py", label="My Challenges", icon="✅"
     )
 
 #### ------------------------ System Admin Role ------------------------
@@ -75,34 +75,29 @@ def SideBarLinks(show_home=False):
     # Show the other page navigators depending on the users' role.
     if st.session_state["authenticated"]:
         HomeNav()
-        print("User is authenticated")
         # Show World Bank Link and Map Demo Link if the user is a political strategy advisor role.
         if st.session_state["role"] == "homecook":
             pantry_pal_home_nav()
             user_profile_nav()
-            print("User is a home cook")
 
         # If the user role is usaid worker, show the Api Testing page
         if st.session_state["role"] == "chef":
             pantry_pal_home_nav()
             user_profile_nav()
             new_recipe_nav()
-            print("User is a chef")
 
         if st.session_state["role"] == "student":
             pantry_pal_home_nav()
             recipe_challenges()
-            new_recipe_nav()
-            user_profile_nav()
             student_challenges()
-            print("User is a student")
+            user_profile_nav()
+            new_recipe_nav()
 
         # If the user is an administrator, give them access to the administrator pages
         if st.session_state["role"] == "administrator":
             recipereviews()
             recipereport()
             challengeReview()
-            print("User is an administrator")
     else:
         HomeNav()
 
