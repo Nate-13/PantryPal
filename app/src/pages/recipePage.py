@@ -96,7 +96,7 @@ with st.expander("📝 Write a review"):
     rating = st.slider("Rate this recipe", 1, 5)
     if st.button("Submit"):
         review_data = {
-            "userId": st.session_state.get('userID', 1),
+            "userId": st.session_state.get('userId', 1),
             "recipeId": recipe_id,
             "description": review,
             "rating": rating

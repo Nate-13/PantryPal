@@ -134,8 +134,8 @@ CREATE TABLE categories
 -- Users
 INSERT INTO users (username, firstName, lastName, email, bio) VALUES
 ('KaleYeah', 'Isabel', 'Nicholson', 'isabel.nicholson@example.com', 'Passionate about plant-based cooking and driven by a mission to create good-tasting food using locally sourced and environmentally friendly ingredients'),
-('spiceking', 'Derek', 'Ramsey', 'derek.ramsey@example.com', 'Obsessed with global spices and fusion cooking.'),
-('plantplate', 'Amara', 'Singh', 'amara.singh@example.com', 'Vegan enthusiast creating colorful plant-based dishes.'),
+('robbieFoodie02', 'Robert', 'Sheply', 'robert.sheply@example.com', 'Second-year student pursuing a major in Culinary Arts at the Culinary Institute of America. I love creating new fresh flavors!'),
+('milo_eats_04', 'Milo', 'Henderson', 'milo.henderson@example.com', 'Owner of Spin City in Milwaukee, Wisconsin. Lover of music. Always looking to try new foods.'),
 ('grillguru', 'Tom', 'Hawkins', 'tom.hawkins@example.com', 'Backyard BBQ master. Brisket is life.'),
 ('quickbitequeen', 'Nina', 'Choi', 'nina.choi@example.com', 'Fast, fresh, and flavorful meals for the busy life.'),
 ('chefantoine', 'Antoine', 'Lamar', 'antoine.lamar@example.com', 'Modern French cuisine with a twist.'),
@@ -148,21 +148,21 @@ INSERT INTO users (username, firstName, lastName, email, bio) VALUES
 ('theegghead', 'Luis', 'Moreno', 'luis.moreno@example.com', 'Every day starts with eggs. Omelets are an art.'),
 ('stircrazy', 'Ivy', 'Nguyen', 'ivy.nguyen@example.com', 'Stir-fry aficionado with a wok collection.'),
 ('rawveganista', 'Sofia', 'Grant', 'sofia.grant@example.com', 'Raw vegan chef creating flavor from simplicity.'),
-('glutenfreelove', 'Marco', 'Valdez', 'marco.valdez@example.com', 'Baking gluten-free bread that doesn’t suck.'),
+('glutenfreelove', 'Marco', 'Valdez', 'marco.valdez@example.com', 'Baking gluten-free bread that doesnt suck.'),
 ('onepotwonder', 'Aiden', 'Clark', 'aiden.clark@example.com', 'One-pot meals, big flavor, minimal mess.'),
-('cheftalia', 'Talia', 'Bennett', 'talia.bennett@example.com', 'Italian classics from my nonna’s kitchen.'),
+('cheftalia', 'Talia', 'Bennett', 'talia.bennett@example.com', 'Italian classics from my nonnas kitchen.'),
 ('midnightmunchies', 'Oscar', 'Reed', 'oscar.reed@example.com', 'Late night eats with a creative twist.'),
 ('kitchenwitch', 'Maeve', 'Donovan', 'maeve.donovan@example.com', 'Herbal magic and kitchen alchemy.'),
-('flavorjunkie', 'Ray', 'Daniels', 'ray.daniels@example.com', 'If it’s spicy, I’m in. Chili peppers in everything.'),
+('flavorjunkie', 'Ray', 'Daniels', 'ray.daniels@example.com', 'If its spicy, Im in. Chili peppers in everything.'),
 ('southernspirit', 'Janelle', 'Robinson', 'janelle.robinson@example.com', 'Southern soul food and family traditions.'),
 ('basilandbeets', 'Luca', 'Ferrari', 'luca.ferrari@example.com', 'Plant-forward dishes with Italian roots.'),
-('chefkaterina', 'Katerina', 'Dimitriou', 'katerina.d@example.com', 'Greek cuisine lover – tzatziki forever.'),
-('coffeencurry', 'Priya', 'Malhotra', 'priya.malhotra@example.com', 'Caffeine and curries – my two essentials.'),
+('chefkaterina', 'Katerina', 'Dimitriou', 'katerina.d@example.com', 'Greek cuisine lover - tzatziki forever.'),
+('coffeencurry', 'Priya', 'Malhotra', 'priya.malhotra@example.com', 'Caffeine and curries - my two essentials.'),
 ('crispychick', 'Blake', 'Reynolds', 'blake.reynolds@example.com', 'Chicken all ways: fried, grilled, smoked.'),
 ('misoqueen', 'Yuki', 'Tanaka', 'yuki.tanaka@example.com', 'Japanese home cook with a love for miso.'),
 ('chefmateo', 'Mateo', 'Rios', 'mateo.rios@example.com', 'Cooking is love made visible.'),
 ('bbqbaron', 'Rick', 'Barnes', 'rick.barnes@example.com', 'Texas-style BBQ and grill games strong.'),
-('fermentfreak', 'Casey', 'Wolfe', 'casey.wolfe@example.com', 'Kimchi, krauts, kombucha – I ferment it all.'),
+('fermentfreak', 'Casey', 'Wolfe', 'casey.wolfe@example.com', 'Kimchi, krauts, kombucha - I ferment it all.'),
 ('urbanfarmer', 'Noah', 'Wright', 'noah.wright@example.com', 'Farm-to-table cooking from my backyard.'),
 ('tacotuesday', 'Carmen', 'Lopez', 'carmen.lopez@example.com', 'Tacos every day if I could.'),
 ('chefevelyn', 'Evelyn', 'Chambers', 'evelyn.chambers@example.com', 'Fine dining, elegant plating, bold flavors.'),
@@ -176,7 +176,7 @@ INSERT INTO users (username, firstName, lastName, email, bio) VALUES
 ('eggcellent', 'George', 'Wu', 'george.wu@example.com', 'All about brunch and beautiful plating.'),
 ('meatmaven', 'Connor', 'Stone', 'connor.stone@example.com', 'Carnivore at heart. Steaks, ribs, chops.'),
 ('koreankitchen', 'Eunji', 'Park', 'eunji.park@example.com', 'Banchan, BBQ, and bold Korean flavors.'),
-('pantrypro', 'Olivia', 'Klein', 'olivia.klein@example.com', 'Making magic with whatever’s in the pantry.'),
+('pantrypro', 'Olivia', 'Klein', 'olivia.klein@example.com', 'Making magic with whatevers in the pantry.'),
 ('chefzane', 'Zane', 'McCarthy', 'zane.mccarthy@example.com', 'Driven by detail and perfect execution.'),
 ('thebakelab', 'Tobias', 'Clark', 'tobias.clark@example.com', 'Precision baking and recipe experimentation.'),
 ('snackattack', 'Leah', 'Scott', 'leah.scott@example.com', 'Snacks over meals. Chips, dips, and nibbles.'),
@@ -688,15 +688,15 @@ INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES
 -- Recipe Reviews
 INSERT INTO reviews (userId, recipeId, rating, description) VALUES
 -- Recipe 1: Classic Spaghetti Bolognese
-(18, 1, 5, 'Reminds me of my nonna’s Sunday dinners. Absolutely classic.'),
+(18, 1, 5, 'Reminds me of my nonnas Sunday dinners. Absolutely classic.'),
 (40, 1, 4, 'Great flavor, but I added a splash of red wine for depth.'),
 
 -- Recipe 2: Spicy Chickpea Curry
 (3, 2, 5, 'Love the warmth of the spices. A regular in my vegan rotation.'),
-(25, 2, 4, 'Perfect blend of heat and comfort. Next time I’ll add potatoes.'),
+(25, 2, 4, 'Perfect blend of heat and comfort. Next time Ill add potatoes.'),
 
 -- Recipe 3: Triple Chocolate Brownies
-(9, 3, 5, 'Chocolate heaven. Gooey and rich – just how I like it!'),
+(9, 3, 5, 'Chocolate heaven. Gooey and rich - just how I like it!'),
 (44, 3, 5, 'Tested with my coffee break crew. Gone in 5 minutes.'),
 
 -- Recipe 5: Homestyle Chicken Pot Pie
@@ -704,7 +704,7 @@ INSERT INTO reviews (userId, recipeId, rating, description) VALUES
 (6, 5, 5, 'I love the veggie mix! Added peas and it was divine.'),
 
 -- Recipe 6: Eggplant Parmesan
-(23, 6, 5, 'Crispy and cheesy – just like my favorite trattoria!'),
+(23, 6, 5, 'Crispy and cheesy - just like my favorite trattoria!'),
 (16, 6, 4, 'Great recipe, but I swapped in gluten-free breadcrumbs.'),
 
 -- Recipe 9: Mushroom Risotto
@@ -719,7 +719,7 @@ INSERT INTO reviews (userId, recipeId, rating, description) VALUES
 (8, 14, 5, 'Loved the balance of sweet and savory. Added extra sauce.'),
 
 -- Recipe 15: Gluten-Free Banana Pancakes
-(16, 15, 5, 'As a gluten-free baker, I’m impressed. Fluffy and flavorful!'),
+(16, 15, 5, 'As a gluten-free baker, Im impressed. Fluffy and flavorful!'),
 
 -- Recipe 17: Sweet Potato Tacos
 (31, 17, 5, 'Super satisfying and plant-powered. The lime crema made it pop.'),
@@ -776,7 +776,7 @@ INSERT INTO reviews (userId, recipeId, rating, description) VALUES
 (30, 17, 2, 'The filling was mushy and lacked seasoning. Tacos need more punch!'),
 
 -- Recipe 22: Grilled Salmon with Dill Sauce
-(45, 22, 3, 'Salmon cooked well, but the yogurt sauce wasn’t for me.'),
+(45, 22, 3, 'Salmon cooked well, but the yogurt sauce wasnt for me.'),
 
 -- Recipe 24: Chili Con Carne
 (50, 24, 1, 'Way too salty. I had to toss it. Maybe a typo in the seasoning?'),
@@ -797,7 +797,7 @@ INSERT INTO reviews (userId, recipeId, rating, description) VALUES
 (4, 31, 2, 'Too spicy and greasy for me. Not a fan of the texture.'),
 
 -- Recipe 33: Gnocchi with Pesto
-(46, 33, 2, 'Gnocchi turned gummy. Pesto didn’t really stick.'),
+(46, 33, 2, 'Gnocchi turned gummy. Pesto didnt really stick.'),
 
 -- Recipe 36: Veggie Fried Rice
 (37, 36, 2, 'Tasted flat. Needed more soy sauce or sesame oil.'),
@@ -806,7 +806,7 @@ INSERT INTO reviews (userId, recipeId, rating, description) VALUES
 (48, 39, 1, 'Turned out dense and dry. Definitely needs more moisture.'),
 
 -- Recipe 13: Tofu Katsu Curry
-(26, 40, 2, 'Breaded tofu didn’t stay crispy and the curry was too mild.'),
+(26, 40, 2, 'Breaded tofu didnt stay crispy and the curry was too mild.'),
 (11, 40, 3, 'It was okay but not quite authentic. I missed the depth of a real Japanese curry.');
 
 
@@ -943,7 +943,7 @@ INSERT INTO challengeIngredients (challengeId, ingredientId) VALUES
 (20, 44);
 
 
--- Approved requests (linked to challenges 1–10)
+-- Approved requests (linked to challenges 1-10)
 INSERT INTO challengeRequests (requestedById, status, reviewedBy) VALUES
 (3, 'APPROVED', 2),   -- requestId = 1 (Challenge 1)
 (14, 'APPROVED', 1),  -- requestId = 2 (Challenge 2)
@@ -964,7 +964,7 @@ INSERT INTO challengeRequests (requestedById, status, reviewedBy) VALUES
 (15, 'NOT REVIEWED', NULL);      -- requestId = 15
 
 
--- Approved Requests (1–10)
+-- Approved Requests (1-10)
 INSERT INTO requestIngredients (requestId, ingredientId) VALUES
 -- Request 1: Chickpeas, coconut milk, turmeric, spinach
 (1, 40),
@@ -1196,8 +1196,8 @@ INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (5
 INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (51, 3, 2.0, 'cloves');
 INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (51, 73, 1.0, 'pc');
 INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (51, 57, 1.0, 'tbsp');
--- Recipe: Za’atar Roasted Carrots with Yogurt
-INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (24, 'Za’atar Roasted Carrots with Yogurt', 'Sweet roasted carrots with herbed yogurt and za’atar.', 30, 2, 'EASY', 430);
+-- Recipe: Zaatar Roasted Carrots with Yogurt
+INSERT INTO recipes (chefId, title, description, prepTime, servings, difficulty, calories) VALUES (24, 'Zaatar Roasted Carrots with Yogurt', 'Sweet roasted carrots with herbed yogurt and zaatar.', 30, 2, 'EASY', 430);
 INSERT INTO categories (recipeId, categoryName) VALUES (52, 'VEGETARIAN');
 INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (52, 4, 4.0, 'pcs');
 INSERT INTO recipeIngredients (recipeId, ingredientId, quantity, unit) VALUES (52, 57, 1.0, 'tbsp');
