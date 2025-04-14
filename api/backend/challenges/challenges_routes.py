@@ -329,5 +329,19 @@ def get_request_ingredients(request_id):
     response.status_code = 200
     return response
 
+# gets a specific users challenges
+@challenges_bp.route('/user/<int:user_id>/challenges', methods=['GET'])
+def get_user_challenges(user_id):
+    sql = """
+        SELECT * 
+        FROM challenges 
+        WHERE studentId = %s;
+    """
+    cursor = db.get_db().cursor()
+    cursor.execute(sql, (user_id,))
+    theData = cursor.fetchall()
 
+    response = make_response(jsonify(theData))
+    response.status_code = 200
+    return response
 

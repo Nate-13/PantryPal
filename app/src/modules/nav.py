@@ -37,7 +37,10 @@ def recipe_challenges():
         "pages/challengespage.py", label="Challenges", icon="💡"
     )
 
-
+def student_challenges():
+    st.sidebar.page_link(
+        "pages/student_challenge.py", label="Student's Challenges", icon="✅"
+    )
 
 #### ------------------------ System Admin Role ------------------------
 def AdminPageNav():
@@ -91,6 +94,7 @@ def SideBarLinks(show_home=False):
             recipe_challenges()
             new_recipe_nav()
             user_profile_nav()
+            student_challenges()
             print("User is a student")
 
         # If the user is an administrator, give them access to the administrator pages
