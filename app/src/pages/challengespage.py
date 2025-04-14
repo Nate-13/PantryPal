@@ -87,14 +87,11 @@ if challenges:
         elif st.button(f"Claim Challenge", key=f"claim_{ch.get('challengeId')}"):
             if user_id:
                 claim_challenge(ch.get('challengeId'), int(user_id))
+                update_status(ch.get('challengeId'), 'In PROGRESS')
             else:
                 st.warning("You need to log in to claim a challenge.")
 
-        # Status update section
-        status_options = ["in progress", "completed"]
-        new_status = st.selectbox(f"Update status for challenge {ch.get('challengeId')}:", status_options, key=f"status_{ch.get('challengeId')}")
-        if st.button(f"Update Status", key=f"update_{ch.get('challengeId')}"):
-            update_status(ch.get('challengeId'), new_status)
+            
 
         st.markdown("---")
 else:

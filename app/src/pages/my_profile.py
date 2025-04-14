@@ -16,28 +16,32 @@ else:
     if user_req.status_code != 200:
         st.error("Could not fetch user details.")
     else:
-        user_data = user_req.json()[0]
-        username = st.text_input("Username", value=user_data['username'])
-        first_name = st.text_input("First Name", value=user_data['firstName'])
-        last_name = st.text_input("Last Name", value=user_data['lastName'])
-        email = st.text_input("Email", value=user_data['email'])
-        bio = st.text_area("Bio", value=user_data['bio'])
+        left, right = st.columns([2, 2])
+        with left:
+            st.image("https://placehold.co/600x600")
+        with right:
+            user_data = user_req.json()[0]
+            username = st.text_input("Username", value=user_data['username'])
+            first_name = st.text_input("First Name", value=user_data['firstName'])
+            last_name = st.text_input("Last Name", value=user_data['lastName'])
+            email = st.text_input("Email", value=user_data['email'])
+            bio = st.text_area("Bio", value=user_data['bio'])
 
+            if st.button("Update Profile"):
+                user_data = {
+                "userId": userId,
+                "username": username,
+                "firstName": first_name,
+                "lastName": last_name,
+                "email": email,
+                "bio": bio
+                }
+                update_req = requests.put(f"{API_BASE_USER}", json=user_data)
+                if update_req.status_code == 200:
+                    st.success("Profile updated successfully.")
+                else:
+                    st.error("Could not update profile.")
 
-        if st.button("Update Profile"):
-            user_data = {
-            "userId": userId,
-            "username": username,
-            "firstName": first_name,
-            "lastName": last_name,
-            "email": email,
-            "bio": bio
-            }
-            update_req = requests.put(f"{API_BASE_USER}", json=user_data)
-            if update_req.status_code == 200:
-                st.success("Profile updated successfully.")
-            else:
-                st.error("Could not update profile.")
         st.write("----")
         st.header("My Recipes")
         user_recipes = requests.get(f"http://web-api:4000/user/{userId}/recipes")
