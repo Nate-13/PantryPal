@@ -3,7 +3,7 @@ import requests
 from modules.nav import SideBarLinks
 
 API_BASE = "http://web-api:4000/c"
-st.set_page_config(page_title="My Challenges", page_icon="✅")
+st.set_page_config(page_title="My Challenges", page_icon="✅", layout="wide")
 SideBarLinks()
 
 st.title("My Challenges")
@@ -19,8 +19,7 @@ for c in challenges:
     difficulty = c.get("difficulty") or "Not Set"
     created_at = c.get("createdAt")
 
-    with st.expander(f"{description} (Status: {status_value})"):
-        st.write(f"Challenge ID: {challenge_id}")
+    with st.expander(f" **{description}** (Status: {status_value})"):
         st.write(f"Difficulty: {difficulty}")
         st.write(f"Claimed on: {created_at}")
 

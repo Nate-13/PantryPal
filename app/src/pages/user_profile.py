@@ -5,6 +5,8 @@ from modules.nav import SideBarLinks
 API_BASE_USER = "http://web-api:4000/users"
 API_BASE_RECIPES = "http://web-api:4000/user"
 
+st.set_page_config(page_title="User Profile", page_icon="👤", layout='wide')
+
 SideBarLinks()
 
 userId = st.session_state.get("viewingId", None)

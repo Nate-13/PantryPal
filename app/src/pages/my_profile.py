@@ -3,7 +3,7 @@ import requests
 from modules.nav import SideBarLinks
 
 API_BASE_USER = "http://web-api:4000/users"
-st.set_page_config(page_title="My Profile", page_icon="👤")
+st.set_page_config(page_title="My Profile", page_icon="👤", layout='wide')
 SideBarLinks()
 
 st.write("### My Profile")
@@ -62,7 +62,7 @@ else:
                             st.switch_page("pages/recipePage.py")
                         st.write(f"📖 {recipe['description']}")
                         st.write(f"🕒 {recipe['createdAt']}")
-                        st.write("----")
+                    st.write("----")
 
                     with right:
                         if st.button("❌", key=recipe['recipeId']):

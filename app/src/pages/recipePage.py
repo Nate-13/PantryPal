@@ -9,11 +9,20 @@ from datetime import datetime
 def format_date(date_str):
     return datetime.strptime(date_str, "%a, %d %b %Y %H:%M:%S %Z").strftime("%B %d, %Y")
 
-
 recipe_id = st.session_state.get('recipeId', None)
 
 if not recipe_id:
     st.warning("No recipe ID provided.")
+
+recipe_req = requests.get(f"http://web-api:4000/recipe/{recipe_id}")
+
+st.set_page_config(
+    page_title=recipe_req.json()[0]['title'] if recipe_req.status_code == 200 else "Recipe",
+    page_icon="🍽️",
+    layout='wide',
+)
+
+
 
 SideBarLinks()
 
@@ -21,8 +30,7 @@ left, right = st.columns(2)
 with left:
     st.image("https://placehold.co/700x800")
 with right:
-    recipe_req = requests.get(f"http://web-api:4000/recipe/{recipe_id}")
-
+    
     if recipe_req.status_code != 200:
         st.error("Could not fetch recipe details.")
     else:
