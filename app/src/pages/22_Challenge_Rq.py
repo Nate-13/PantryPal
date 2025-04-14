@@ -53,8 +53,6 @@ if response.status_code == 200:
             st.caption(f"Submitted On: {req['dateSubmitted']}")
             st.caption(f"Request ID: {req['requestID']}")
 
-            
-
             # Action buttons
             col1, col2 = st.columns(2)
             with col1:
