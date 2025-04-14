@@ -274,9 +274,6 @@ def challenges_by_difficulty(level):
     response.status_code = 200
     return response
 
-
-
-
 @challenges_bp.route('/new-challenge-request', methods=['POST'])
 def submit_challenge_request():
     the_data = request.json
@@ -318,11 +315,14 @@ def submit_challenge_request():
 # gets all ingredients for a challenge request
 @challenges_bp.route('/<int:request_id>/ingredients', methods=['GET'])
 def get_request_ingredients(request_id):
-    sql = (f"SELECT i.name "
-           f"FROM requestIngredients ri JOIN ingredients i ON ri.ingredientId = i.ingredientId "
-           f"WHERE requestId = {request_id};")
+    sql = (
+        "SELECT i.name "
+        "FROM requestIngredients ri "
+        "JOIN ingredients i ON ri.ingredientId = i.ingredientId "
+        "WHERE ri.requestId = %s;"
+    )
     cursor = db.get_db().cursor()
-    cursor.execute(sql)
+    cursor.execute(sql, (request_id,))
     theData = cursor.fetchall()
 
     response = make_response(jsonify(theData))
