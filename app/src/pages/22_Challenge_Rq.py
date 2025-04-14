@@ -48,6 +48,7 @@ if response.status_code == 200:
                 st.warning("Failed to fetch ingredients for this request.")
                 st.exception(e)
             
+            
             st.write(f"Description: {req['description']}")
             st.caption(f"Submitted On: {req['dateSubmitted']}")
             st.caption(f"Request ID: {req['requestID']}")

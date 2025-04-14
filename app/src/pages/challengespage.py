@@ -51,7 +51,7 @@ def update_status(challenge_id, new_status):
         )
         if response.status_code != 200:
             st.error(f"Status update failed: {response.text}")
-            
+
     except Exception as e:
         st.error(f"Error updating status: {e}")
 

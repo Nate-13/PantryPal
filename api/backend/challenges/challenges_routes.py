@@ -5,9 +5,6 @@ from flask import make_response
 from flask import current_app
 from backend.db_connection import db
 
-import logging
-logging.basicConfig(format='%(filename)s:%(lineno)s:%(levelname)s -- %(message)s', level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 
 challenges_bp = Blueprint('challenges', __name__)
@@ -97,7 +94,8 @@ def approve_request(request_id):
             db.get_db().rollback()
             return make_response({'error': 'Request not found'}, 404)
 
-        description, requested_by_id = req
+        # Ensure the correct unpacking of the fetched row
+        description, requested_by_id = req if isinstance(req, tuple) else (req['description'], req['requestedById'])
         current_app.logger.info(f"Approving request {request_id} with description: {description}")
 
         cursor.execute("""
@@ -279,10 +277,8 @@ def challenges_by_difficulty(level):
 
 @challenges_bp.route('/new-challenge-request', methods=['POST'])
 def submit_challenge_request():
-    logger.info("Submitting a new challenge request")
     the_data = request.json
     current_app.logger.info(the_data)
-    logger.info(the_data)
 
     # Extracting variables
     description = the_data['description']
@@ -300,7 +296,6 @@ def submit_challenge_request():
         req_id = cursor.lastrowid  
 
         for ing in ingredients:
-            logger.info(f"Adding ingredient {ing} to request {req_id}")
             req_ing_query = '''
                 INSERT INTO requestIngredients (requestId, ingredientId)
                 VALUES (%s, %s);
