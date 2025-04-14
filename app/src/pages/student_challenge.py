@@ -3,7 +3,7 @@ import requests
 from modules.nav import SideBarLinks
 
 API_BASE = "http://web-api:4000/c"
-
+st.set_page_config(page_title="My Challenges", page_icon="✅")
 SideBarLinks()
 
 st.title("My Challenges")

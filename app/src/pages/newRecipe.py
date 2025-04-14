@@ -6,6 +6,8 @@ from streamlit_extras.app_logo import add_logo
 from modules.nav import SideBarLinks
 import time
 
+st.set_page_config(page_title="New Recipe", page_icon="🍽️")
+
 SideBarLinks()
 
 st.write("### Create a New Recipe")

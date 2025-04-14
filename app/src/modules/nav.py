@@ -15,7 +15,7 @@ def AboutPageNav():
 
 def pantry_pal_home_nav():
     st.sidebar.page_link(
-        "pages/pantrypal_home.py", label="PantryPal Home", icon="🍳"
+        "pages/pantrypal_home.py", label="PantryPal Home", icon="🥕"
     )
 
 #### ------------------------ HomeCook ------------------------
@@ -43,17 +43,14 @@ def student_challenges():
     )
 
 #### ------------------------ System Admin Role ------------------------
-def AdminPageNav():
-    st.sidebar.page_link("pages/20_Admin_Home.py", label="System Admin", icon="🖥️")
-
 def recipereviews():
-    st.sidebar.page_link("pages/admin-review-review.py", label="recipe reviews", icon="🖥️")
+    st.sidebar.page_link("pages/admin-review-review.py", label="Review Monitor", icon="🖥️")
 
 def recipereport():
-    st.sidebar.page_link("pages/recipeGraph.py", label="View Recipe Report", icon="📈")
+    st.sidebar.page_link("pages/recipeGraph.py", label="Reports", icon="📊")
 
 def challengeReview():
-    st.sidebar.page_link("pages/22_Challenge_Rq.py", label="Challenge Review", icon="📝")
+    st.sidebar.page_link("pages/22_Challenge_Rq.py", label="Challenge Approval", icon="📝")
 
 
 # --------------------------------Links Function -----------------------------------------------

@@ -6,8 +6,8 @@ from modules.nav import SideBarLinks
 
 API_BASE = "http://web-api:4000/"
 
-st.set_page_config(page_title="Review Browser", layout="wide")
-st.title("📝 Recipe Review Browser")
+st.set_page_config(page_title="Review Monitor", page_icon="🖥️")
+st.title("🖥️ Review Monitor")
 
 SideBarLinks()
 

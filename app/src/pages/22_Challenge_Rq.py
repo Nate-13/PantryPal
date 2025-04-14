@@ -4,8 +4,7 @@ import streamlit as st
 from modules.nav import SideBarLinks
 import requests
 
-st.set_page_config(layout = 'wide')
-
+st.set_page_config(page_title="Challenge Approval", page_icon="📝",)
 SideBarLinks()
 
 st.title('Challenge Requests Page')

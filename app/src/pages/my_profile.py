@@ -3,7 +3,7 @@ import requests
 from modules.nav import SideBarLinks
 
 API_BASE_USER = "http://web-api:4000/users"
-
+st.set_page_config(page_title="My Profile", page_icon="👤")
 SideBarLinks()
 
 st.write("### My Profile")

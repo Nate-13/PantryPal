@@ -3,7 +3,7 @@ import requests
 from modules.nav import SideBarLinks
 
 API_BASE_URL = "http://web-api:4000/c"  # Change if needed
-
+st.set_page_config(page_title="Challenges", page_icon="💡")
 SideBarLinks()
 
 st.title("💡 Challenges")
@@ -76,7 +76,6 @@ if search_query:
 if challenges:
     for ch in challenges:
         st.write(f":blue-badge[{ingredient.get('name')}] " for ingredient in get_challenge_ingredients(ch.get('challengeId')))
-        st.write(ch)
         st.write(f"*{ch.get('description')}*")
         st.write(f"**Difficulty:** {ch.get('difficulty')}")
         
