@@ -96,6 +96,7 @@ def approve_request(request_id):
 
         # Ensure the correct unpacking of the fetched row
         description, requested_by_id = req if isinstance(req, tuple) else (req['description'], req['requestedById'])
+        if description is None: description = "No description provided"
         current_app.logger.info(f"Approving request {request_id} with description: {description}")
 
         cursor.execute("""

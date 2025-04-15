@@ -16,6 +16,8 @@ ingredient-based recipe lookups. This makes it easy for home-cooks to find recip
 to make, easy for chefs to upload recipes that users will be able to find, and for culinary students
 to improve their creative cooking skills through structured challenges.
 
+Watch the demo video: [PantryPal Demo](https://drive.google.com/file/d/1O5kQdcz-dBqT7gyLYeOu36kS5f0h5-vR/view?usp=sharing)
+
 Currently, there are three major components that will each run in their own Docker Containers:
 
 - Streamlit App in the `./app` directory
